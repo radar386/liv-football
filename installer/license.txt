@@ -1,0 +1,58 @@
+LIV Football Mobile - End User Licence Agreement
+
+Please read this agreement before installing. By clicking "I accept", you agree to it.
+(Replace [YOUR NAME OR STUDIO] and [YOUR EMAIL] below with your own details before you release the game.
+ This text is a plain starting template, not legal advice. Have it checked if you sell the game.)
+
+1. Licence
+[YOUR NAME OR STUDIO] ("the Developer") gives you a personal, non-exclusive, non-transferable licence to install
+and play LIV Football Mobile ("the Game") on your own devices. The Game is licensed, not sold.
+
+2. What you may not do
+- Copy, sell, rent or share the Game or its installer with others, except where the Developer allows it.
+- Reverse engineer, decompile or modify the Game, except where the law lets you do so.
+- Use the Game to cheat in, or break, any online service connected to it.
+
+3. Names, clubs, players and brands
+The Game is a fan-made football management game. Where the Game shows real club, player, coach, league or company
+names, they are used only to describe or identify them. They belong to their owners. The Game is not made, approved
+or sponsored by any club, player, coach, league, federation, company or brand, and no licence from them is claimed.
+All prices, ratings, sponsorship amounts and results are made up for the Game and are not real offers or facts.
+Names of scouted academy players are invented, and any match with a real person is a coincidence.
+
+4. In-game money, packs and purchases
+Money, packs, players and everything else in the Game are virtual items. They have no real-world value and cannot be
+exchanged, sold or cashed out for real money. You only get a limited licence to use them inside the Game.
+
+Buying in-game money: the Game may let you buy in-game money with real money (for example 500,000 for US$0.49). Prices
+are shown before you pay. You must be old enough to make the purchase under the law where you live, or have a parent or
+guardian's permission. Because in-game money is delivered straight away, purchases are final and cannot be refunded,
+except where the law says otherwise or the Developer decides to. A payment that fails or is reversed may be taken back
+out of your account.
+
+Packs: opening a pack gives random players. The chances for each pack (Bronze, Silver, Gold, Elite) are shown in the
+Game before you open it. Duplicate players pay back part of their value in in-game money. Packs cannot be bought
+directly with real money; they are bought with in-game money, or given by an administrator.
+
+Gifts: administrators may give packs or money to players, for example in weekly pack drops. The Developer may change or
+remove gifts, packs, prices and odds at any time.
+
+Ratings: player ratings in packs follow a scale similar to EA SPORTS FC player ratings. The Game is not affiliated with,
+made by, or approved by EA, EA SPORTS FC, FIFA or the website FCRatings.com. Their names, ratings and marks belong to
+their owners.
+
+5. Saved data
+The Game saves your progress on your own device. The Developer is not responsible for lost progress, for example if you
+clear your device's data or uninstall the Game.
+
+6. No warranty
+The Game is provided "as is", without any promise that it is free of errors or will work without interruption. As far
+as the law allows, the Developer is not liable for any loss caused by using the Game.
+
+7. Ending this agreement
+This agreement ends if you break it. Then you must stop playing and delete the Game.
+
+8. Contact
+Questions: [YOUR EMAIL]
+
+Copyright (c) [YEAR] [YOUR NAME OR STUDIO]. All rights reserved.
