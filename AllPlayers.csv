@@ -1,0 +1,1035 @@
+id,name,club,position,rating,market_value
+player_0001,Gus Falconer,Aldermoor Wanderers,CM,105,24200000
+player_0002,Zane Dvorak,Aldermoor Wanderers,GK,95,10200000
+player_0003,Declan Grimaldi,Aldermoor Wanderers,CB,87,5100000
+player_0004,Rui Cortez,Aldermoor Wanderers,CB,85,4300000
+player_0005,Tariq Mbeki,Aldermoor Wanderers,GK,84,4000000
+player_0006,Damon Esposito,Aldermoor Wanderers,CB,84,4000000
+player_0007,Ivan Jorgensen,Aldermoor Wanderers,LB,82,3300000
+player_0008,Viktor Kinnear,Aldermoor Wanderers,RB,81,3100000
+player_0009,Alvaro Pereira,Aldermoor Wanderers,CM,81,3100000
+player_0010,Bastian Voss,Aldermoor Wanderers,CDM,79,2600000
+player_0011,Wilmer Uzun,Aldermoor Wanderers,RW,79,2600000
+player_0012,Wade Pereira,Aldermoor Wanderers,CDM,78,2400000
+player_0013,Jonas Ishikawa,Aldermoor Wanderers,CAM,78,2400000
+player_0014,Emil Lindqvist,Aldermoor Wanderers,LW,78,2400000
+player_0015,Pavel Yamada,Aldermoor Wanderers,LB,77,2200000
+player_0016,Rafael Barros,Aldermoor Wanderers,ST,77,2200000
+player_0017,Elias Nyberg,Aldermoor Wanderers,CB,76,2000000
+player_0018,Hector Castellan,Aldermoor Wanderers,RB,74,1700000
+player_0019,Gideon Vasquez,Aldermoor Wanderers,ST,74,1700000
+player_0020,Wes Winters,Aldermoor Wanderers,CM,73,1500000
+player_0021,Otis Brook,Aldermoor Wanderers,CM,69,1100000
+player_0022,Yago Ivanov,Ambergate Rangers,ST,86,4700000
+player_0023,Enzo Lacroix,Ambergate Rangers,GK,84,4000000
+player_0024,Nolan Arden,Ambergate Rangers,CM,83,3600000
+player_0025,Aiden Dufresne,Ambergate Rangers,GK,82,3300000
+player_0026,Pavel Yeboah,Ambergate Rangers,ST,82,3300000
+player_0027,Ramon Castellan,Ambergate Rangers,CB,81,3100000
+player_0028,Farid Jansen,Ambergate Rangers,LB,80,2800000
+player_0029,Brandon Mbeki,Ambergate Rangers,CDM,79,2600000
+player_0030,Kofi Mbeki,Ambergate Rangers,RW,78,2400000
+player_0031,Tomas Holt,Ambergate Rangers,CM,77,2200000
+player_0032,Bastian Ivanov,Ambergate Rangers,CAM,77,2200000
+player_0033,Damon Vermeer,Ambergate Rangers,LW,77,2200000
+player_0034,Cyrus Cortez,Ambergate Rangers,CB,76,2000000
+player_0035,Callum Okafor,Ambergate Rangers,RB,75,1800000
+player_0036,Yannick Ishikawa,Ambergate Rangers,CB,74,1700000
+player_0037,Tariq Petrov,Ambergate Rangers,LB,73,1500000
+player_0038,Elias Ulloa,Ambergate Rangers,CM,73,1500000
+player_0039,Ivan Ivanov,Ambergate Rangers,CB,72,1400000
+player_0040,Rafael Pellegrini,Ambergate Rangers,CDM,72,1400000
+player_0041,Joaquin Novak,Ambergate Rangers,RB,71,1300000
+player_0042,Ilias Uzun,Ashford United,RB,88,5600000
+player_0043,Zeke Thorne,Ashford United,ST,81,3100000
+player_0044,Yusuf Alderton,Ashford United,CAM,80,2800000
+player_0045,Zeke Mbeki,Ashford United,ST,80,2800000
+player_0046,Elias Lindqvist,Ashford United,GK,79,2600000
+player_0047,Jorge Holt,Ashford United,CM,78,2400000
+player_0048,Dmitri Yamada,Ashford United,GK,77,2200000
+player_0049,Declan Fontaine,Ashford United,LW,77,2200000
+player_0050,Callum Halvorsen,Ashford United,CM,77,2200000
+player_0051,Hugo Edmunds,Ashford United,RB,76,2000000
+player_0052,Xavier Urquhart,Ashford United,CDM,76,2000000
+player_0053,Hector Keller,Ashford United,CB,75,1800000
+player_0054,Dmitri Xander,Ashford United,CB,73,1500000
+player_0055,Yago Ishikawa,Ashford United,CB,73,1500000
+player_0056,Rui Brandt,Ashford United,CDM,71,1300000
+player_0057,Tobias Quintero,Ashford United,RW,71,1300000
+player_0058,Quinn Okafor,Ashford United,CB,67,900000
+player_0059,Abel Greaves,Ashford United,CM,67,900000
+player_0060,Cedric Edmunds,Ashford United,LB,64,700000
+player_0061,Beau Moreau,Ashford United,CM,64,700000
+player_0062,Wade Yamada,Ashford United,LB,60,500000
+player_0063,Kofi Xander,Bramblewick Albion,GK,94,9400000
+player_0064,Gus Zielinski,Bramblewick Albion,RW,93,8600000
+player_0065,Lars Garrido,Bramblewick Albion,CB,92,7900000
+player_0066,Dario Alderton,Bramblewick Albion,RB,92,7900000
+player_0067,Hugo Cortez,Bramblewick Albion,ST,91,7200000
+player_0068,Ulises Ortega,Bramblewick Albion,CB,89,6100000
+player_0069,Mateus Fontaine,Bramblewick Albion,CM,88,5600000
+player_0070,Fabian Keller,Bramblewick Albion,LB,86,4700000
+player_0071,Ewan Silva,Bramblewick Albion,CDM,85,4300000
+player_0072,Yannick Lombardi,Bramblewick Albion,LB,84,4000000
+player_0073,Leandro Jansen,Bramblewick Albion,LW,84,4000000
+player_0074,Flynn Acheampong,Bramblewick Albion,CM,83,3600000
+player_0075,Cyrus Lombardi,Bramblewick Albion,CAM,83,3600000
+player_0076,Damon Fontaine,Bramblewick Albion,CM,82,3300000
+player_0077,Sven Quill,Bramblewick Albion,CDM,80,2800000
+player_0078,Tariq Yilmaz,Bramblewick Albion,CM,80,2800000
+player_0079,Stefan Barros,Bramblewick Albion,CB,77,2200000
+player_0080,Ivan Ortega,Bramblewick Albion,CB,77,2200000
+player_0081,Arlo Falconer,Bramblewick Albion,RB,77,2200000
+player_0082,Zlatko Kovacs,Bramblewick Albion,ST,77,2200000
+player_0083,Callum Cortez,Bramblewick Albion,GK,71,1300000
+player_0084,Tobias Lacroix,Brindle Rovers,CM,90,6600000
+player_0085,Emil Lombardi,Brindle Rovers,CB,89,6100000
+player_0086,Rafael Greaves,Brindle Rovers,RB,86,4700000
+player_0087,Arlo Xander,Brindle Rovers,CM,85,4300000
+player_0088,Nolan Oduya,Brindle Rovers,CB,83,3600000
+player_0089,Fabian Lindqvist,Brindle Rovers,LB,83,3600000
+player_0090,Flynn Fontaine,Brindle Rovers,CDM,82,3300000
+player_0091,Yusuf Thorne,Brindle Rovers,CM,81,3100000
+player_0092,Lars Nyberg,Brindle Rovers,LW,81,3100000
+player_0093,Hector Barros,Brindle Rovers,RW,81,3100000
+player_0094,Zlatko Quintero,Brindle Rovers,ST,81,3100000
+player_0095,Declan Barros,Brindle Rovers,ST,81,3100000
+player_0096,Zane Winters,Brindle Rovers,CB,80,2800000
+player_0097,Rafael Hartmann,Brindle Rovers,CAM,80,2800000
+player_0098,Declan Urquhart,Brindle Rovers,GK,79,2600000
+player_0099,Gideon Moreau,Brindle Rovers,CB,78,2400000
+player_0100,Xavier Ishikawa,Brindle Rovers,RB,76,2000000
+player_0101,Wes Quill,Brindle Rovers,CM,75,1800000
+player_0102,Gael Dvorak,Brindle Rovers,GK,69,1100000
+player_0103,Alvaro Nakamura,Brindle Rovers,CDM,67,900000
+player_0104,Stefan Novak,Brindle Rovers,LB,66,800000
+player_0105,Leandro Eriksen,Caldmoor Athletic,ST,112,44200000
+player_0106,Wilmer Voss,Caldmoor Athletic,GK,108,31300000
+player_0107,Leandro Wolfe,Caldmoor Athletic,ST,96,11100000
+player_0108,Callum Ishikawa,Caldmoor Athletic,CDM,94,9400000
+player_0109,Kwame Pereira,Caldmoor Athletic,RB,93,8600000
+player_0110,Rafael Thorne,Caldmoor Athletic,GK,92,7900000
+player_0111,Yusuf Oduya,Caldmoor Athletic,CM,90,6600000
+player_0112,Matteo Ivanov,Caldmoor Athletic,LB,89,6100000
+player_0113,Declan Quintero,Caldmoor Athletic,CAM,89,6100000
+player_0114,Wes Nyberg,Caldmoor Athletic,CB,88,5600000
+player_0115,Nico Ivanov,Caldmoor Athletic,CM,88,5600000
+player_0116,Nikolai Garrido,Caldmoor Athletic,RW,88,5600000
+player_0117,Wes Fontaine,Caldmoor Athletic,LW,87,5100000
+player_0118,Callum Xander,Caldmoor Athletic,CB,86,4700000
+player_0119,Sven Dvorak,Caldmoor Athletic,CM,85,4300000
+player_0120,Jonas Xander,Caldmoor Athletic,CB,84,4000000
+player_0121,Idris Lacroix,Caldmoor Athletic,CB,84,4000000
+player_0122,Caleb Lombardi,Caldmoor Athletic,RB,84,4000000
+player_0123,Elias Lacroix,Caldmoor Athletic,CDM,83,3600000
+player_0124,Enzo Ibarra,Caldmoor Athletic,CM,83,3600000
+player_0125,Farid Zorn,Caldmoor Athletic,LB,82,3300000
+player_0126,Alvaro Ibarra,Cinderford Rangers,LB,94,9400000
+player_0127,Kofi Halvorsen,Cinderford Rangers,CM,82,3300000
+player_0128,Wade Ortega,Cinderford Rangers,CB,81,3100000
+player_0129,Zane Voss,Cinderford Rangers,LW,81,3100000
+player_0130,Soren Castellan,Cinderford Rangers,RB,80,2800000
+player_0131,Viktor Tavares,Cinderford Rangers,CB,79,2600000
+player_0132,Emil Novak,Cinderford Rangers,GK,77,2200000
+player_0133,Pablo Santoro,Cinderford Rangers,GK,75,1800000
+player_0134,Fabian Barros,Cinderford Rangers,LB,74,1700000
+player_0135,Umar Whitlock,Cinderford Rangers,CB,72,1400000
+player_0136,Xavier Castellan,Cinderford Rangers,RB,72,1400000
+player_0137,Zlatko Alderton,Cinderford Rangers,CM,72,1400000
+player_0138,Zlatko Lombardi,Cinderford Rangers,CM,69,1100000
+player_0139,Hugo Eriksen,Cinderford Rangers,CAM,69,1100000
+player_0140,Tomas Brook,Cinderford Rangers,CDM,68,1000000
+player_0141,Kofi Stavros,Cinderford Rangers,RW,67,900000
+player_0142,Alvaro Brook,Cinderford Rangers,CB,65,800000
+player_0143,Luca Kinnear,Cinderford Rangers,CM,65,800000
+player_0144,Wes Pellegrini,Cinderford Rangers,ST,64,700000
+player_0145,Quinn Ronaldsen,Cinderford Rangers,ST,63,600000
+player_0146,Dario Hartmann,Cinderford Rangers,CDM,57,400000
+player_0147,Gideon Zielinski,Copperhill Dynamos,RB,96,11100000
+player_0148,Arlo Brandt,Copperhill Dynamos,CB,88,5600000
+player_0149,Valentin Wolfe,Copperhill Dynamos,CB,87,5100000
+player_0150,Ivan Pereira,Copperhill Dynamos,LB,87,5100000
+player_0151,Nico Zamora,Copperhill Dynamos,LW,87,5100000
+player_0152,Caleb Uzun,Copperhill Dynamos,ST,87,5100000
+player_0153,Gustavo Arden,Copperhill Dynamos,CM,86,4700000
+player_0154,Uri Lombardi,Copperhill Dynamos,RW,85,4300000
+player_0155,Vito Pellegrini,Copperhill Dynamos,CM,84,4000000
+player_0156,Rafael Ortega,Copperhill Dynamos,GK,83,3600000
+player_0157,Nolan Zielinski,Copperhill Dynamos,RB,82,3300000
+player_0158,Flynn Santoro,Copperhill Dynamos,CDM,79,2600000
+player_0159,Cyrus Rasmussen,Copperhill Dynamos,CB,78,2400000
+player_0160,Aiden Kovacs,Copperhill Dynamos,CB,78,2400000
+player_0161,Sven Zielinski,Copperhill Dynamos,LB,76,2000000
+player_0162,Ilias Greaves,Copperhill Dynamos,CDM,76,2000000
+player_0163,Wilmer Zorn,Copperhill Dynamos,CM,76,2000000
+player_0164,Pavel Ibarra,Copperhill Dynamos,ST,75,1800000
+player_0165,Arlo Ishikawa,Copperhill Dynamos,CAM,74,1700000
+player_0166,Arlo Dufresne,Copperhill Dynamos,GK,72,1400000
+player_0167,Zane Novak,Driftwood Dynamos,GK,102,18700000
+player_0168,Beau Greaves,Driftwood Dynamos,CDM,90,6600000
+player_0169,Gustavo Vasquez,Driftwood Dynamos,LB,87,5100000
+player_0170,Hugo Abara,Driftwood Dynamos,CAM,87,5100000
+player_0171,Stefan Yeboah,Driftwood Dynamos,ST,86,4700000
+player_0172,Luca Uzun,Driftwood Dynamos,CM,85,4300000
+player_0173,Nikolai Pereira,Driftwood Dynamos,CB,84,4000000
+player_0174,Dario Rasmussen,Driftwood Dynamos,CM,83,3600000
+player_0175,Fabian Kovacs,Driftwood Dynamos,CM,83,3600000
+player_0176,Kofi Moreau,Driftwood Dynamos,RB,81,3100000
+player_0177,Xavier Dvorak,Driftwood Dynamos,CB,80,2800000
+player_0178,Arlo Alderton,Driftwood Dynamos,ST,80,2800000
+player_0179,Kofi Brandt,Driftwood Dynamos,RB,78,2400000
+player_0180,Oren Ulloa,Driftwood Dynamos,RW,78,2400000
+player_0181,Wes Calloway,Driftwood Dynamos,CB,77,2200000
+player_0182,Wes Xander,Driftwood Dynamos,LB,75,1800000
+player_0183,Nolan Tavares,Driftwood Dynamos,CDM,75,1800000
+player_0184,Dario Barros,Driftwood Dynamos,CB,74,1700000
+player_0185,Tariq Grimaldi,Driftwood Dynamos,GK,73,1500000
+player_0186,Zeke Whitlock,Driftwood Dynamos,LW,70,1200000
+player_0187,Gideon Lombardi,Driftwood Dynamos,CM,69,1100000
+player_0188,Soren Keller,Dunwick Town,CDM,100,15700000
+player_0189,Kwame Stavros,Dunwick Town,CM,96,11100000
+player_0190,Valentin Kovacs,Dunwick Town,LW,86,4700000
+player_0191,Gael Wolfe,Dunwick Town,LB,83,3600000
+player_0192,Gael Urquhart,Dunwick Town,CB,80,2800000
+player_0193,Wilmer Wolfe,Dunwick Town,GK,76,2000000
+player_0194,Zeke Halvorsen,Dunwick Town,CB,75,1800000
+player_0195,Zeke Rossi,Dunwick Town,ST,75,1800000
+player_0196,Otis Ferreira,Dunwick Town,CB,74,1700000
+player_0197,Lars Fontaine,Dunwick Town,RB,74,1700000
+player_0198,Pablo Lacroix,Dunwick Town,LB,73,1500000
+player_0199,Fabian Brook,Dunwick Town,RB,73,1500000
+player_0200,Hamza Calloway,Dunwick Town,GK,72,1400000
+player_0201,Kwame Vasquez,Dunwick Town,RW,71,1300000
+player_0202,Dario Santoro,Dunwick Town,ST,71,1300000
+player_0203,Gideon Jansen,Dunwick Town,CM,70,1200000
+player_0204,Gideon Abara,Dunwick Town,CDM,68,1000000
+player_0205,Nolan Halvorsen,Dunwick Town,CM,68,1000000
+player_0206,Callum Quill,Dunwick Town,CAM,68,1000000
+player_0207,Leandro Silva,Dunwick Town,CB,67,900000
+player_0208,Yannick Zorn,Dunwick Town,CM,60,500000
+player_0209,Abel Cortez,Eastvale City,RB,105,24200000
+player_0210,Pavel Keller,Eastvale City,GK,90,6600000
+player_0211,Viktor Vermeer,Eastvale City,LB,90,6600000
+player_0212,Zeke Zorn,Eastvale City,CB,88,5600000
+player_0213,Yago Alderton,Eastvale City,GK,87,5100000
+player_0214,Declan Greaves,Eastvale City,CM,87,5100000
+player_0215,Elias Cortez,Eastvale City,CM,87,5100000
+player_0216,Gus Acheampong,Eastvale City,ST,87,5100000
+player_0217,Soren Brook,Eastvale City,CB,86,4700000
+player_0218,Ulises Yamada,Eastvale City,RB,82,3300000
+player_0219,Valentin Jovanovic,Eastvale City,LW,82,3300000
+player_0220,Nico Moreau,Eastvale City,CM,82,3300000
+player_0221,Yusuf Lacroix,Eastvale City,CDM,81,3100000
+player_0222,Yusuf Edmunds,Eastvale City,LB,80,2800000
+player_0223,Cedric Ortega,Eastvale City,CAM,80,2800000
+player_0224,Beau Vermeer,Eastvale City,RW,79,2600000
+player_0225,Ewan Bellamy,Eastvale City,CB,77,2200000
+player_0226,Tariq Silva,Eastvale City,CM,76,2000000
+player_0227,Alvaro Zielinski,Eastvale City,ST,76,2000000
+player_0228,Ivan Hartmann,Eastvale City,CDM,74,1700000
+player_0229,Joaquin Kinnear,Eastvale City,CB,70,1200000
+player_0230,Marek Petrov,Elmstead Olympic,CM,109,34100000
+player_0231,Tariq Ortega,Elmstead Olympic,RW,108,31300000
+player_0232,Ramon Okafor,Elmstead Olympic,ST,97,12100000
+player_0233,Gideon Calloway,Elmstead Olympic,GK,94,9400000
+player_0234,Aiden Ortega,Elmstead Olympic,CB,93,8600000
+player_0235,Elias Ishikawa,Elmstead Olympic,CB,89,6100000
+player_0236,Gus Tambo,Elmstead Olympic,RB,88,5600000
+player_0237,Bruno Ivanov,Elmstead Olympic,RB,88,5600000
+player_0238,Nikolai Lindqvist,Elmstead Olympic,CDM,88,5600000
+player_0239,Gael Hartmann,Elmstead Olympic,ST,88,5600000
+player_0240,Flynn Bellamy,Elmstead Olympic,CM,86,4700000
+player_0241,Rui Petrov,Elmstead Olympic,CAM,85,4300000
+player_0242,Zane Silva,Elmstead Olympic,CB,84,4000000
+player_0243,Lars Acheampong,Elmstead Olympic,LB,84,4000000
+player_0244,Elias Delacroix,Elmstead Olympic,GK,83,3600000
+player_0245,Hugo Tavares,Elmstead Olympic,CM,83,3600000
+player_0246,Fabian Voss,Elmstead Olympic,LW,82,3300000
+player_0247,Zeke Ivanov,Elmstead Olympic,CB,79,2600000
+player_0248,Luca Vasquez,Elmstead Olympic,CDM,79,2600000
+player_0249,Idris Lombardi,Elmstead Olympic,CM,78,2400000
+player_0250,Wade Mbeki,Elmstead Olympic,LB,76,2000000
+player_0251,Hamza Tavares,Fenwick Wanderers,LW,103,20300000
+player_0252,Marek Novak,Fenwick Wanderers,CM,95,10200000
+player_0253,Otis Jovanovic,Fenwick Wanderers,CB,83,3600000
+player_0254,Bastian Ronaldsen,Fenwick Wanderers,LB,80,2800000
+player_0255,Ramon Rasmussen,Fenwick Wanderers,RB,80,2800000
+player_0256,Nikolai Halvorsen,Fenwick Wanderers,CB,78,2400000
+player_0257,Elias Halvorsen,Fenwick Wanderers,CM,77,2200000
+player_0258,Otis Ulloa,Fenwick Wanderers,CB,76,2000000
+player_0259,Soren Ferreira,Fenwick Wanderers,CM,76,2000000
+player_0260,Tomas Xander,Fenwick Wanderers,LB,74,1700000
+player_0261,Brandon Wolfe,Fenwick Wanderers,GK,72,1400000
+player_0262,Rafael Ferreira,Fenwick Wanderers,CAM,71,1300000
+player_0263,Enzo Abara,Fenwick Wanderers,RB,70,1200000
+player_0264,Ulises Tambo,Fenwick Wanderers,RW,70,1200000
+player_0265,Joaquin Zielinski,Fenwick Wanderers,GK,69,1100000
+player_0266,Quinn Calloway,Fenwick Wanderers,ST,69,1100000
+player_0267,Kasper Zamora,Fenwick Wanderers,CB,68,1000000
+player_0268,Mateus Nakamura,Fenwick Wanderers,ST,67,900000
+player_0269,Dario Mbeki,Fenwick Wanderers,CM,65,800000
+player_0270,Ramon Esposito,Fenwick Wanderers,CDM,64,700000
+player_0271,Arlo Barros,Fenwick Wanderers,CDM,61,500000
+player_0272,Yusuf Jansen,Foxhollow United,CDM,94,9400000
+player_0273,Gus Pellegrini,Foxhollow United,RB,86,4700000
+player_0274,Rui Rossi,Foxhollow United,CM,81,3100000
+player_0275,Alvaro Jansen,Foxhollow United,ST,81,3100000
+player_0276,Leandro Grimaldi,Foxhollow United,CB,78,2400000
+player_0277,Brandon Hartmann,Foxhollow United,LB,78,2400000
+player_0278,Caleb Kinnear,Foxhollow United,LW,78,2400000
+player_0279,Gustavo Tambo,Foxhollow United,ST,78,2400000
+player_0280,Hugo Yeboah,Foxhollow United,CM,78,2400000
+player_0281,Ewan Barros,Foxhollow United,RW,75,1800000
+player_0282,Matteo Halvorsen,Foxhollow United,GK,74,1700000
+player_0283,Idris Ortega,Foxhollow United,CB,74,1700000
+player_0284,Joaquin Whitlock,Foxhollow United,CB,74,1700000
+player_0285,Joaquin Moreau,Foxhollow United,LB,74,1700000
+player_0286,Yusuf Grimaldi,Foxhollow United,RB,73,1500000
+player_0287,Kasper Alderton,Foxhollow United,CDM,73,1500000
+player_0288,Sven Winters,Foxhollow United,CM,72,1400000
+player_0289,Nolan Santoro,Foxhollow United,GK,71,1300000
+player_0290,Rui Lindqvist,Foxhollow United,CB,71,1300000
+player_0291,Sven Ulloa,Foxhollow United,CM,71,1300000
+player_0292,Kofi Pereira,Foxhollow United,CAM,71,1300000
+player_0293,Omar Winters,Galloway Albion,CM,101,17100000
+player_0294,Otis Silva,Galloway Albion,LB,92,7900000
+player_0295,Dario Arden,Galloway Albion,RB,90,6600000
+player_0296,Pavel Lacroix,Galloway Albion,GK,88,5600000
+player_0297,Declan Keller,Galloway Albion,CM,86,4700000
+player_0298,Beau Ronaldsen,Galloway Albion,CB,85,4300000
+player_0299,Wes Ibarra,Galloway Albion,CDM,84,4000000
+player_0300,Bruno Calloway,Galloway Albion,CM,83,3600000
+player_0301,Sven Castellan,Galloway Albion,CM,83,3600000
+player_0302,Hector Fontaine,Galloway Albion,CB,82,3300000
+player_0303,Nikolai Barros,Galloway Albion,RW,82,3300000
+player_0304,Rui Alderton,Galloway Albion,CAM,81,3100000
+player_0305,Kofi Bellamy,Galloway Albion,LW,81,3100000
+player_0306,Ulises Ishikawa,Galloway Albion,ST,81,3100000
+player_0307,Pavel Nakamura,Galloway Albion,CB,80,2800000
+player_0308,Felix Ulloa,Galloway Albion,RB,78,2400000
+player_0309,Brandon Stavros,Galloway Albion,ST,76,2000000
+player_0310,Kofi Zielinski,Galloway Albion,GK,75,1800000
+player_0311,Lars Mbeki,Galloway Albion,CB,75,1800000
+player_0312,Tomas Thorne,Galloway Albion,LB,72,1400000
+player_0313,Zeke Cortez,Galloway Albion,CDM,69,1100000
+player_0314,Gideon Vermeer,Glenrock Rovers,RB,100,15700000
+player_0315,Felix Zielinski,Glenrock Rovers,GK,89,6100000
+player_0316,Paco Wolfe,Glenrock Rovers,LW,89,6100000
+player_0317,Gael Ortega,Glenrock Rovers,ST,89,6100000
+player_0318,Omar Vermeer,Glenrock Rovers,CB,87,5100000
+player_0319,Wilmer Ronaldsen,Glenrock Rovers,GK,85,4300000
+player_0320,Ilias Zamora,Glenrock Rovers,RB,84,4000000
+player_0321,Wilmer Ivanov,Glenrock Rovers,LB,83,3600000
+player_0322,Zane Stavros,Glenrock Rovers,CM,83,3600000
+player_0323,Alvaro Uzun,Glenrock Rovers,CB,82,3300000
+player_0324,Zlatko Brandt,Glenrock Rovers,CB,81,3100000
+player_0325,Beau Wolfe,Glenrock Rovers,CDM,81,3100000
+player_0326,Hamza Lacroix,Glenrock Rovers,LB,80,2800000
+player_0327,Ivan Fontaine,Glenrock Rovers,CAM,80,2800000
+player_0328,Aiden Eriksen,Glenrock Rovers,ST,80,2800000
+player_0329,Alvaro Vasquez,Glenrock Rovers,RW,79,2600000
+player_0330,Kasper Edmunds,Glenrock Rovers,CM,78,2400000
+player_0331,Dario Uzun,Glenrock Rovers,CB,75,1800000
+player_0332,Kasper Zorn,Glenrock Rovers,CM,74,1700000
+player_0333,Ivan Eriksen,Glenrock Rovers,CDM,71,1300000
+player_0334,Kofi Voss,Glenrock Rovers,CM,69,1100000
+player_0335,Lars Pereira,Harrowgate Rangers,CM,105,24200000
+player_0336,Felix Zamora,Harrowgate Rangers,LB,98,13200000
+player_0337,Vito Urquhart,Harrowgate Rangers,CB,90,6600000
+player_0338,Hugo Novak,Harrowgate Rangers,LW,89,6100000
+player_0339,Hamza Yilmaz,Harrowgate Rangers,RW,89,6100000
+player_0340,Yannick Kinnear,Harrowgate Rangers,GK,87,5100000
+player_0341,Wilmer Holt,Harrowgate Rangers,RB,87,5100000
+player_0342,Mateus Santoro,Harrowgate Rangers,CM,87,5100000
+player_0343,Wade Tavares,Harrowgate Rangers,GK,86,4700000
+player_0344,Ivan Oduya,Harrowgate Rangers,ST,86,4700000
+player_0345,Nikolai Nyberg,Harrowgate Rangers,CM,86,4700000
+player_0346,Gideon Delacroix,Harrowgate Rangers,CDM,85,4300000
+player_0347,Matteo Uzun,Harrowgate Rangers,CDM,84,4000000
+player_0348,Fabian Quintero,Harrowgate Rangers,CB,83,3600000
+player_0349,Luca Oduya,Harrowgate Rangers,CB,82,3300000
+player_0350,Sven Calloway,Harrowgate Rangers,CB,81,3100000
+player_0351,Alvaro Ferreira,Harrowgate Rangers,LB,80,2800000
+player_0352,Uri Calloway,Harrowgate Rangers,RB,79,2600000
+player_0353,Zlatko Yamada,Harrowgate Rangers,CAM,78,2400000
+player_0354,Ewan Grimaldi,Harrowgate Rangers,ST,78,2400000
+player_0355,Cedric Ivanov,Harrowgate Rangers,CM,74,1700000
+player_0356,Jorge Alderton,Hollowbrook Athletic,CM,103,20300000
+player_0357,Lars Silva,Hollowbrook Athletic,ST,89,6100000
+player_0358,Tobias Ivanov,Hollowbrook Athletic,RW,87,5100000
+player_0359,Ivan Lombardi,Hollowbrook Athletic,CB,83,3600000
+player_0360,Tobias Lombardi,Hollowbrook Athletic,LW,83,3600000
+player_0361,Hector Ibarra,Hollowbrook Athletic,CB,82,3300000
+player_0362,Elias Voss,Hollowbrook Athletic,CAM,82,3300000
+player_0363,Caleb Grimaldi,Hollowbrook Athletic,CB,81,3100000
+player_0364,Mateus Abara,Hollowbrook Athletic,RB,81,3100000
+player_0365,Callum Ferreira,Hollowbrook Athletic,RB,81,3100000
+player_0366,Omar Yilmaz,Hollowbrook Athletic,CM,81,3100000
+player_0367,Nikolai Jovanovic,Hollowbrook Athletic,CDM,79,2600000
+player_0368,Ulises Novak,Hollowbrook Athletic,CDM,78,2400000
+player_0369,Zane Greaves,Hollowbrook Athletic,GK,77,2200000
+player_0370,Caleb Silva,Hollowbrook Athletic,LB,77,2200000
+player_0371,Hamza Castellan,Hollowbrook Athletic,ST,77,2200000
+player_0372,Oren Silva,Hollowbrook Athletic,CM,76,2000000
+player_0373,Alvaro Whitlock,Hollowbrook Athletic,LB,74,1700000
+player_0374,Wade Quill,Hollowbrook Athletic,CM,74,1700000
+player_0375,Hugo Lombardi,Hollowbrook Athletic,GK,73,1500000
+player_0376,Yusuf Zamora,Hollowbrook Athletic,CB,67,900000
+player_0377,Tariq Zielinski,Ironbridge Dynamos,GK,85,4300000
+player_0378,Zlatko Marchetti,Ironbridge Dynamos,GK,83,3600000
+player_0379,Bruno Tambo,Ironbridge Dynamos,CDM,81,3100000
+player_0380,Bruno Rasmussen,Ironbridge Dynamos,CM,81,3100000
+player_0381,Alvaro Castellan,Ironbridge Dynamos,LW,81,3100000
+player_0382,Paco Whitlock,Ironbridge Dynamos,ST,80,2800000
+player_0383,Beau Ferreira,Ironbridge Dynamos,RB,78,2400000
+player_0384,Ivan Calloway,Ironbridge Dynamos,LB,77,2200000
+player_0385,Zlatko Voss,Ironbridge Dynamos,RW,77,2200000
+player_0386,Hector Delacroix,Ironbridge Dynamos,RB,76,2000000
+player_0387,Quinn Wolfe,Ironbridge Dynamos,CDM,76,2000000
+player_0388,Bruno Dufresne,Ironbridge Dynamos,CB,75,1800000
+player_0389,Joaquin Barros,Ironbridge Dynamos,CAM,74,1700000
+player_0390,Soren Greaves,Ironbridge Dynamos,CB,72,1400000
+player_0391,Omar Jansen,Ironbridge Dynamos,ST,70,1200000
+player_0392,Jonas Nakamura,Ironbridge Dynamos,CB,68,1000000
+player_0393,Brandon Petrov,Ironbridge Dynamos,CB,68,1000000
+player_0394,Ewan Kinnear,Ironbridge Dynamos,CM,67,900000
+player_0395,Jorge Barros,Ironbridge Dynamos,CM,65,800000
+player_0396,Matteo Bellamy,Ironbridge Dynamos,LB,64,700000
+player_0397,Jorge Eriksen,Ironbridge Dynamos,CM,64,700000
+player_0398,Uri Cortez,Ivybridge Town,LB,96,11100000
+player_0399,Otis Bellamy,Ivybridge Town,CM,95,10200000
+player_0400,Tariq Dvorak,Ivybridge Town,CB,86,4700000
+player_0401,Ilias Marchetti,Ivybridge Town,CB,86,4700000
+player_0402,Brandon Urquhart,Ivybridge Town,RB,84,4000000
+player_0403,Kwame Quintero,Ivybridge Town,CM,84,4000000
+player_0404,Emil Pellegrini,Ivybridge Town,CAM,80,2800000
+player_0405,Gus Marchetti,Ivybridge Town,LW,80,2800000
+player_0406,Leandro Ronaldsen,Ivybridge Town,ST,80,2800000
+player_0407,Felix Falconer,Ivybridge Town,ST,79,2600000
+player_0408,Matteo Grimaldi,Ivybridge Town,GK,78,2400000
+player_0409,Arlo Abara,Ivybridge Town,CDM,78,2400000
+player_0410,Yusuf Jovanovic,Ivybridge Town,CB,77,2200000
+player_0411,Zane Xander,Ivybridge Town,RB,76,2000000
+player_0412,Brandon Zamora,Ivybridge Town,CB,75,1800000
+player_0413,Soren Oduya,Ivybridge Town,CDM,75,1800000
+player_0414,Hector Yamada,Ivybridge Town,CM,74,1700000
+player_0415,Uri Halvorsen,Ivybridge Town,CM,73,1500000
+player_0416,Bastian Vermeer,Ivybridge Town,GK,72,1400000
+player_0417,Otis Zamora,Ivybridge Town,RW,71,1300000
+player_0418,Damon Barros,Ivybridge Town,LB,66,800000
+player_0419,Wade Ulloa,Juniper Bay Olympic,CB,103,20300000
+player_0420,Elias Xander,Juniper Bay Olympic,CB,93,8600000
+player_0421,Flynn Grimaldi,Juniper Bay Olympic,LW,90,6600000
+player_0422,Enzo Alderton,Juniper Bay Olympic,LB,86,4700000
+player_0423,Xavier Hartmann,Juniper Bay Olympic,ST,86,4700000
+player_0424,Bruno Esposito,Juniper Bay Olympic,GK,85,4300000
+player_0425,Kwame Pellegrini,Juniper Bay Olympic,CB,85,4300000
+player_0426,Wes Kovacs,Juniper Bay Olympic,CM,85,4300000
+player_0427,Mateus Bellamy,Juniper Bay Olympic,CM,84,4000000
+player_0428,Zeke Santoro,Juniper Bay Olympic,RW,84,4000000
+player_0429,Abel Lindqvist,Juniper Bay Olympic,CM,83,3600000
+player_0430,Vito Mbeki,Juniper Bay Olympic,ST,83,3600000
+player_0431,Hugo Pellegrini,Juniper Bay Olympic,GK,81,3100000
+player_0432,Ivan Abara,Juniper Bay Olympic,LB,81,3100000
+player_0433,Tobias Bellamy,Juniper Bay Olympic,CB,80,2800000
+player_0434,Rui Winters,Juniper Bay Olympic,RB,80,2800000
+player_0435,Beau Stavros,Juniper Bay Olympic,CAM,79,2600000
+player_0436,Arlo Ulloa,Juniper Bay Olympic,CM,76,2000000
+player_0437,Fabian Acheampong,Juniper Bay Olympic,CDM,74,1700000
+player_0438,Sven Ibarra,Juniper Bay Olympic,CDM,74,1700000
+player_0439,Valentin Winters,Juniper Bay Olympic,RB,65,800000
+player_0440,Ulises Holt,Kestrel United,CM,90,6600000
+player_0441,Callum Mbeki,Kestrel United,CB,79,2600000
+player_0442,Oren Petrov,Kestrel United,LW,78,2400000
+player_0443,Ilias Petrov,Kestrel United,LB,77,2200000
+player_0444,Damon Ishikawa,Kestrel United,CAM,77,2200000
+player_0445,Aiden Pereira,Kestrel United,CDM,75,1800000
+player_0446,Xavier Fontaine,Kestrel United,CB,73,1500000
+player_0447,Gus Kinnear,Kestrel United,CM,73,1500000
+player_0448,Umar Pereira,Kestrel United,CB,71,1300000
+player_0449,Gustavo Halvorsen,Kestrel United,ST,71,1300000
+player_0450,Joaquin Rossi,Kestrel United,CM,71,1300000
+player_0451,Hugo Thorne,Kestrel United,GK,69,1100000
+player_0452,Mateus Ibarra,Kestrel United,RW,69,1100000
+player_0453,Mateus Keller,Kestrel United,RB,68,1000000
+player_0454,Viktor Thorne,Kestrel United,ST,68,1000000
+player_0455,Gideon Zamora,Kestrel United,GK,66,800000
+player_0456,Hector Okafor,Kestrel United,CB,66,800000
+player_0457,Ulises Zamora,Kestrel United,LB,65,800000
+player_0458,Wes Brook,Kestrel United,RB,61,500000
+player_0459,Tobias Voss,Kestrel United,CDM,61,500000
+player_0460,Beau Halvorsen,Kestrel United,CM,61,500000
+player_0461,Aiden Edmunds,Kingsmere City,ST,91,7200000
+player_0462,Wes Novak,Kingsmere City,LB,89,6100000
+player_0463,Elias Whitlock,Kingsmere City,CAM,76,2000000
+player_0464,Pablo Quill,Kingsmere City,CDM,75,1800000
+player_0465,Alvaro Jorgensen,Kingsmere City,CB,74,1700000
+player_0466,Omar Zielinski,Kingsmere City,GK,73,1500000
+player_0467,Cyrus Uzun,Kingsmere City,CM,73,1500000
+player_0468,Soren Falconer,Kingsmere City,RW,73,1500000
+player_0469,Stefan Yamada,Kingsmere City,CDM,72,1400000
+player_0470,Ramon Dufresne,Kingsmere City,GK,71,1300000
+player_0471,Flynn Lombardi,Kingsmere City,CB,71,1300000
+player_0472,Beau Whitlock,Kingsmere City,CB,70,1200000
+player_0473,Ilias Dvorak,Kingsmere City,LB,70,1200000
+player_0474,Luca Wolfe,Kingsmere City,RB,70,1200000
+player_0475,Flynn Ulloa,Kingsmere City,CM,70,1200000
+player_0476,Tariq Ronaldsen,Kingsmere City,RB,68,1000000
+player_0477,Kofi Okafor,Kingsmere City,CB,67,900000
+player_0478,Marek Cortez,Kingsmere City,CM,65,800000
+player_0479,Flynn Castellan,Kingsmere City,LW,64,700000
+player_0480,Callum Dufresne,Kingsmere City,ST,55,300000
+player_0481,Elias Jovanovic,Larkspur Wanderers,CAM,86,4700000
+player_0482,Felix Alderton,Larkspur Wanderers,CDM,84,4000000
+player_0483,Fabian Uzun,Larkspur Wanderers,ST,83,3600000
+player_0484,Zeke Calloway,Larkspur Wanderers,LB,82,3300000
+player_0485,Gael Vasquez,Larkspur Wanderers,RB,82,3300000
+player_0486,Kwame Rossi,Larkspur Wanderers,RW,81,3100000
+player_0487,Nolan Silva,Larkspur Wanderers,LB,80,2800000
+player_0488,Tomas Nakamura,Larkspur Wanderers,CDM,80,2800000
+player_0489,Lars Tavares,Larkspur Wanderers,CB,79,2600000
+player_0490,Dario Falconer,Larkspur Wanderers,CB,78,2400000
+player_0491,Marek Zorn,Larkspur Wanderers,CB,78,2400000
+player_0492,Farid Yamada,Larkspur Wanderers,RB,78,2400000
+player_0493,Sven Yeboah,Larkspur Wanderers,GK,77,2200000
+player_0494,Leandro Brandt,Larkspur Wanderers,CB,76,2000000
+player_0495,Omar Castellan,Larkspur Wanderers,CM,76,2000000
+player_0496,Caleb Bellamy,Larkspur Wanderers,CM,75,1800000
+player_0497,Kwame Calloway,Larkspur Wanderers,CM,74,1700000
+player_0498,Elias Brook,Larkspur Wanderers,ST,70,1200000
+player_0499,Jorge Lacroix,Larkspur Wanderers,LW,68,1000000
+player_0500,Ulises Ronaldsen,Larkspur Wanderers,GK,64,700000
+player_0501,Leandro Barros,Lowmere Rovers,CM,109,34100000
+player_0502,Beau Kovacs,Lowmere Rovers,CB,99,14400000
+player_0503,Kofi Nyberg,Lowmere Rovers,CM,89,6100000
+player_0504,Emil Ivanov,Lowmere Rovers,CM,87,5100000
+player_0505,Gustavo Ferreira,Lowmere Rovers,CAM,86,4700000
+player_0506,Ilias Whitlock,Lowmere Rovers,GK,85,4300000
+player_0507,Brandon Jorgensen,Lowmere Rovers,CDM,85,4300000
+player_0508,Zlatko Moreau,Lowmere Rovers,CB,84,4000000
+player_0509,Hugo Grimaldi,Lowmere Rovers,RB,84,4000000
+player_0510,Callum Ortega,Lowmere Rovers,CB,83,3600000
+player_0511,Damon Alderton,Lowmere Rovers,LB,83,3600000
+player_0512,Ilias Edmunds,Lowmere Rovers,RB,83,3600000
+player_0513,Ramon Nyberg,Lowmere Rovers,LW,83,3600000
+player_0514,Alvaro Alderton,Lowmere Rovers,LB,79,2600000
+player_0515,Ewan Lombardi,Lowmere Rovers,CM,79,2600000
+player_0516,Abel Stavros,Lowmere Rovers,ST,79,2600000
+player_0517,Declan Dvorak,Lowmere Rovers,ST,78,2400000
+player_0518,Nico Winters,Lowmere Rovers,RW,77,2200000
+player_0519,Sven Eriksen,Lowmere Rovers,GK,76,2000000
+player_0520,Cyrus Yamada,Lowmere Rovers,CDM,76,2000000
+player_0521,Bastian Alderton,Lowmere Rovers,CB,69,1100000
+player_0522,Declan Eriksen,Marlowe Athletic,CAM,105,24200000
+player_0523,Aiden Jansen,Marlowe Athletic,CB,93,8600000
+player_0524,Ivan Tavares,Marlowe Athletic,CM,93,8600000
+player_0525,Umar Ivanov,Marlowe Athletic,CB,91,7200000
+player_0526,Declan Zielinski,Marlowe Athletic,LB,91,7200000
+player_0527,Hector Mbeki,Marlowe Athletic,CDM,91,7200000
+player_0528,Ulises Xander,Marlowe Athletic,CB,90,6600000
+player_0529,Caleb Petrov,Marlowe Athletic,CM,90,6600000
+player_0530,Vito Ferreira,Marlowe Athletic,CM,90,6600000
+player_0531,Pablo Ishikawa,Marlowe Athletic,CB,89,6100000
+player_0532,Cyrus Jorgensen,Marlowe Athletic,RB,88,5600000
+player_0533,Nico Nyberg,Marlowe Athletic,LW,88,5600000
+player_0534,Dmitri Kinnear,Marlowe Athletic,GK,87,5100000
+player_0535,Viktor Uzun,Marlowe Athletic,RW,87,5100000
+player_0536,Viktor Grimaldi,Marlowe Athletic,LB,86,4700000
+player_0537,Farid Yeboah,Marlowe Athletic,ST,85,4300000
+player_0538,Ulises Oduya,Marlowe Athletic,ST,84,4000000
+player_0539,Kasper Uzun,Marlowe Athletic,CM,83,3600000
+player_0540,Rafael Calloway,Marlowe Athletic,GK,82,3300000
+player_0541,Omar Urquhart,Marlowe Athletic,RB,79,2600000
+player_0542,Soren Zamora,Marlowe Athletic,CDM,78,2400000
+player_0543,Cedric Jansen,Mistral Point Albion,LB,104,22200000
+player_0544,Paco Acheampong,Mistral Point Albion,GK,91,7200000
+player_0545,Quinn Brandt,Mistral Point Albion,CM,91,7200000
+player_0546,Joaquin Greaves,Mistral Point Albion,CB,89,6100000
+player_0547,Joaquin Vasquez,Mistral Point Albion,CM,89,6100000
+player_0548,Dario Vasquez,Mistral Point Albion,ST,89,6100000
+player_0549,Beau Silva,Mistral Point Albion,RW,88,5600000
+player_0550,Kofi Eriksen,Mistral Point Albion,CM,87,5100000
+player_0551,Gustavo Eriksen,Mistral Point Albion,LB,85,4300000
+player_0552,Pablo Nyberg,Mistral Point Albion,RB,85,4300000
+player_0553,Umar Nyberg,Mistral Point Albion,CDM,85,4300000
+player_0554,Ulises Vermeer,Mistral Point Albion,GK,84,4000000
+player_0555,Pablo Edmunds,Mistral Point Albion,CB,83,3600000
+player_0556,Yannick Acheampong,Mistral Point Albion,CAM,83,3600000
+player_0557,Uri Fontaine,Mistral Point Albion,LW,83,3600000
+player_0558,Damon Stavros,Mistral Point Albion,ST,82,3300000
+player_0559,Rui Nakamura,Mistral Point Albion,CB,80,2800000
+player_0560,Ewan Halvorsen,Mistral Point Albion,RB,80,2800000
+player_0561,Damon Winters,Mistral Point Albion,CB,79,2600000
+player_0562,Gus Jorgensen,Mistral Point Albion,CDM,76,2000000
+player_0563,Wade Voss,Netherby Rangers,RW,86,4700000
+player_0564,Ivan Garrido,Netherby Rangers,LW,84,4000000
+player_0565,Gideon Edmunds,Netherby Rangers,GK,81,3100000
+player_0566,Soren Quintero,Netherby Rangers,RB,80,2800000
+player_0567,Caleb Arden,Netherby Rangers,CDM,80,2800000
+player_0568,Rui Kinnear,Netherby Rangers,ST,77,2200000
+player_0569,Bastian Urquhart,Netherby Rangers,RB,76,2000000
+player_0570,Elias Yeboah,Netherby Rangers,CM,76,2000000
+player_0571,Aiden Lombardi,Netherby Rangers,CM,76,2000000
+player_0572,Oren Dufresne,Netherby Rangers,CB,75,1800000
+player_0573,Rafael Vermeer,Netherby Rangers,GK,73,1500000
+player_0574,Rui Vasquez,Netherby Rangers,CB,73,1500000
+player_0575,Farid Wolfe,Netherby Rangers,LB,73,1500000
+player_0576,Ewan Arden,Netherby Rangers,ST,73,1500000
+player_0577,Abel Holt,Netherby Rangers,CB,71,1300000
+player_0578,Cyrus Delacroix,Netherby Rangers,CDM,71,1300000
+player_0579,Cyrus Falconer,Netherby Rangers,LB,69,1100000
+player_0580,Declan Tambo,Netherby Rangers,CB,67,900000
+player_0581,Joaquin Garrido,Netherby Rangers,CM,67,900000
+player_0582,Gus Esposito,Netherby Rangers,CAM,66,800000
+player_0583,Lars Moreau,Northcliff Town,CAM,96,11100000
+player_0584,Jorge Novak,Northcliff Town,GK,80,2800000
+player_0585,Soren Arden,Northcliff Town,CDM,79,2600000
+player_0586,Rui Barros,Northcliff Town,LW,79,2600000
+player_0587,Gael Lacroix,Northcliff Town,CB,78,2400000
+player_0588,Rui Mbeki,Northcliff Town,RB,78,2400000
+player_0589,Bruno Halvorsen,Northcliff Town,RB,77,2200000
+player_0590,Quinn Arden,Northcliff Town,CM,77,2200000
+player_0591,Leandro Cortez,Northcliff Town,ST,77,2200000
+player_0592,Bastian Zorn,Northcliff Town,CB,74,1700000
+player_0593,Kwame Ortega,Northcliff Town,ST,73,1500000
+player_0594,Gus Uzun,Northcliff Town,CB,72,1400000
+player_0595,Uri Bellamy,Northcliff Town,CB,72,1400000
+player_0596,Uri Zorn,Northcliff Town,GK,71,1300000
+player_0597,Stefan Yilmaz,Northcliff Town,CDM,71,1300000
+player_0598,Ewan Vermeer,Northcliff Town,CM,69,1100000
+player_0599,Bruno Rossi,Northcliff Town,CM,68,1000000
+player_0600,Emil Hartmann,Northcliff Town,LB,67,900000
+player_0601,Quinn Esposito,Northcliff Town,RW,67,900000
+player_0602,Beau Nakamura,Northcliff Town,CM,65,800000
+player_0603,Ramon Halvorsen,Northcliff Town,LB,64,700000
+player_0604,Nolan Greaves,Oakhaven City,CB,108,31300000
+player_0605,Fabian Fontaine,Oakhaven City,CB,93,8600000
+player_0606,Damon Dufresne,Oakhaven City,CB,88,5600000
+player_0607,Luca Ishikawa,Oakhaven City,GK,86,4700000
+player_0608,Brandon Grimaldi,Oakhaven City,CB,86,4700000
+player_0609,Pavel Vasquez,Oakhaven City,GK,85,4300000
+player_0610,Matteo Novak,Oakhaven City,CDM,85,4300000
+player_0611,Valentin Acheampong,Oakhaven City,CM,85,4300000
+player_0612,Gideon Esposito,Oakhaven City,ST,85,4300000
+player_0613,Xavier Marchetti,Oakhaven City,LB,84,4000000
+player_0614,Joaquin Santoro,Oakhaven City,RW,82,3300000
+player_0615,Jorge Ferreira,Oakhaven City,ST,82,3300000
+player_0616,Soren Yeboah,Oakhaven City,CM,81,3100000
+player_0617,Kwame Rasmussen,Oakhaven City,LW,81,3100000
+player_0618,Aiden Halvorsen,Oakhaven City,LB,80,2800000
+player_0619,Lars Ronaldsen,Oakhaven City,CM,78,2400000
+player_0620,Zlatko Wolfe,Oakhaven City,RB,77,2200000
+player_0621,Gustavo Cortez,Oakhaven City,CDM,77,2200000
+player_0622,Wade Whitlock,Oakhaven City,CAM,77,2200000
+player_0623,Arlo Quintero,Oakhaven City,CM,74,1700000
+player_0624,Otis Ishikawa,Oakhaven City,RB,72,1400000
+player_0625,Declan Kinnear,Orchard Vale Dynamos,GK,97,12100000
+player_0626,Oren Keller,Orchard Vale Dynamos,ST,94,9400000
+player_0627,Aiden Pellegrini,Orchard Vale Dynamos,GK,91,7200000
+player_0628,Mateus Ishikawa,Orchard Vale Dynamos,RB,91,7200000
+player_0629,Vito Arden,Orchard Vale Dynamos,CM,89,6100000
+player_0630,Xavier Nakamura,Orchard Vale Dynamos,CB,86,4700000
+player_0631,Gus Okafor,Orchard Vale Dynamos,CAM,85,4300000
+player_0632,Dario Kovacs,Orchard Vale Dynamos,CB,84,4000000
+player_0633,Wes Dufresne,Orchard Vale Dynamos,LB,84,4000000
+player_0634,Valentin Alderton,Orchard Vale Dynamos,LW,83,3600000
+player_0635,Gustavo Pellegrini,Orchard Vale Dynamos,RB,82,3300000
+player_0636,Emil Ronaldsen,Orchard Vale Dynamos,LB,79,2600000
+player_0637,Nico Lombardi,Orchard Vale Dynamos,CM,79,2600000
+player_0638,Tobias Xander,Orchard Vale Dynamos,CDM,78,2400000
+player_0639,Fabian Calloway,Orchard Vale Dynamos,CB,77,2200000
+player_0640,Dmitri Holt,Orchard Vale Dynamos,ST,77,2200000
+player_0641,Yusuf Hartmann,Orchard Vale Dynamos,RW,76,2000000
+player_0642,Kofi Jorgensen,Orchard Vale Dynamos,CM,75,1800000
+player_0643,Luca Silva,Orchard Vale Dynamos,CB,74,1700000
+player_0644,Elias Barros,Orchard Vale Dynamos,CDM,72,1400000
+player_0645,Cyrus Calloway,Pebblecombe Olympic,CB,81,3100000
+player_0646,Marek Jorgensen,Pebblecombe Olympic,LB,81,3100000
+player_0647,Oren Wolfe,Pebblecombe Olympic,CDM,81,3100000
+player_0648,Vito Brook,Pebblecombe Olympic,LB,79,2600000
+player_0649,Elias Vasquez,Pebblecombe Olympic,CDM,79,2600000
+player_0650,Yusuf Zielinski,Pebblecombe Olympic,LW,79,2600000
+player_0651,Nikolai Fontaine,Pebblecombe Olympic,CM,78,2400000
+player_0652,Nico Okafor,Pebblecombe Olympic,ST,77,2200000
+player_0653,Bastian Arden,Pebblecombe Olympic,GK,76,2000000
+player_0654,Nico Santoro,Pebblecombe Olympic,CM,75,1800000
+player_0655,Alvaro Okafor,Pebblecombe Olympic,RW,75,1800000
+player_0656,Matteo Barros,Pebblecombe Olympic,ST,74,1700000
+player_0657,Emil Petrov,Pebblecombe Olympic,CB,73,1500000
+player_0658,Soren Lombardi,Pebblecombe Olympic,CM,73,1500000
+player_0659,Gustavo Rasmussen,Pebblecombe Olympic,CAM,73,1500000
+player_0660,Tariq Okafor,Pebblecombe Olympic,RB,72,1400000
+player_0661,Wes Keller,Pebblecombe Olympic,CB,71,1300000
+player_0662,Callum Ronaldsen,Pebblecombe Olympic,GK,70,1200000
+player_0663,Gus Nyberg,Pebblecombe Olympic,RB,67,900000
+player_0664,Dario Tambo,Pebblecombe Olympic,CB,66,800000
+player_0665,Caleb Quintero,Pinegrove Wanderers,CB,92,7900000
+player_0666,Ivan Lacroix,Pinegrove Wanderers,ST,84,4000000
+player_0667,Gus Jansen,Pinegrove Wanderers,LW,83,3600000
+player_0668,Fabian Rasmussen,Pinegrove Wanderers,CB,82,3300000
+player_0669,Yago Quill,Pinegrove Wanderers,CB,81,3100000
+player_0670,Dmitri Edmunds,Pinegrove Wanderers,LB,81,3100000
+player_0671,Bastian Jovanovic,Pinegrove Wanderers,CAM,81,3100000
+player_0672,Matteo Moreau,Pinegrove Wanderers,LB,80,2800000
+player_0673,Rafael Moreau,Pinegrove Wanderers,CM,80,2800000
+player_0674,Nolan Ulloa,Pinegrove Wanderers,CM,79,2600000
+player_0675,Yago Jovanovic,Pinegrove Wanderers,GK,78,2400000
+player_0676,Mateus Brandt,Pinegrove Wanderers,RB,77,2200000
+player_0677,Leandro Zielinski,Pinegrove Wanderers,RB,77,2200000
+player_0678,Leandro Garrido,Pinegrove Wanderers,CDM,75,1800000
+player_0679,Hamza Edmunds,Pinegrove Wanderers,RW,74,1700000
+player_0680,Zlatko Uzun,Pinegrove Wanderers,ST,74,1700000
+player_0681,Bruno Zamora,Pinegrove Wanderers,CB,71,1300000
+player_0682,Zeke Urquhart,Pinegrove Wanderers,CM,71,1300000
+player_0683,Bastian Ulloa,Pinegrove Wanderers,CM,70,1200000
+player_0684,Tobias Zamora,Pinegrove Wanderers,GK,67,900000
+player_0685,Mateus Ulloa,Pinegrove Wanderers,CDM,66,800000
+player_0686,Ivan Winters,Quarry Hill Albion,GK,101,17100000
+player_0687,Vito Barros,Quarry Hill Albion,RW,101,17100000
+player_0688,Umar Urquhart,Quarry Hill Albion,CAM,87,5100000
+player_0689,Zane Nakamura,Quarry Hill Albion,ST,85,4300000
+player_0690,Nolan Falconer,Quarry Hill Albion,CM,84,4000000
+player_0691,Gustavo Dvorak,Quarry Hill Albion,CM,84,4000000
+player_0692,Pablo Wolfe,Quarry Hill Albion,RB,82,3300000
+player_0693,Abel Jorgensen,Quarry Hill Albion,CM,82,3300000
+player_0694,Hugo Acheampong,Quarry Hill Albion,GK,81,3100000
+player_0695,Hamza Ishikawa,Quarry Hill Albion,CB,81,3100000
+player_0696,Uri Eriksen,Quarry Hill Albion,ST,81,3100000
+player_0697,Tomas Jorgensen,Quarry Hill Albion,CDM,80,2800000
+player_0698,Wes Okafor,Quarry Hill Albion,CB,77,2200000
+player_0699,Brandon Yilmaz,Quarry Hill Albion,CB,76,2000000
+player_0700,Declan Quill,Quarry Hill Albion,CDM,76,2000000
+player_0701,Abel Bellamy,Quarry Hill Albion,LB,75,1800000
+player_0702,Hamza Nyberg,Quarry Hill Albion,RB,75,1800000
+player_0703,Damon Urquhart,Quarry Hill Albion,CM,75,1800000
+player_0704,Tobias Winters,Quarry Hill Albion,LB,74,1700000
+player_0705,Yago Ortega,Quarry Hill Albion,CB,72,1400000
+player_0706,Cyrus Ulloa,Quarry Hill Albion,LW,72,1400000
+player_0707,Jorge Quintero,Ravenscar Rangers,LB,74,1700000
+player_0708,Farid Quill,Ravenscar Rangers,RB,74,1700000
+player_0709,Tobias Alderton,Ravenscar Rangers,RW,73,1500000
+player_0710,Tomas Ulloa,Ravenscar Rangers,CM,72,1400000
+player_0711,Fabian Kinnear,Ravenscar Rangers,CB,71,1300000
+player_0712,Ilias Ibarra,Ravenscar Rangers,GK,70,1200000
+player_0713,Ewan Acheampong,Ravenscar Rangers,GK,70,1200000
+player_0714,Nikolai Ibarra,Ravenscar Rangers,RB,69,1100000
+player_0715,Zane Moreau,Ravenscar Rangers,CDM,69,1100000
+player_0716,Leandro Petrov,Ravenscar Rangers,CM,69,1100000
+player_0717,Matteo Fontaine,Ravenscar Rangers,CAM,69,1100000
+player_0718,Kwame Arden,Ravenscar Rangers,CB,68,1000000
+player_0719,Hector Holt,Ravenscar Rangers,CM,68,1000000
+player_0720,Yusuf Ishikawa,Ravenscar Rangers,CM,67,900000
+player_0721,Nikolai Okafor,Ravenscar Rangers,CB,66,800000
+player_0722,Wilmer Brook,Ravenscar Rangers,LB,65,800000
+player_0723,Nolan Zamora,Ravenscar Rangers,LW,65,800000
+player_0724,Tomas Winters,Ravenscar Rangers,ST,63,600000
+player_0725,Kasper Lindqvist,Ravenscar Rangers,CDM,62,600000
+player_0726,Hamza Ortega,Ravenscar Rangers,ST,62,600000
+player_0727,Dario Brandt,Ravenscar Rangers,CB,59,500000
+player_0728,Dmitri Pereira,Redfern United,ST,88,5600000
+player_0729,Yannick Halvorsen,Redfern United,CB,87,5100000
+player_0730,Yusuf Voss,Redfern United,ST,87,5100000
+player_0731,Damon Delacroix,Redfern United,GK,85,4300000
+player_0732,Cedric Lacroix,Redfern United,CB,85,4300000
+player_0733,Idris Keller,Redfern United,RW,85,4300000
+player_0734,Uri Jovanovic,Redfern United,CB,83,3600000
+player_0735,Flynn Ivanov,Redfern United,CM,82,3300000
+player_0736,Nolan Jovanovic,Redfern United,LW,81,3100000
+player_0737,Hugo Ronaldsen,Redfern United,GK,80,2800000
+player_0738,Wes Barros,Redfern United,CAM,80,2800000
+player_0739,Joaquin Tavares,Redfern United,CDM,79,2600000
+player_0740,Bastian Silva,Redfern United,CM,79,2600000
+player_0741,Zlatko Stavros,Redfern United,RB,78,2400000
+player_0742,Otis Holt,Redfern United,RB,78,2400000
+player_0743,Bruno Nakamura,Redfern United,CDM,78,2400000
+player_0744,Yannick Castellan,Redfern United,CB,77,2200000
+player_0745,Zeke Oduya,Redfern United,LB,77,2200000
+player_0746,Soren Lacroix,Redfern United,CM,77,2200000
+player_0747,Omar Arden,Redfern United,LB,76,2000000
+player_0748,Cedric Tavares,Saltmarsh Rovers,CM,91,7200000
+player_0749,Declan Thorne,Saltmarsh Rovers,CB,89,6100000
+player_0750,Paco Jansen,Saltmarsh Rovers,CDM,89,6100000
+player_0751,Zeke Alderton,Saltmarsh Rovers,CM,86,4700000
+player_0752,Kasper Mbeki,Saltmarsh Rovers,CB,84,4000000
+player_0753,Cedric Falconer,Saltmarsh Rovers,LB,84,4000000
+player_0754,Emil Brandt,Saltmarsh Rovers,LB,83,3600000
+player_0755,Elias Yilmaz,Saltmarsh Rovers,RB,83,3600000
+player_0756,Tobias Pellegrini,Saltmarsh Rovers,CM,83,3600000
+player_0757,Tobias Castellan,Saltmarsh Rovers,CB,81,3100000
+player_0758,Callum Urquhart,Saltmarsh Rovers,CAM,81,3100000
+player_0759,Pablo Whitlock,Saltmarsh Rovers,GK,80,2800000
+player_0760,Soren Ronaldsen,Saltmarsh Rovers,CB,80,2800000
+player_0761,Idris Esposito,Saltmarsh Rovers,GK,79,2600000
+player_0762,Ilias Ronaldsen,Saltmarsh Rovers,ST,79,2600000
+player_0763,Caleb Thorne,Saltmarsh Rovers,ST,79,2600000
+player_0764,Gus Lacroix,Saltmarsh Rovers,RB,77,2200000
+player_0765,Zlatko Barros,Saltmarsh Rovers,LW,77,2200000
+player_0766,Dmitri Lindqvist,Saltmarsh Rovers,CDM,75,1800000
+player_0767,Quinn Zorn,Saltmarsh Rovers,RW,72,1400000
+player_0768,Leandro Stavros,Silverlake Olympic,CB,86,4700000
+player_0769,Pavel Abara,Silverlake Olympic,RB,84,4000000
+player_0770,Wade Dufresne,Silverlake Olympic,ST,84,4000000
+player_0771,Valentin Lacroix,Silverlake Olympic,CM,80,2800000
+player_0772,Nico Thorne,Silverlake Olympic,RB,79,2600000
+player_0773,Paco Thorne,Silverlake Olympic,ST,79,2600000
+player_0774,Cedric Barros,Silverlake Olympic,CDM,78,2400000
+player_0775,Fabian Ishikawa,Silverlake Olympic,CAM,78,2400000
+player_0776,Dario Holt,Silverlake Olympic,CDM,77,2200000
+player_0777,Hector Jansen,Silverlake Olympic,CM,76,2000000
+player_0778,Rui Vermeer,Silverlake Olympic,CB,75,1800000
+player_0779,Farid Marchetti,Silverlake Olympic,GK,73,1500000
+player_0780,Emil Mbeki,Silverlake Olympic,LB,72,1400000
+player_0781,Ivan Dvorak,Silverlake Olympic,CB,71,1300000
+player_0782,Kasper Yilmaz,Silverlake Olympic,CM,70,1200000
+player_0783,Nikolai Cortez,Silverlake Olympic,LW,70,1200000
+player_0784,Felix Vermeer,Silverlake Olympic,CB,69,1100000
+player_0785,Ulises Quill,Silverlake Olympic,LB,68,1000000
+player_0786,Paco Barros,Silverlake Olympic,GK,66,800000
+player_0787,Rafael Kovacs,Silverlake Olympic,RW,64,700000
+player_0788,Damon Nakamura,Stonebridge Dynamos,CDM,102,18700000
+player_0789,Beau Arden,Stonebridge Dynamos,GK,97,12100000
+player_0790,Yusuf Whitlock,Stonebridge Dynamos,CM,85,4300000
+player_0791,Hector Lacroix,Stonebridge Dynamos,LB,83,3600000
+player_0792,Nikolai Greaves,Stonebridge Dynamos,CM,83,3600000
+player_0793,Xavier Stavros,Stonebridge Dynamos,RW,83,3600000
+player_0794,Viktor Zamora,Stonebridge Dynamos,CM,82,3300000
+player_0795,Rafael Rossi,Stonebridge Dynamos,CB,80,2800000
+player_0796,Kasper Whitlock,Stonebridge Dynamos,CM,80,2800000
+player_0797,Leandro Jovanovic,Stonebridge Dynamos,LW,80,2800000
+player_0798,Quinn Ibarra,Stonebridge Dynamos,ST,80,2800000
+player_0799,Leandro Kinnear,Stonebridge Dynamos,CDM,79,2600000
+player_0800,Paco Jovanovic,Stonebridge Dynamos,GK,78,2400000
+player_0801,Gus Ferreira,Stonebridge Dynamos,CAM,78,2400000
+player_0802,Fabian Yamada,Stonebridge Dynamos,ST,77,2200000
+player_0803,Zlatko Grimaldi,Stonebridge Dynamos,CB,76,2000000
+player_0804,Wilmer Quill,Stonebridge Dynamos,LB,76,2000000
+player_0805,Ewan Yamada,Stonebridge Dynamos,CB,75,1800000
+player_0806,Dario Ulloa,Stonebridge Dynamos,RB,74,1700000
+player_0807,Wes Falconer,Stonebridge Dynamos,CB,70,1200000
+player_0808,Stefan Brandt,Stonebridge Dynamos,RB,69,1100000
+player_0809,Alvaro Ronaldsen,Thornbury Olympic,CB,103,20300000
+player_0810,Ramon Lombardi,Thornbury Olympic,RB,94,9400000
+player_0811,Jorge Petrov,Thornbury Olympic,GK,92,7900000
+player_0812,Flynn Esposito,Thornbury Olympic,LB,92,7900000
+player_0813,Zeke Vasquez,Thornbury Olympic,RW,88,5600000
+player_0814,Bruno Vermeer,Thornbury Olympic,ST,88,5600000
+player_0815,Gustavo Keller,Thornbury Olympic,CAM,87,5100000
+player_0816,Cyrus Petrov,Thornbury Olympic,CDM,85,4300000
+player_0817,Enzo Delacroix,Thornbury Olympic,CM,85,4300000
+player_0818,Omar Lacroix,Thornbury Olympic,LB,84,4000000
+player_0819,Tobias Ishikawa,Thornbury Olympic,CM,84,4000000
+player_0820,Ramon Brandt,Thornbury Olympic,CDM,83,3600000
+player_0821,Cyrus Nakamura,Thornbury Olympic,RB,82,3300000
+player_0822,Beau Lindqvist,Thornbury Olympic,LW,81,3100000
+player_0823,Gus Rasmussen,Thornbury Olympic,CB,80,2800000
+player_0824,Vito Zielinski,Thornbury Olympic,GK,79,2600000
+player_0825,Matteo Yilmaz,Thornbury Olympic,CM,78,2400000
+player_0826,Farid Keller,Thornbury Olympic,CB,77,2200000
+player_0827,Kwame Zamora,Thornbury Olympic,ST,75,1800000
+player_0828,Rafael Ronaldsen,Thornbury Olympic,CM,75,1800000
+player_0829,Otis Oduya,Thornbury Olympic,CB,74,1700000
+player_0830,Idris Zorn,Tidewater Athletic,ST,84,4000000
+player_0831,Ramon Keller,Tidewater Athletic,CDM,83,3600000
+player_0832,Wade Ibarra,Tidewater Athletic,LW,83,3600000
+player_0833,Farid Brook,Tidewater Athletic,RB,79,2600000
+player_0834,Stefan Oduya,Tidewater Athletic,LB,78,2400000
+player_0835,Kwame Moreau,Tidewater Athletic,ST,77,2200000
+player_0836,Ivan Uzun,Tidewater Athletic,GK,74,1700000
+player_0837,Lars Lindqvist,Tidewater Athletic,CB,74,1700000
+player_0838,Viktor Pellegrini,Tidewater Athletic,CB,73,1500000
+player_0839,Ilias Tavares,Tidewater Athletic,RW,73,1500000
+player_0840,Dmitri Tambo,Tidewater Athletic,CM,72,1400000
+player_0841,Cedric Yamada,Tidewater Athletic,GK,71,1300000
+player_0842,Abel Wolfe,Tidewater Athletic,CB,71,1300000
+player_0843,Pavel Jansen,Tidewater Athletic,CAM,71,1300000
+player_0844,Vito Cortez,Tidewater Athletic,CM,70,1200000
+player_0845,Idris Holt,Tidewater Athletic,CB,69,1100000
+player_0846,Tobias Brook,Tidewater Athletic,RB,69,1100000
+player_0847,Ivan Yeboah,Tidewater Athletic,LB,68,1000000
+player_0848,Valentin Quintero,Tidewater Athletic,CDM,68,1000000
+player_0849,Enzo Jansen,Tidewater Athletic,CM,64,700000
+player_0850,Wilmer Calloway,Umberfield United,CAM,100,15700000
+player_0851,Tariq Vasquez,Umberfield United,GK,97,12100000
+player_0852,Nikolai Eriksen,Umberfield United,LB,79,2600000
+player_0853,Yago Nyberg,Umberfield United,CM,78,2400000
+player_0854,Ramon Pereira,Umberfield United,RW,78,2400000
+player_0855,Nolan Lindqvist,Umberfield United,CB,77,2200000
+player_0856,Wilmer Greaves,Umberfield United,ST,74,1700000
+player_0857,Zane Yilmaz,Umberfield United,CB,73,1500000
+player_0858,Farid Pereira,Umberfield United,RB,73,1500000
+player_0859,Fabian Thorne,Umberfield United,CDM,72,1400000
+player_0860,Abel Alderton,Umberfield United,CB,71,1300000
+player_0861,Flynn Marchetti,Umberfield United,LB,71,1300000
+player_0862,Kofi Kinnear,Umberfield United,CM,71,1300000
+player_0863,Ilias Nakamura,Umberfield United,ST,69,1100000
+player_0864,Uri Dvorak,Umberfield United,RB,68,1000000
+player_0865,Kasper Vasquez,Umberfield United,CB,67,900000
+player_0866,Callum Castellan,Umberfield United,CM,66,800000
+player_0867,Rui Kovacs,Umberfield United,LW,65,800000
+player_0868,Sven Silva,Umberfield United,CDM,63,600000
+player_0869,Fabian Xander,Umberfield United,GK,62,600000
+player_0870,Bruno Petrov,Umberfield United,CM,61,500000
+player_0871,Pablo Hartmann,Underhill Town,CB,104,22200000
+player_0872,Ewan Garrido,Underhill Town,CM,103,20300000
+player_0873,Pablo Quintero,Underhill Town,CB,89,6100000
+player_0874,Marek Tavares,Underhill Town,CDM,89,6100000
+player_0875,Fabian Petrov,Underhill Town,ST,87,5100000
+player_0876,Nolan Abara,Underhill Town,GK,85,4300000
+player_0877,Joaquin Winters,Underhill Town,CB,85,4300000
+player_0878,Zlatko Tavares,Underhill Town,CM,84,4000000
+player_0879,Fabian Falconer,Underhill Town,LB,83,3600000
+player_0880,Declan Jansen,Underhill Town,CM,83,3600000
+player_0881,Oren Urquhart,Underhill Town,RW,82,3300000
+player_0882,Tomas Wolfe,Underhill Town,GK,81,3100000
+player_0883,Luca Tambo,Underhill Town,RB,81,3100000
+player_0884,Zlatko Arden,Underhill Town,ST,81,3100000
+player_0885,Kwame Lombardi,Underhill Town,LB,80,2800000
+player_0886,Declan Ortega,Underhill Town,CB,76,2000000
+player_0887,Hamza Dvorak,Underhill Town,CDM,75,1800000
+player_0888,Felix Rasmussen,Underhill Town,RB,74,1700000
+player_0889,Zeke Lombardi,Underhill Town,CAM,74,1700000
+player_0890,Dario Abara,Underhill Town,LW,74,1700000
+player_0891,Bruno Jovanovic,Valewood Rovers,CM,109,34100000
+player_0892,Valentin Zorn,Valewood Rovers,RB,104,22200000
+player_0893,Idris Eriksen,Valewood Rovers,RB,94,9400000
+player_0894,Xavier Cortez,Valewood Rovers,CDM,93,8600000
+player_0895,Marek Falconer,Valewood Rovers,LB,91,7200000
+player_0896,Sven Vermeer,Valewood Rovers,CM,90,6600000
+player_0897,Ilias Winters,Valewood Rovers,CM,90,6600000
+player_0898,Fabian Bellamy,Valewood Rovers,CB,89,6100000
+player_0899,Idris Brandt,Valewood Rovers,CAM,89,6100000
+player_0900,Hugo Quill,Valewood Rovers,LB,88,5600000
+player_0901,Ramon Oduya,Valewood Rovers,RW,86,4700000
+player_0902,Brandon Lacroix,Valewood Rovers,CB,85,4300000
+player_0903,Felix Tambo,Valewood Rovers,LW,84,4000000
+player_0904,Hugo Moreau,Valewood Rovers,CB,82,3300000
+player_0905,Stefan Urquhart,Valewood Rovers,CDM,81,3100000
+player_0906,Otis Garrido,Valewood Rovers,CM,81,3100000
+player_0907,Farid Silva,Valewood Rovers,CB,78,2400000
+player_0908,Damon Garrido,Valewood Rovers,GK,77,2200000
+player_0909,Ivan Acheampong,Valewood Rovers,GK,76,2000000
+player_0910,Paco Eriksen,Valewood Rovers,ST,75,1800000
+player_0911,Dario Whitlock,Valewood Rovers,ST,73,1500000
+player_0912,Tariq Vermeer,Vexford City,CB,92,7900000
+player_0913,Idris Yilmaz,Vexford City,RW,79,2600000
+player_0914,Caleb Hartmann,Vexford City,CB,78,2400000
+player_0915,Omar Bellamy,Vexford City,LB,77,2200000
+player_0916,Bruno Greaves,Vexford City,LB,74,1700000
+player_0917,Pablo Oduya,Vexford City,GK,72,1400000
+player_0918,Idris Vasquez,Vexford City,ST,72,1400000
+player_0919,Idris Yeboah,Vexford City,CB,71,1300000
+player_0920,Paco Marchetti,Vexford City,RB,71,1300000
+player_0921,Kwame Lindqvist,Vexford City,CDM,71,1300000
+player_0922,Nikolai Calloway,Vexford City,ST,71,1300000
+player_0923,Pavel Pellegrini,Vexford City,CM,69,1100000
+player_0924,Mateus Vermeer,Vexford City,CAM,69,1100000
+player_0925,Dmitri Alderton,Vexford City,LW,69,1100000
+player_0926,Hamza Thorne,Vexford City,CB,68,1000000
+player_0927,Yannick Ivanov,Vexford City,RB,68,1000000
+player_0928,Emil Nyberg,Vexford City,CDM,67,900000
+player_0929,Aiden Brook,Vexford City,GK,65,800000
+player_0930,Nolan Jorgensen,Vexford City,CM,65,800000
+player_0931,Yannick Petrov,Vexford City,CM,63,600000
+player_0932,Tomas Yamada,Westmarch Athletic,ST,101,17100000
+player_0933,Declan Bellamy,Westmarch Athletic,ST,97,12100000
+player_0934,Sven Yamada,Westmarch Athletic,CDM,81,3100000
+player_0935,Hamza Jovanovic,Westmarch Athletic,RB,80,2800000
+player_0936,Vito Lacroix,Westmarch Athletic,CM,80,2800000
+player_0937,Paco Pellegrini,Westmarch Athletic,CB,79,2600000
+player_0938,Kwame Yilmaz,Westmarch Athletic,CM,79,2600000
+player_0939,Tariq Zorn,Westmarch Athletic,GK,77,2200000
+player_0940,Felix Nyberg,Westmarch Athletic,LB,77,2200000
+player_0941,Stefan Arden,Westmarch Athletic,CM,77,2200000
+player_0942,Callum Marchetti,Westmarch Athletic,CB,76,2000000
+player_0943,Emil Yilmaz,Westmarch Athletic,CB,76,2000000
+player_0944,Yannick Dufresne,Westmarch Athletic,LB,76,2000000
+player_0945,Abel Xander,Westmarch Athletic,RB,75,1800000
+player_0946,Hamza Brandt,Westmarch Athletic,CM,75,1800000
+player_0947,Callum Fontaine,Westmarch Athletic,GK,73,1500000
+player_0948,Wade Santoro,Westmarch Athletic,CB,73,1500000
+player_0949,Bruno Tavares,Westmarch Athletic,RW,69,1100000
+player_0950,Gustavo Calloway,Westmarch Athletic,LW,68,1000000
+player_0951,Rafael Novak,Westmarch Athletic,CAM,66,800000
+player_0952,Dmitri Brandt,Westmarch Athletic,CDM,65,800000
+player_0953,Nico Brandt,Whitcombe Wanderers,CM,94,9400000
+player_0954,Mateus Cortez,Whitcombe Wanderers,GK,93,8600000
+player_0955,Pavel Castellan,Whitcombe Wanderers,CDM,87,5100000
+player_0956,Marek Greaves,Whitcombe Wanderers,CAM,87,5100000
+player_0957,Elias Santoro,Whitcombe Wanderers,RB,86,4700000
+player_0958,Cedric Eriksen,Whitcombe Wanderers,CDM,86,4700000
+player_0959,Omar Yamada,Whitcombe Wanderers,LB,85,4300000
+player_0960,Lars Kinnear,Whitcombe Wanderers,ST,84,4000000
+player_0961,Bastian Halvorsen,Whitcombe Wanderers,CB,82,3300000
+player_0962,Cedric Winters,Whitcombe Wanderers,CM,81,3100000
+player_0963,Valentin Halvorsen,Whitcombe Wanderers,CB,80,2800000
+player_0964,Rui Holt,Whitcombe Wanderers,CM,80,2800000
+player_0965,Flynn Novak,Whitcombe Wanderers,LW,80,2800000
+player_0966,Bruno Uzun,Whitcombe Wanderers,RB,79,2600000
+player_0967,Gael Pereira,Whitcombe Wanderers,CB,78,2400000
+player_0968,Ilias Falconer,Whitcombe Wanderers,CB,76,2000000
+player_0969,Oren Arden,Whitcombe Wanderers,ST,76,2000000
+player_0970,Uri Lacroix,Whitcombe Wanderers,LB,73,1500000
+player_0971,Valentin Nyberg,Whitcombe Wanderers,RW,70,1200000
+player_0972,Kwame Brook,Whitcombe Wanderers,GK,65,800000
+player_0973,Yusuf Eriksen,Wrenfield Albion,CDM,112,44200000
+player_0974,Cyrus Urquhart,Wrenfield Albion,LB,112,44200000
+player_0975,Wilmer Yilmaz,Wrenfield Albion,LB,97,12100000
+player_0976,Hector Ishikawa,Wrenfield Albion,CM,96,11100000
+player_0977,Matteo Ortega,Wrenfield Albion,CAM,94,9400000
+player_0978,Omar Alderton,Wrenfield Albion,LW,91,7200000
+player_0979,Lars Cortez,Wrenfield Albion,RB,89,6100000
+player_0980,Nolan Lacroix,Wrenfield Albion,RB,89,6100000
+player_0981,Wes Halvorsen,Wrenfield Albion,GK,88,5600000
+player_0982,Leandro Lombardi,Wrenfield Albion,CB,87,5100000
+player_0983,Kwame Ferreira,Wrenfield Albion,ST,87,5100000
+player_0984,Omar Garrido,Wrenfield Albion,CB,86,4700000
+player_0985,Viktor Mbeki,Wrenfield Albion,CDM,86,4700000
+player_0986,Zeke Dvorak,Wrenfield Albion,CM,85,4300000
+player_0987,Stefan Lindqvist,Wrenfield Albion,RW,85,4300000
+player_0988,Soren Cortez,Wrenfield Albion,ST,84,4000000
+player_0989,Hector Vasquez,Wrenfield Albion,GK,82,3300000
+player_0990,Ilias Rasmussen,Wrenfield Albion,CB,82,3300000
+player_0991,Hector Abara,Wrenfield Albion,CM,81,3100000
+player_0992,Arlo Rossi,Wrenfield Albion,CB,70,1200000
+player_0993,Soren Jovanovic,Yarrow Town,RB,102,18700000
+player_0994,Aiden Wolfe,Yarrow Town,CB,93,8600000
+player_0995,Zlatko Quill,Yarrow Town,CM,85,4300000
+player_0996,Ewan Jansen,Yarrow Town,RW,85,4300000
+player_0997,Joaquin Voss,Yarrow Town,CM,83,3600000
+player_0998,Enzo Kinnear,Yarrow Town,CB,82,3300000
+player_0999,Gustavo Oduya,Yarrow Town,CM,82,3300000
+player_1000,Arlo Lombardi,Yarrow Town,GK,77,2200000
+player_1001,Hugo Barros,Yarrow Town,GK,77,2200000
+player_1002,Beau Brandt,Yarrow Town,ST,77,2200000
+player_1003,Abel Lacroix,Yarrow Town,CDM,76,2000000
+player_1004,Vito Thorne,Yarrow Town,LW,76,2000000
+player_1005,Luca Falconer,Yarrow Town,CB,75,1800000
+player_1006,Otis Okafor,Yarrow Town,RB,75,1800000
+player_1007,Oren Rasmussen,Yarrow Town,CB,72,1400000
+player_1008,Jorge Halvorsen,Yarrow Town,CDM,71,1300000
+player_1009,Leandro Santoro,Yarrow Town,LB,70,1200000
+player_1010,Felix Thorne,Yarrow Town,CAM,70,1200000
+player_1011,Quinn Yeboah,Yarrow Town,ST,69,1100000
+player_1012,Abel Jansen,Yarrow Town,LB,67,900000
+player_1013,Stefan Hartmann,Yarrow Town,CM,64,700000
+player_1014,Oren Eriksen,Zephyr Cove City,GK,109,34100000
+player_1015,Yusuf Dvorak,Zephyr Cove City,CB,98,13200000
+player_1016,Oren Fontaine,Zephyr Cove City,ST,94,9400000
+player_1017,Gideon Thorne,Zephyr Cove City,LB,93,8600000
+player_1018,Gustavo Acheampong,Zephyr Cove City,GK,91,7200000
+player_1019,Rafael Nakamura,Zephyr Cove City,CDM,91,7200000
+player_1020,Callum Brandt,Zephyr Cove City,LW,90,6600000
+player_1021,Cyrus Keller,Zephyr Cove City,ST,90,6600000
+player_1022,Brandon Lombardi,Zephyr Cove City,LB,89,6100000
+player_1023,Kofi Arden,Zephyr Cove City,RB,89,6100000
+player_1024,Emil Ibarra,Zephyr Cove City,CM,87,5100000
+player_1025,Tomas Ferreira,Zephyr Cove City,CB,85,4300000
+player_1026,Wes Whitlock,Zephyr Cove City,CB,85,4300000
+player_1027,Marek Zamora,Zephyr Cove City,RB,85,4300000
+player_1028,Zane Bellamy,Zephyr Cove City,RW,84,4000000
+player_1029,Viktor Dufresne,Zephyr Cove City,CB,83,3600000
+player_1030,Xavier Tambo,Zephyr Cove City,CM,83,3600000
+player_1031,Bastian Zielinski,Zephyr Cove City,CAM,83,3600000
+player_1032,Brandon Alderton,Zephyr Cove City,CM,81,3100000
+player_1033,Farid Dvorak,Zephyr Cove City,CDM,75,1800000
+player_1034,Matteo Ishikawa,Zephyr Cove City,CM,72,1400000
