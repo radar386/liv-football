@@ -100,6 +100,33 @@ public static class CoachCatalog
         coaches.Add(CreateCoach("coach_carlos_medina", "Carlos Medina", "Free agent", "4-3-3", 85, 170_000_000));
         coaches.Add(CreateCoach("coach_jonas_weber", "Jonas Weber", "Free agent", "4-2-3-1", 86, 185_000_000));
 
+        coaches.Add(CreateCoach("coach_alf_ramsey", "Alf Ramsey", "Legend", "4-4-2", 88, 215_000_000));
+        coaches.Add(CreateCoach("coach_matt_busby", "Matt Busby", "Legend", "4-4-2", 90, 250_000_000));
+        coaches.Add(CreateCoach("coach_jock_stein", "Jock Stein", "Legend", "4-4-2", 89, 230_000_000));
+        coaches.Add(CreateCoach("coach_valeriy_lobanovskyi", "Valeriy Lobanovskyi", "Legend", "4-4-2", 91, 270_000_000));
+        coaches.Add(CreateCoach("coach_miguel_munoz", "Miguel Munoz", "Legend", "4-3-3", 89, 230_000_000));
+        coaches.Add(CreateCoach("coach_tele_santana", "Tele Santana", "Legend", "4-3-3", 88, 215_000_000));
+        coaches.Add(CreateCoach("coach_mario_zagallo", "Mario Zagallo", "Legend", "4-3-3", 89, 230_000_000));
+        coaches.Add(CreateCoach("coach_sepp_herberger", "Sepp Herberger", "Legend", "4-4-2", 86, 185_000_000));
+        coaches.Add(CreateCoach("coach_nereo_rocco", "Nereo Rocco", "Legend", "5-3-2", 86, 185_000_000));
+        coaches.Add(CreateCoach("coach_elias_mwangi", "Elias Mwangi", "Free agent", "4-3-3", 61, 25_000_000));
+        coaches.Add(CreateCoach("coach_noah_whitfield", "Noah Whitfield", "Free agent", "4-4-2", 63, 30_000_000));
+        coaches.Add(CreateCoach("coach_mateo_cardoso", "Mateo Cardoso", "Free agent", "4-2-3-1", 65, 35_000_000));
+        coaches.Add(CreateCoach("coach_yusuf_demir", "Yusuf Demir", "Free agent", "4-4-2", 67, 45_000_000));
+        coaches.Add(CreateCoach("coach_henrik_aalto", "Henrik Aalto", "Free agent", "4-3-3", 69, 50_000_000));
+        coaches.Add(CreateCoach("coach_samuel_achebe", "Samuel Achebe", "Free agent", "3-5-2", 71, 60_000_000));
+        coaches.Add(CreateCoach("coach_victor_lemaire", "Victor Lemaire", "Free agent", "4-2-3-1", 73, 70_000_000));
+        coaches.Add(CreateCoach("coach_oskar_lindgren", "Oskar Lindgren", "Free agent", "4-4-2", 74, 75_000_000));
+        coaches.Add(CreateCoach("coach_tariq_haddad", "Tariq Haddad", "Free agent", "4-3-3", 76, 85_000_000));
+        coaches.Add(CreateCoach("coach_diego_barrios", "Diego Barrios", "Free agent", "3-4-3", 78, 100_000_000));
+        coaches.Add(CreateCoach("coach_felix_brauer", "Felix Brauer", "Free agent", "4-2-3-1", 80, 115_000_000));
+        coaches.Add(CreateCoach("coach_amadou_diallo", "Amadou Diallo", "Free agent", "4-3-3", 83, 145_000_000));
+        coaches.Add(CreateCoach("coach_ivan_petrescu", "Ivan Petrescu", "Free agent", "5-3-2", 84, 155_000_000));
+        coaches.Add(CreateCoach("coach_mikael_strand", "Mikael Strand", "Free agent", "4-3-3", 85, 170_000_000));
+        coaches.Add(CreateCoach("coach_joao_pereira", "Joao Pereira", "Free agent", "4-2-1-3", 87, 195_000_000));
+        coaches.Add(CreateCoach("coach_anton_reiter", "Anton Reiter", "Free agent", "4-3-3", 88, 215_000_000));
+        coaches.Add(CreateCoach("coach_leandro_acosta", "Leandro Acosta", "Free agent", "3-5-2", 89, 230_000_000));
+        coaches.Add(CreateCoach("coach_kofi_mensah", "Kofi Mensah", "Free agent", "4-3-3", 90, 250_000_000));
         return coaches;
     }
 
