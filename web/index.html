@@ -105,7 +105,8 @@ const WKEYS=["league","world","cup","euro","ballon","scorers","playoffs"];
 const worldJson=()=>{const o={np:S.profiles.filter(p=>p.npc)};WKEYS.forEach(k=>{if(S[k]!==undefined)o[k]=S[k]});return JSON.stringify(o)};
 function inLeague(p){const L=S.league;return !!(L&&L.divs&&L.divs[p.div]&&L.divs[p.div].table[p.user])}
 function softRender(){const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))return;render()}
-function adoptClub(d){let p;try{p=JSON.parse(d.json)}catch(e){return false}if(!p||!p.user)return false;if(!p.npc&&SK(p)&&(p.f1seed!==sheetHash(SK(p))||sheetLost(p))){seedSheet(p);p.formed=true}const i=S.profiles.findIndex(x=>x.user===p.user);if(i<0)S.profiles.push(p);else S.profiles[i]=p;ONL.last["c:"+p.user]=d.json;if(d.own)ONL.owners[p.user]=d.own;return true}
+function clearInj(p){if(p&&!p.injClr1){(p.squad||[]).forEach(x=>{x.out=0});p.injClr1=1}}
+function adoptClub(d){let p;try{p=JSON.parse(d.json)}catch(e){return false}if(!p||!p.user)return false;clearInj(p);if(!p.npc&&SK(p)&&(p.f1seed!==sheetHash(SK(p))||sheetLost(p))){seedSheet(p);p.formed=true}const i=S.profiles.findIndex(x=>x.user===p.user);if(i<0)S.profiles.push(p);else S.profiles[i]=p;ONL.last["c:"+p.user]=d.json;if(d.own)ONL.owners[p.user]=d.own;return true}
 function adoptWorld(d){let w;try{w=JSON.parse(d.json)}catch(e){return false}WKEYS.forEach(k=>{if(w[k]!==undefined)S[k]=w[k]});if(w.np){const ids=new Set(w.np.map(x=>x.user));S.profiles=S.profiles.filter(p=>!p.npc||ids.has(p.user));for(const n of w.np){const i=S.profiles.findIndex(x=>x.user===n.user);if(i<0)S.profiles.push(n);else S.profiles[i]=n}}ONL.last.w=d.json;ONL.rev=d.rev||0;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}return true}
 function checkMembers(){if(!ONL.host)return;const L=S.league;if(!L||!L.divs||S.profiles.some(p=>!p.npc&&!inLeague(p))){S.league=newLeague(L?L.season:1);window._last="";syncSoon()}}
 async function initOnline(){
@@ -297,6 +298,7 @@ if(S.profiles.some(p=>p.user==="guest_fc")){S.profiles=S.profiles.filter(p=>p.us
 S.profiles.forEach(p=>{{const U=USERS.find(u=>u[0]===p.user);if(U)p.admin=!!U[2]}if(p.formed===undefined)p.formed=true;if(!p.div)p.div=1;if(p.user==="crimson"&&p.club==="Crimson")p.club="King Crimson";if(p.user==="sylford_fc"&&p.club==="Sylford FC")p.club="Sylfoid FC";if(p.user==="unmended_fc"&&p.club==="Unmended FC")p.club="Umended FC"});
 USERS.forEach((u,i)=>{if(!S.profiles.some(p=>p.user===u[0]))S.profiles.push(newProfile(u,i))});
 for(const f of S.profiles)if(!f.npc&&SK(f)&&(f.f1seed!==sheetHash(SK(f))||sheetLost(f)))seedSheet(f);
+for(const f of S.profiles)clearInj(f);
 function npcProfile(u,i){const p=newProfile(u,200+i);const sq=CAT.filter(x=>x.club===u[1]).map(x=>({id:x.id,name:x.name,pos:x.pos,ovr:x.ovr,club:x.club}));
  const avg=sq.reduce((t,x)=>t+x.ovr,0)/sq.length,need={GK:2,CB:3,LB:1,RB:1,CM:2,CDM:1,CAM:1,LM:1,RM:1,ST:2,LW:1,RW:1},r=mk(i*31+7);
  for(const pos in need)for(let k=sq.filter(x=>x.pos===pos).length;k<need[pos];k++)sq.push({id:"n"+i+pos+k,name:FN[Math.floor(r()*FN.length)]+" "+LN[Math.floor(r()*LN.length)],pos,ovr:Math.round(avg-8-r()*4),club:u[1]});
