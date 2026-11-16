@@ -186,7 +186,7 @@ const FILLPOS=["GK","CB","CB","LB","RB","CM","CDM","CAM","LM","RM","ST","ST","LW
 const TACTICS=["Balanced","Attacking","Defensive"];
 const PACKS=[{n:"Standard",price:1e6,min:0,ch:[55,35,9,1],g:1},{n:"Premium",price:5e6,min:65,ch:[0,60,34,6],g:2},{n:"Elite",price:20e6,min:75,ch:[0,0,75,25],g:3},{n:"Icon",price:100e6,min:0,ch:[0,0,0,100],g:3,only:"Icons"},
  {n:"Featured",price:10e6,min:73,ch:[0,0,0,0],g:3,ef:true,def:10,bands:[[80,89,70],[90,94,25],[95,99,5]],gef:90,info:"eFootball ratings: 80-89 70% · 90-94 25% · 95+ 5%, x10 has a 90+"},
- {n:"Epic",price:50e6,min:85,ch:[0,0,0,0],g:3,ef:true,def:3,bands:[[90,94,80],[95,99,20]],gef:95,info:"eFootball ratings: 90-94 80% · 95+ 20%, x10 has a 95+"}];
+ {n:"Epic",price:600e6,min:85,ch:[0,0,0,0],g:3,ef:true,def:3,bands:[[90,94,80],[95,99,20]],gef:95,info:"eFootball ratings: 90-94 80% · 95+ 20%, x10 has a 95+"}];
 const EF=o=>Math.round(60+(o-50)*0.87),EFT=r=>r>=90?"Epic":r>=80?"Featured":"Standard";
 const TIERS=["Bronze","Silver","Gold","Elite"];
 const tierOf=o=>o<65?0:o<75?1:o<85?2:3;
