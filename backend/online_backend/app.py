@@ -14,17 +14,13 @@ from pydantic import BaseModel, Field
 from MatchEventSimulator import MatchEventSimulator
 
 from . import league
+from .coaches import COACHES
 from .auth import get_authenticated_player_id
 from .packs import DUPLICATE_REFUND_PERCENT, PACK_BY_ID, PACK_TYPES, PLAYERS, draw, market_value, tier_index, TIER_NAMES
 from .storage import (add_player, connect_database, ensure_player_profile, owns_player, profile_dict,
                       refresh_club_rating, remove_player, squad_rows, NEW_CLUB_NAME)
 
 API = "/api/v1"
-SAMPLE_COACHES = [
-    {"id": "sample_coach_basic", "name": "Sample Coach (Basic)", "rating": 65, "price": 30_000_000},
-    {"id": "sample_coach_pro", "name": "Sample Coach (Pro)", "rating": 80, "price": 90_000_000},
-    {"id": "sample_coach_elite", "name": "Sample Coach (Elite)", "rating": 92, "price": 220_000_000},
-]
 SAMPLE_SPONSORS = [
     {"id": "SP01", "sponsor_name": "Deel", "purchase_price": 20_000_000, "payout": 15_000_000, "seasons": 2},
     {"id": "SP02", "sponsor_name": "Sela", "purchase_price": 45_000_000, "payout": 35_000_000, "seasons": 3},
@@ -246,7 +242,7 @@ def create_app(database_path: str | Path | None = None) -> FastAPI:
 
     @app.get(API + "/admin/catalog")
     def admin_catalog(admin: str = Depends(require_admin)):
-        return {"coaches": SAMPLE_COACHES, "sponsors": SAMPLE_SPONSORS, "pack_types": PACK_TYPES, "player_count": len(PLAYERS)}
+        return {"coaches": COACHES, "sponsors": SAMPLE_SPONSORS, "pack_types": PACK_TYPES, "player_count": len(PLAYERS)}
 
     @app.get(API + "/admin/profiles")
     def admin_profiles(query: str = "", connection=Depends(db), admin: str = Depends(require_admin)):
@@ -301,7 +297,7 @@ def create_app(database_path: str | Path | None = None) -> FastAPI:
     @app.put(API + "/admin/profiles/{pid}/coach")
     def admin_coach(pid: str, body: CoachBody, connection=Depends(db), admin: str = Depends(require_admin)):
         target(connection, pid)
-        if body.coach_id and body.coach_id not in {c["id"] for c in SAMPLE_COACHES}:
+        if body.coach_id and body.coach_id not in {c["id"] for c in COACHES}:
             raise HTTPException(404, "Unknown coach.")
         connection.execute("UPDATE profiles SET coach_id = ? WHERE player_id = ?", (body.coach_id, pid))
         audit(connection, admin, pid, "set_coach", {"coach_id": body.coach_id})

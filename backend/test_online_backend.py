@@ -394,7 +394,7 @@ class OnlineBackendTests(unittest.TestCase):
             self.assertEqual(profiles.json()[0]["player_id"], "player-two")
             catalog = self.client.get("/api/v1/admin/catalog")
             self.assertEqual(catalog.status_code, 200)
-            self.assertEqual(len(catalog.json()["coaches"]), 3)
+            self.assertGreaterEqual(len(catalog.json()["coaches"]), 40)
 
             increased = self.client.post(
                 "/api/v1/admin/profiles/player-two/money/change",
@@ -435,9 +435,9 @@ class OnlineBackendTests(unittest.TestCase):
             self.assertEqual(
                 self.client.put(
                     "/api/v1/admin/profiles/player-two/coach",
-                    json={"coach_id": "sample_coach_elite"},
+                    json={"coach_id": "coach_pep_guardiola"},
                 ).json()["coach_id"],
-                "sample_coach_elite",
+                "coach_pep_guardiola",
             )
             sponsor = self.client.put(
                 "/api/v1/admin/profiles/player-two/sponsor",
