@@ -10,5 +10,5 @@ uvicorn online_backend.main:app  # database: LIV_DATABASE (default football.sqli
 python3 -m unittest              # 28 tests
 ```
 
-Players come from `../AllPlayers.csv` (invented names). AI clubs are the 40 strongest catalog clubs (20 per tier). Coaches: the 47 coaches of the web game (`online_backend/coaches.py`).
+Players come from `../AllPlayers.csv` (invented names). AI clubs are the 40 strongest catalog clubs (20 per tier). Coaches: the 70 coaches of the web game (`online_backend/coaches.py`).
 New human clubs start in tier 2 with 50,000,000. Promotion and relegation between tiers is not implemented yet.
