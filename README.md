@@ -24,3 +24,6 @@ The repo needs the rest of the Unity project (`ProjectSettings/`, `Packages/`, s
 
 ## Names and licences
 All player and club names in the catalog are invented. Coach names and sponsor brands in the game are real; see `RELEASE_CHECKLIST.md` before releasing publicly.
+
+## Rating scales
+`Assets/Scripts/RatingScale.cs` converts between the Unity rating (55-115), the web rating (50-97) and the eFootball rating used by the Featured and Epic packs.

@@ -16,16 +16,13 @@ from MatchEventSimulator import MatchEventSimulator
 from . import league
 from .coaches import COACHES
 from .auth import get_authenticated_player_id
-from .packs import DUPLICATE_REFUND_PERCENT, PACK_BY_ID, PACK_TYPES, PLAYERS, draw, market_value, tier_index, TIER_NAMES
+from .packs import (DUPLICATE_REFUND_PERCENT, EFOOTBALL_BY_ID, EFOOTBALL_PACKS, PACK_BY_ID, PACK_TYPES, PLAYERS, TIER_NAMES,
+                    draw, draw_ef, ef_rating, ef_tier, market_value, tier_index)
+from .sponsors import SPONSORS
 from .storage import (add_player, connect_database, ensure_player_profile, owns_player, profile_dict,
                       refresh_club_rating, remove_player, squad_rows, NEW_CLUB_NAME)
 
 API = "/api/v1"
-SAMPLE_SPONSORS = [
-    {"id": "SP01", "sponsor_name": "Deel", "purchase_price": 20_000_000, "payout": 15_000_000, "seasons": 2},
-    {"id": "SP02", "sponsor_name": "Sela", "purchase_price": 45_000_000, "payout": 35_000_000, "seasons": 3},
-    {"id": "SP03", "sponsor_name": "Adidas", "purchase_price": 120_000_000, "payout": 120_000_000, "seasons": 4},
-]
 
 
 class RenameBody(BaseModel):
@@ -139,14 +136,18 @@ def create_app(database_path: str | Path | None = None) -> FastAPI:
     def packs(profile=Depends(me)):
         owned = owned_list(profile)
         return {"duplicate_refund_percent": DUPLICATE_REFUND_PERCENT,
-                "types": [{**p, "owned_count": owned[i]} for i, p in enumerate(PACK_TYPES)]}
+                "types": [{**p, "owned_count": owned[i]} for i, p in enumerate(PACK_TYPES)],
+                "efootball_types": EFOOTBALL_PACKS}
 
     @app.post(API + "/packs/open")
     def open_packs(body: OpenPacksBody, connection=Depends(db), profile=Depends(me)):
-        pack = PACK_BY_ID.get(body.pack_type_id)
+        ef_pack = EFOOTBALL_BY_ID.get(body.pack_type_id)
+        pack = ef_pack or PACK_BY_ID.get(body.pack_type_id)
         if pack is None:
             raise HTTPException(404, "Unknown pack type.")
-        pid, index = profile["player_id"], PACK_TYPES.index(pack)
+        if ef_pack and body.use_owned:
+            raise HTTPException(409, "eFootball packs cannot be stored; buy and open them.")
+        pid, index = profile["player_id"], (0 if ef_pack else PACK_TYPES.index(pack))
         owned = owned_list(profile)
         funds = profile["club_funds"]
         if body.use_owned:
@@ -159,14 +160,15 @@ def create_app(database_path: str | Path | None = None) -> FastAPI:
                 raise HTTPException(409, "Not enough money.")
             funds -= cost
         pulls = []
-        for player in draw(pack, body.count):          # the server picks the players, never the client
+        for player in (draw_ef(pack, body.count) if ef_pack else draw(pack, body.count)):          # the server picks the players, never the client
             value = market_value(player["rating"])
             duplicate = owns_player(connection, pid, player["id"])
             refund = value * DUPLICATE_REFUND_PERCENT // 100 if duplicate else 0
             seasons = 0 if duplicate else add_player(connection, pid, player["id"], player["name"], player["position"], player["rating"])
             funds += refund
             pulls.append({"player_id": player["id"], "name": player["name"], "position": player["position"],
-                          "rating": player["rating"], "tier": TIER_NAMES[tier_index(player["rating"])],
+                          "rating": player["rating"], "tier": ef_tier(player["rating"]) if ef_pack else TIER_NAMES[tier_index(player["rating"])],
+                          "ef_rating": ef_rating(player["rating"]),
                           "market_value": value, "duplicate": duplicate, "refund": refund, "seasons": seasons})
         connection.execute("UPDATE profiles SET club_funds = ?, owned_packs = ? WHERE player_id = ?", (funds, json.dumps(owned), pid))
         rating = refresh_club_rating(connection, pid)
@@ -242,7 +244,7 @@ def create_app(database_path: str | Path | None = None) -> FastAPI:
 
     @app.get(API + "/admin/catalog")
     def admin_catalog(admin: str = Depends(require_admin)):
-        return {"coaches": COACHES, "sponsors": SAMPLE_SPONSORS, "pack_types": PACK_TYPES, "player_count": len(PLAYERS)}
+        return {"coaches": COACHES, "sponsors": SPONSORS, "pack_types": PACK_TYPES, "player_count": len(PLAYERS)}
 
     @app.get(API + "/admin/profiles")
     def admin_profiles(query: str = "", connection=Depends(db), admin: str = Depends(require_admin)):
@@ -307,7 +309,7 @@ def create_app(database_path: str | Path | None = None) -> FastAPI:
     @app.put(API + "/admin/profiles/{pid}/sponsor")
     def admin_sponsor(pid: str, body: SponsorBody, connection=Depends(db), admin: str = Depends(require_admin)):
         target(connection, pid)
-        sponsor = next((s for s in SAMPLE_SPONSORS if s["id"] == body.sponsor_id), None)
+        sponsor = next((s for s in SPONSORS if s["id"] == body.sponsor_id), None)
         if sponsor is None:
             raise HTTPException(404, "Unknown sponsor.")
         active = [{"id": sponsor["id"], "sponsor_name": sponsor["sponsor_name"], "purchase_price": sponsor["purchase_price"],

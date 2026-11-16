@@ -180,6 +180,22 @@ def play_next_matchday(connection, tier, expected_matchday) -> dict:
             "finished": after["finished"], "season": after["season"]}
 
 
+PROMOTE_COUNT = 3
+
+
+def has_humans(connection, tier) -> bool:
+    return connection.execute("SELECT 1 FROM league_clubs WHERE tier = ? AND is_ai = 0 LIMIT 1", (tier,)).fetchone() is not None
+
+
+def play_out_ai_league(connection, tier) -> None:
+    """A tier with no human clubs is simulated to the end of its season automatically."""
+    while True:
+        s = state(connection, tier)
+        if s["total_matchdays"] == 0 or s["finished"]:
+            return
+        play_next_matchday(connection, tier, s["next_matchday"])
+
+
 def start_next_season(connection, tier, expected_season) -> dict:
     s = state(connection, tier)
     if expected_season != s["season"] or not s["finished"]:
@@ -215,9 +231,28 @@ def start_next_season(connection, tier, expected_season) -> dict:
             "UPDATE profiles SET active_sponsors = ?, sponsor_seasons_left = MAX(0, sponsor_seasons_left - 1), "
             "profile_season = profile_season + 1 WHERE player_id = ?", (json.dumps(sponsors), owner))
 
+    # Promotion and relegation: the top clubs of tier 2 swap places with the bottom clubs of tier 1.
+    promoted, relegated = [], []
+    other = "tier1" if tier == "tier2" else "tier2"
+    if not has_humans(connection, other):
+        play_out_ai_league(connection, other)
+    other_state = state(connection, other)
+    if other_state["finished"] and other_state["total_matchdays"] > 0:
+        lower_table = table if tier == "tier2" else standings(connection, other)["standings"]
+        upper_table = table if tier == "tier1" else standings(connection, other)["standings"]
+        k = min(PROMOTE_COUNT, len(lower_table) // 2, len(upper_table) // 2)
+        promoted = [r["club_id"] for r in lower_table[:k]]
+        relegated = [r["club_id"] for r in upper_table[len(upper_table) - k:]] if k else []
+        for club_id in promoted:
+            connection.execute("UPDATE league_clubs SET tier = 'tier1' WHERE club_id = ?", (club_id,))
+        for club_id in relegated:
+            connection.execute("UPDATE league_clubs SET tier = 'tier2' WHERE club_id = ?", (club_id,))
+        connection.execute("UPDATE league_seasons SET season_number = season_number + 1, next_matchday = 0 WHERE tier = ?", (other,))
     connection.execute("UPDATE league_seasons SET season_number = season_number + 1, next_matchday = 0 WHERE tier = ?", (tier,))
     after = state(connection, tier)
-    return {"season": after["season"], "next_matchday": 0, "total_matchdays": after["total_matchdays"], "expired_players": expired}
+    names = club_names(connection)
+    return {"season": after["season"], "next_matchday": 0, "total_matchdays": after["total_matchdays"], "expired_players": expired,
+            "promoted": [names[c] for c in promoted], "relegated": [names[c] for c in relegated]}
 
 
 def restart_leagues(connection) -> None:

@@ -83,3 +83,41 @@ def draw(pack: dict, count: int, rng: random.Random | None = None) -> list[dict]
         pool = [p for p in PLAYERS if p["rating"] >= pack["guarantee_min_rating"]]
         picks[-1] = rng.choice(pool)
     return picks
+
+
+# ---------- eFootball-style packs: Featured and Epic, rated on the eFootball scale ----------
+def ef_rating(rating: int) -> int:
+    """Unity rating -> eFootball rating (115 -> 99, 85 -> 80, 55 -> 60)."""
+    return round(60 + (rating - 55) * 0.65)
+
+
+def ef_tier(rating: int) -> str:
+    ef = ef_rating(rating)
+    return "Epic" if ef >= 90 else "Featured" if ef >= 80 else "Standard"
+
+
+EFOOTBALL_PACKS = [
+    {"type_id": "featured", "name": "Featured Pack", "price": 10_000_000, "min_rating": 85,
+     "ef_bands": [[80, 89, 70], [90, 94, 25], [95, 99, 5]], "guarantee_ef": 90},
+    {"type_id": "epic", "name": "Epic Pack", "price": 600_000_000, "min_rating": 101,
+     "ef_bands": [[90, 94, 80], [95, 99, 20]], "guarantee_ef": 95},
+]
+EFOOTBALL_BY_ID = {p["type_id"]: p for p in EFOOTBALL_PACKS}
+
+
+def draw_ef(pack: dict, count: int, rng: random.Random | None = None) -> list[dict]:
+    rng = rng or random.SystemRandom()
+    pool = [p for p in PLAYERS if p["rating"] >= pack["min_rating"]]
+    picks = []
+    for _ in range(count):
+        roll, running, band = rng.uniform(0, 100), 0.0, pack["ef_bands"][0]
+        for candidate in pack["ef_bands"]:
+            running += candidate[2]
+            if roll < running:
+                band = candidate
+                break
+        options = [p for p in pool if band[0] <= ef_rating(p["rating"]) <= band[1]] or pool
+        picks.append(rng.choice(options))
+    if count >= 10 and not any(ef_rating(p["rating"]) >= pack["guarantee_ef"] for p in picks):
+        picks[-1] = rng.choice([p for p in pool if ef_rating(p["rating"]) >= pack["guarantee_ef"]] or pool)
+    return picks

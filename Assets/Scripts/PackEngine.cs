@@ -21,6 +21,11 @@ public class PackType
     public int[] chances;       // percent chance of Bronze, Silver, Gold, Elite (add up to 100)
     public int guaranteeTier;   // an x10 always contains at least one player of this tier or better (0 Bronze .. 3 Elite)
     public string description;
+
+    // eFootball-style packs (Featured, Epic): odds are given per eFootball rating band instead of per tier.
+    public bool eFootball;
+    public int[][] efBands;      // { minEf, maxEf, percent } for each band; percents add up to 100
+    public int efGuarantee;      // an x10 always contains someone with at least this eFootball rating
 }
 
 public static class PackEngine
@@ -40,6 +45,12 @@ public static class PackEngine
             description = "Every player is 80+. A x10 always has a Gold or better." },
         new PackType { name = "Elite Pack",    price = 40_000_000, minRating = 95, chances = new[] { 0, 0, 85, 15 }, guaranteeTier = 3,
             description = "Every player is 95+. A x10 always has an Elite." },
+        new PackType { name = "Featured Pack", price = 10_000_000, minRating = 85, eFootball = true, efGuarantee = 90,
+            efBands = new[] { new[] { 80, 89, 70 }, new[] { 90, 94, 25 }, new[] { 95, 99, 5 } },
+            description = "eFootball ratings: 80-89 70%, 90-94 25%, 95+ 5%. A x10 always has a 90+." },
+        new PackType { name = "Epic Pack", price = 600_000_000, minRating = 101, eFootball = true, efGuarantee = 95,
+            efBands = new[] { new[] { 90, 94, 80 }, new[] { 95, 99, 20 } },
+            description = "eFootball ratings: 90-94 80%, 95+ 20%. A x10 always has a 95+." },
     };
 
     public static string TierOf(int rating)
@@ -95,10 +106,24 @@ public static class PackEngine
     {
         List<Footballer> all = PlayerCatalog.Create();
         List<Footballer> picks = new List<Footballer>();
-        for (int i = 0; i < count; i++) picks.Add(RandomPlayer(all, type, RollTier(type, rng), rng));
+        for (int i = 0; i < count; i++)
+            picks.Add(type.eFootball ? RandomEfPlayer(all, type, rng) : RandomPlayer(all, type, RollTier(type, rng), rng));
+
+        // eFootball x10 guarantee
+        if (type.eFootball && count >= 10)
+        {
+            bool good = false;
+            foreach (Footballer f in picks) if (RatingScale.ToEFootball(f.rating) >= type.efGuarantee) { good = true; break; }
+            if (!good)
+            {
+                List<Footballer> top = new List<Footballer>();
+                foreach (Footballer f in all) if (RatingScale.ToEFootball(f.rating) >= type.efGuarantee) top.Add(f);
+                if (top.Count > 0) picks[picks.Count - 1] = top[rng.Next(top.Count)];
+            }
+        }
 
         // x10 guarantee: if nobody reached the guaranteed tier, the last pull is re-drawn from that tier.
-        if (count >= 10)
+        if (count >= 10 && !type.eFootball)
         {
             bool ok = false;
             foreach (Footballer f in picks) if (TierIndex(f.rating) >= type.guaranteeTier) { ok = true; break; }
@@ -108,7 +133,7 @@ public static class PackEngine
         List<PackPull> pulls = new List<PackPull>();
         foreach (Footballer f in picks)
         {
-            PackPull pull = new PackPull { player = f, tier = TierOf(f.rating) };
+            PackPull pull = new PackPull { player = f, tier = type.eFootball ? "eF " + RatingScale.ToEFootball(f.rating) + " " + RatingScale.EFootballTier(RatingScale.ToEFootball(f.rating)) : TierOf(f.rating) };
             if (TeamBuilder.FindSquadPlayer(p, f.id) != null)
             {
                 pull.duplicate = true;
@@ -123,6 +148,23 @@ public static class PackEngine
             pulls.Add(pull);
         }
         return pulls;
+    }
+
+    private static Footballer RandomEfPlayer(List<Footballer> all, PackType type, Random rng)
+    {
+        int roll = rng.Next(100), sum = 0;
+        int[] band = type.efBands[0];
+        foreach (int[] b in type.efBands) { sum += b[2]; if (roll < sum) { band = b; break; } }
+        List<Footballer> pool = new List<Footballer>(), fallback = new List<Footballer>();
+        foreach (Footballer f in all)
+        {
+            if (f.rating < type.minRating) continue;
+            fallback.Add(f);
+            int ef = RatingScale.ToEFootball(f.rating);
+            if (ef >= band[0] && ef <= band[1]) pool.Add(f);
+        }
+        if (pool.Count == 0) pool = fallback.Count > 0 ? fallback : all;
+        return pool[rng.Next(pool.Count)];
     }
 
     private static int RollTier(PackType type, Random rng)

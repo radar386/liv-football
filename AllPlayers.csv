@@ -103,8 +103,8 @@ player_0101,Wes Quill,Brindle Rovers,CM,75,1800000
 player_0102,Gael Dvorak,Brindle Rovers,GK,69,1100000
 player_0103,Alvaro Nakamura,Brindle Rovers,CDM,67,900000
 player_0104,Stefan Novak,Brindle Rovers,LB,66,800000
-player_0105,Leandro Eriksen,Caldmoor Athletic,ST,112,44200000
-player_0106,Wilmer Voss,Caldmoor Athletic,GK,108,31300000
+player_0105,Wilmer Voss,Caldmoor Athletic,GK,115,57200000
+player_0106,Leandro Eriksen,Caldmoor Athletic,ST,114,52500000
 player_0107,Leandro Wolfe,Caldmoor Athletic,ST,96,11100000
 player_0108,Callum Ishikawa,Caldmoor Athletic,CDM,94,9400000
 player_0109,Kwame Pereira,Caldmoor Athletic,RB,93,8600000
@@ -207,7 +207,7 @@ player_0205,Nolan Halvorsen,Dunwick Town,CM,68,1000000
 player_0206,Callum Quill,Dunwick Town,CAM,68,1000000
 player_0207,Leandro Silva,Dunwick Town,CB,67,900000
 player_0208,Yannick Zorn,Dunwick Town,CM,60,500000
-player_0209,Abel Cortez,Eastvale City,RB,105,24200000
+player_0209,Abel Cortez,Eastvale City,RB,112,44200000
 player_0210,Pavel Keller,Eastvale City,GK,90,6600000
 player_0211,Viktor Vermeer,Eastvale City,LB,90,6600000
 player_0212,Zeke Zorn,Eastvale City,CB,88,5600000
@@ -228,8 +228,8 @@ player_0226,Tariq Silva,Eastvale City,CM,76,2000000
 player_0227,Alvaro Zielinski,Eastvale City,ST,76,2000000
 player_0228,Ivan Hartmann,Eastvale City,CDM,74,1700000
 player_0229,Joaquin Kinnear,Eastvale City,CB,70,1200000
-player_0230,Marek Petrov,Elmstead Olympic,CM,109,34100000
-player_0231,Tariq Ortega,Elmstead Olympic,RW,108,31300000
+player_0230,Tariq Ortega,Elmstead Olympic,RW,113,48100000
+player_0231,Marek Petrov,Elmstead Olympic,CM,110,37200000
 player_0232,Ramon Okafor,Elmstead Olympic,ST,97,12100000
 player_0233,Gideon Calloway,Elmstead Olympic,GK,94,9400000
 player_0234,Aiden Ortega,Elmstead Olympic,CB,93,8600000
@@ -333,7 +333,7 @@ player_0331,Dario Uzun,Glenrock Rovers,CB,75,1800000
 player_0332,Kasper Zorn,Glenrock Rovers,CM,74,1700000
 player_0333,Ivan Eriksen,Glenrock Rovers,CDM,71,1300000
 player_0334,Kofi Voss,Glenrock Rovers,CM,69,1100000
-player_0335,Lars Pereira,Harrowgate Rangers,CM,105,24200000
+player_0335,Lars Pereira,Harrowgate Rangers,CM,111,40500000
 player_0336,Felix Zamora,Harrowgate Rangers,LB,98,13200000
 player_0337,Vito Urquhart,Harrowgate Rangers,CB,90,6600000
 player_0338,Hugo Novak,Harrowgate Rangers,LW,89,6100000
@@ -499,7 +499,7 @@ player_0497,Kwame Calloway,Larkspur Wanderers,CM,74,1700000
 player_0498,Elias Brook,Larkspur Wanderers,ST,70,1200000
 player_0499,Jorge Lacroix,Larkspur Wanderers,LW,68,1000000
 player_0500,Ulises Ronaldsen,Larkspur Wanderers,GK,64,700000
-player_0501,Leandro Barros,Lowmere Rovers,CM,109,34100000
+player_0501,Leandro Barros,Lowmere Rovers,CM,113,48100000
 player_0502,Beau Kovacs,Lowmere Rovers,CB,99,14400000
 player_0503,Kofi Nyberg,Lowmere Rovers,CM,89,6100000
 player_0504,Emil Ivanov,Lowmere Rovers,CM,87,5100000
@@ -602,7 +602,7 @@ player_0600,Emil Hartmann,Northcliff Town,LB,67,900000
 player_0601,Quinn Esposito,Northcliff Town,RW,67,900000
 player_0602,Beau Nakamura,Northcliff Town,CM,65,800000
 player_0603,Ramon Halvorsen,Northcliff Town,LB,64,700000
-player_0604,Nolan Greaves,Oakhaven City,CB,108,31300000
+player_0604,Nolan Greaves,Oakhaven City,CB,114,52500000
 player_0605,Fabian Fontaine,Oakhaven City,CB,93,8600000
 player_0606,Damon Dufresne,Oakhaven City,CB,88,5600000
 player_0607,Luca Ishikawa,Oakhaven City,GK,86,4700000
@@ -889,7 +889,7 @@ player_0887,Hamza Dvorak,Underhill Town,CDM,75,1800000
 player_0888,Felix Rasmussen,Underhill Town,RB,74,1700000
 player_0889,Zeke Lombardi,Underhill Town,CAM,74,1700000
 player_0890,Dario Abara,Underhill Town,LW,74,1700000
-player_0891,Bruno Jovanovic,Valewood Rovers,CM,109,34100000
+player_0891,Bruno Jovanovic,Valewood Rovers,CM,112,44200000
 player_0892,Valentin Zorn,Valewood Rovers,RB,104,22200000
 player_0893,Idris Eriksen,Valewood Rovers,RB,94,9400000
 player_0894,Xavier Cortez,Valewood Rovers,CDM,93,8600000
@@ -971,8 +971,8 @@ player_0969,Oren Arden,Whitcombe Wanderers,ST,76,2000000
 player_0970,Uri Lacroix,Whitcombe Wanderers,LB,73,1500000
 player_0971,Valentin Nyberg,Whitcombe Wanderers,RW,70,1200000
 player_0972,Kwame Brook,Whitcombe Wanderers,GK,65,800000
-player_0973,Yusuf Eriksen,Wrenfield Albion,CDM,112,44200000
-player_0974,Cyrus Urquhart,Wrenfield Albion,LB,112,44200000
+player_0973,Yusuf Eriksen,Wrenfield Albion,CDM,115,57200000
+player_0974,Cyrus Urquhart,Wrenfield Albion,LB,115,57200000
 player_0975,Wilmer Yilmaz,Wrenfield Albion,LB,97,12100000
 player_0976,Hector Ishikawa,Wrenfield Albion,CM,96,11100000
 player_0977,Matteo Ortega,Wrenfield Albion,CAM,94,9400000
@@ -1012,7 +1012,7 @@ player_1010,Felix Thorne,Yarrow Town,CAM,70,1200000
 player_1011,Quinn Yeboah,Yarrow Town,ST,69,1100000
 player_1012,Abel Jansen,Yarrow Town,LB,67,900000
 player_1013,Stefan Hartmann,Yarrow Town,CM,64,700000
-player_1014,Oren Eriksen,Zephyr Cove City,GK,109,34100000
+player_1014,Oren Eriksen,Zephyr Cove City,GK,111,40500000
 player_1015,Yusuf Dvorak,Zephyr Cove City,CB,98,13200000
 player_1016,Oren Fontaine,Zephyr Cove City,ST,94,9400000
 player_1017,Gideon Thorne,Zephyr Cove City,LB,93,8600000

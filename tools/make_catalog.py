@@ -49,9 +49,12 @@ for ci, club in enumerate(CLUBS):
         if rng.random() < 0.55:
             club_rows[k][3] += rng.randint(5, 14)
     for row in club_rows:
-        row[3] = max(55, min(112, row[3]))
+        row[3] = max(55, min(115, row[3]))
         rows.append(row)
 
+# Make sure the top of the game is deep enough for the Superstar pack (110+): lift the 9 best players.
+for k, r in enumerate(sorted(rows, key=lambda r: -r[3])[:12]):
+    r[3] = max(r[3], 110 + (k * 5) % 6)
 assert len(rows) == 1034
 rows.sort(key=lambda r: (r[1], -r[3]))
 for i, r in enumerate(rows):
