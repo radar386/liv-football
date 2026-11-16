@@ -184,7 +184,10 @@ const POSMAP=Object.fromEntries(("Courtois:GK,Carvajal:RB,Militao:CB,Rudiger:CB,
 const COARSE={G:"GK",D:"CB",M:"CM",F:"ST"};
 const FILLPOS=["GK","CB","CB","LB","RB","CM","CDM","CAM","LM","RM","ST","ST","LW","RW"];
 const TACTICS=["Balanced","Attacking","Defensive"];
-const PACKS=[{n:"Standard",price:1e6,min:0,ch:[55,35,9,1],g:1},{n:"Premium",price:5e6,min:65,ch:[0,60,34,6],g:2},{n:"Elite",price:20e6,min:75,ch:[0,0,75,25],g:3},{n:"Icon",price:100e6,min:0,ch:[0,0,0,100],g:3,only:"Icons"}];
+const PACKS=[{n:"Standard",price:1e6,min:0,ch:[55,35,9,1],g:1},{n:"Premium",price:5e6,min:65,ch:[0,60,34,6],g:2},{n:"Elite",price:20e6,min:75,ch:[0,0,75,25],g:3},{n:"Icon",price:100e6,min:0,ch:[0,0,0,100],g:3,only:"Icons"},
+ {n:"Featured",price:10e6,min:73,ch:[0,0,0,0],g:3,ef:true,def:10,bands:[[80,89,70],[90,94,25],[95,99,5]],gef:90,info:"eFootball ratings: 80-89 70% · 90-94 25% · 95+ 5%, x10 has a 90+"},
+ {n:"Epic",price:50e6,min:85,ch:[0,0,0,0],g:3,ef:true,def:3,bands:[[90,94,80],[95,99,20]],gef:95,info:"eFootball ratings: 90-94 80% · 95+ 20%, x10 has a 95+"}];
+const EF=o=>Math.round(60+(o-50)*0.87),EFT=r=>r>=90?"Epic":r>=80?"Featured":"Standard";
 const TIERS=["Bronze","Silver","Gold","Elite"];
 const tierOf=o=>o<65?0:o<75?1:o<85?2:3;
 const price=o=>Math.max(50000,Math.round(100000*Math.exp((o-55)*.2)/50000)*50000);
@@ -256,7 +259,7 @@ function seedSheet(p){const D=SHEETS[SK(p)];if(!D)return;const r=mk(777),fc=v=>M
 const seedF1=seedSheet;
 let S=load()||{profiles:USERS.map(newProfile),cur:null,league:null,settings:{mute:false,vol:1,tut:false}};
 S.settings=S.settings||{mute:false,vol:1,tut:false};
-S.stock=S.stock||[20,10,5];if(S.stock[3]==null)S.stock[3]=2;S.profiles.forEach(p=>{p.packs=p.packs||[0,0,0];while(p.packs.length<4)p.packs.push(0)});   // packs admins have placed in the shop
+S.stock=S.stock||[20,10,5];if(S.stock[3]==null)S.stock[3]=2;while(S.stock.length<PACKS.length)S.stock.push(PACKS[S.stock.length].def||5);S.profiles.forEach(p=>{p.packs=p.packs||[0,0,0];while(p.packs.length<PACKS.length)p.packs.push(0)});   // packs admins have placed in the shop
 const me=()=>S.profiles.find(p=>p.user===S.cur);
 const fm=n=>Math.round(n).toLocaleString("en-US");
 const rnd=a=>Math.floor(Math.random()*a);
@@ -464,7 +467,7 @@ function panel(p){switch(tab){
  case"buy":return buyView(p)
  case"admin":return adminView(p);
  case"settings":return`<p class="mute">${ONL.on?ONL.status:"Offline: this league saves in this browser only. Open the page from your Claude link to join the online league."}</p><div class="row"><label><input type="checkbox" id="mute" ${S.settings.mute?"checked":""}> Mute sounds</label><label>Volume <input type="range" id="vol" min="0" max="1" step=".1" value="${S.settings.vol}"></label></div><h3>Player photos</h3><p class="mute">Pick many of your own image files at once. Name each file after the player (Pedri.png, Bernardo Silva.jpg). They stay in this browser only.</p><div class="row"><label class="ph">Import photos<input type="file" accept="image/*" multiple id="bulkph" hidden></label><button data-act="clrph">Remove all photos</button></div><div class="mute" id="bulkres"></div><h3>Club crest</h3><div class="row">${crest(p.user,56)}<label class="ph">Upload crest<input type="file" accept="image/*" data-crest="${p.user}" hidden></label>${S.crests&&S.crests[p.user]?`<button class="ph" data-uncrest="${p.user}">Remove</button>`:""}</div><div class="row"><button data-act="tutagain">Show tutorial</button><button data-act="wipe">Erase my save</button></div>`}}
-function packsView(p){return`<p class="mute">Admins place packs in the shop, and they run out. In stock: Standard ${S.stock[0]} · Premium ${S.stock[1]} · Elite ${S.stock[2]} · Icon ${S.stock[3]}</p><div class="list">${PACKS.map((k,i)=>`<div class="item"><span class="nm"><b>${k.n} Pack</b><small>${fm(k.price)} each · ${TIERS.map((t,j)=>t+" "+k.ch[j]+"%").filter((_,j)=>k.ch[j]).join(" · ")}${k.min?" · "+k.min+"+ only":""} · ${S.stock[i]} left</small></span>
+function packsView(p){return`<p class="mute">Admins place packs in the shop, and they run out. In stock: ${PACKS.map((k,i)=>k.n+" "+S.stock[i]).join(" · ")}</p><div class="list">${PACKS.map((k,i)=>`<div class="item"><span class="nm"><b>${k.n} Pack</b><small>${fm(k.price)} each · ${k.ef?k.info:TIERS.map((t,j)=>t+" "+k.ch[j]+"%").filter((_,j)=>k.ch[j]).join(" · ")}${k.min&&!k.ef?" · "+k.min+"+ only":""} · ${S.stock[i]} left</small></span>
  <button data-pack="${i}:1:0" ${S.stock[i]<1?"disabled":""}>Open x1</button><button data-pack="${i}:10:0" ${S.stock[i]<10?"disabled":""}>Open x10</button></div>`).join("")}</div>
  <p class="mute">Duplicates pay back 30% of the player's value. A x10 always has a better player.</p><div class="cards" id="cards">${reveal?reveal.map(c=>c).join(""):""}</div>`}
 function leagueView(p){const L=S.league,dv=window._vd||p.div,D=L.divs[dv],done=L.round>=WEEKS;const rows=Object.entries(D.table).map(([u,t])=>({u,...t,gd:t.gf-t.ga})).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf);
@@ -477,7 +480,7 @@ function leagueView(p){const L=S.league,dv=window._vd||p.div,D=L.divs[dv],done=L
  <p class="mute">${dv===1?"Division 1 is the real clubs. Top three win 200M, 120M and 80M. The bottom three are relegated to Division 2 (red). The top 8 play the Champions League and places 9 to 14 the Europa League.":dv===2?"Division 2: the top three win 50M, 30M and 20M and are promoted to Division 1 (green). The bottom three are relegated to Division 3 (red). The top two also play the Europa League.":"Division 3: the top three win 20M, 10M and 5M and are promoted to Division 2 (green)."} Win +10M, draw +3M.</p>`}
 function week(d){const x=new Date(d),k=(x.getDay()+6)%7;x.setDate(x.getDate()-k);return x.toISOString().slice(0,10)}
 function adminView(p){const left=2-p.dropLog.filter(d=>week(d)===week(new Date())).length;
- return`<h3>Place packs in the shop</h3><p class="mute">Players spend money to open these. Each admin can place packs twice a week (resets Monday). Left this week: ${left}. In stock now: Standard ${S.stock[0]} · Premium ${S.stock[1]} · Elite ${S.stock[2]} · Icon ${S.stock[3]}</p><div class="row"><select id="dtype">${PACKS.map((k,i)=>`<option value="${i}">${k.n}</option>`).join("")}</select><input id="dcount" type="number" min="1" max="1000" value="10" style="width:80px"><button class="pri" data-act="drop" ${left?"":"disabled"}>Place in shop</button></div>
+ return`<h3>Place packs in the shop</h3><p class="mute">Players spend money to open these. Each admin can place packs twice a week (resets Monday). Left this week: ${left}. In stock now: ${PACKS.map((k,i)=>k.n+" "+S.stock[i]).join(" · ")}</p><div class="row"><select id="dtype">${PACKS.map((k,i)=>`<option value="${i}">${k.n}</option>`).join("")}</select><input id="dcount" type="number" min="1" max="1000" value="10" style="width:80px"><button class="pri" data-act="drop" ${left?"":"disabled"}>Place in shop</button></div>
  <h3>Club links</h3><p class="mute">Send each player their own link. It opens their club directly. If the link does not open it, they can type the code in "Find your club".</p><div class="list">${real().map(x=>`<div class="item"><span class="nm">${x.club}<small>Code: ${x.user}</small></span><input readonly value="${clubLink(x.user)}" style="min-width:200px;flex:1" onfocus="this.select()"><button data-copy="${clubLink(x.user)}">Copy</button></div>`).join("")}</div>
  <h3>Set a club's crest</h3><div class="row"><select id="cwho">${real().map(x=>`<option value="${x.user}">${x.club}</option>`).join("")}</select><label class="ph">Upload crest<input type="file" accept="image/*" id="cadmin" hidden></label></div>
  <h3>Give money to a club</h3><div class="row"><select id="gwho">${real().map(x=>`<option value="${x.user}">${x.club}</option>`).join("")}</select><input id="gamt" type="number" value="10000000" style="width:130px"><button data-act="give">Give</button></div>`}
@@ -500,11 +503,13 @@ function deal(kind,id){const p=me();let it,pr;
 function openPacks(pi,count,owned){const p=me(),k=PACKS[pi];const cost=k.price*count;
  if(owned){if(p.packs[pi]<count){msg="You do not own that many.";snd("err");return render()}p.packs[pi]-=count}else{if(S.stock[pi]<count){msg="Only "+S.stock[pi]+" left in stock. Ask an admin to place more.";snd("err");return render()}if(p.money<cost){msg="You need "+fm(cost)+" for that.";snd("err");return render()}S.stock[pi]-=count;p.money-=cost}
  const pool=CAT.filter(x=>x.ovr>=k.min&&(k.only?x.club===k.only:x.club!=="Icons"));const picks=[];
- for(let i=0;i<count;i++){let r=rnd(100),t=0,s=0;for(let j=0;j<4;j++){s+=k.ch[j];if(r<s){t=j;break}}picks.push(pick(pool,t))}
- if(count>=10&&!picks.some(x=>tierOf(x.ovr)>=k.g))picks[picks.length-1]=pick(pool,k.g);
+ const efPick=()=>{let r=rnd(100),s=0,b=k.bands[0];for(const q of k.bands){s+=q[2];if(r<s){b=q;break}}const a=pool.filter(x=>EF(x.ovr)>=b[0]&&EF(x.ovr)<=b[1]);const l=a.length?a:pool.filter(x=>EF(x.ovr)>=b[0]);return(l.length?l:pool)[rnd((l.length?l:pool).length)]};
+ for(let i=0;i<count;i++){if(k.ef){picks.push(efPick());continue}let r=rnd(100),t=0,s=0;for(let j=0;j<4;j++){s+=k.ch[j];if(r<s){t=j;break}}picks.push(pick(pool,t))}
+ if(count>=10&&k.ef&&!picks.some(x=>EF(x.ovr)>=k.gef)){const a=pool.filter(x=>EF(x.ovr)>=k.gef);if(a.length)picks[picks.length-1]=a[rnd(a.length)]}
+ if(count>=10&&!k.ef&&!picks.some(x=>tierOf(x.ovr)>=k.g))picks[picks.length-1]=pick(pool,k.g);
  let refund=0;const cards=[];picks.sort((a,b)=>a.ovr-b.ovr);
  for(const x of picks){const dup=p.squad.some(s=>s.id===x.id);if(dup){const r=Math.round(price(x.ovr)*.3);refund+=r;p.money+=r}else p.squad.push({id:x.id,name:x.name,pos:x.pos,ovr:x.ovr,club:x.club});
-  const t=TIERS[tierOf(x.ovr)];cards.push(fcCard(x,dup?`<span style="color:#9dffc8;font-weight:700">Duplicate +${fm(price(x.ovr)*.3)}</span>`:`<span>${t}</span>`))}
+  const t=k.ef?"eF "+EF(x.ovr)+" · "+EFT(EF(x.ovr)):TIERS[tierOf(x.ovr)];cards.push(fcCard(x,dup?`<span style="color:#9dffc8;font-weight:700">Duplicate +${fm(price(x.ovr)*.3)}</span>`:`<span${k.ef?` style="font-weight:700;color:${EF(x.ovr)>=90?"#ffd24a":"#6db8ff"}"`:""}>${t}</span>`))}
  msg="Opened "+k.n+" x"+count+(refund?". Duplicates paid back "+fm(refund)+".":".");reveal=[];render();save();
  const box=document.getElementById("cards");let i=0;snd("click");
  const step=()=>{if(i>=cards.length)return;reveal.push(cards[i]);box.insertAdjacentHTML("beforeend",cards[i]);snd(TIERS[tierOf(picks[i].ovr)]);i++;setTimeout(step,count>1?450:100)};setTimeout(step,500)}
