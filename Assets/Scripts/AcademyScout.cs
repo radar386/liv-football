@@ -111,6 +111,7 @@ public static class AcademyScout
             }
             p.academyContracts.RemoveAt(i);
         }
+        Wages.Pay(p);   // players are paid at the end of every season
         return left;
     }
 
