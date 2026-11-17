@@ -32,6 +32,6 @@ All player and club names in the catalog are invented. Coach names and sponsor b
 
 ## Play without signing in (GitHub Pages)
 `docs/index.html` is the same web game. In the repo go to Settings > Pages, choose Branch `main`, folder `/docs`, Save.
-The game then opens at https://radar386.github.io/liv-football/ for anyone, no account needed.
+The landing page opens at https://radar386.github.io/liv-football/ and the game at https://radar386.github.io/liv-football/play/ for anyone, no account needed.
 It runs in offline mode there: saves stay in that browser, and the online league (shared clubs, crests, photos) does not work.
-Keep `docs/index.html` in step with `web/index.html` (copy the file after each change).
+`docs/index.html` is the landing page. Keep `docs/play/index.html` in step with `web/index.html` (copy the file after each change).
