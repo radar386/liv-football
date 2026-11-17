@@ -1,14 +1,13 @@
 using System;
 
-// Players are paid every season: 12% of his market value, taken when the season ends.
-// If the club cannot cover the bill it pays what it has and the rest is not carried over.
+// Players are paid every season, by rating (Unity scale 55-115): about 6M at 80, 36M at 100, 88M at 110.
+// The money is taken when the season ends. A club that cannot cover the bill pays what it has;
+// nothing is carried over. Same curve as backend/online_backend/wages.py.
 public static class Wages
 {
-    public const double Share = 0.12;
-
     public static long WageOf(int rating)
     {
-        long w = (long)(Math.Round(PlayerCatalog.ValueOf(rating) * Share / 10000.0) * 10000);
+        long w = (long)(Math.Round(1_000_000 * Math.Exp((rating - 60) * 0.09) / 10000.0) * 10000);
         return Math.Max(10000, w);
     }
 

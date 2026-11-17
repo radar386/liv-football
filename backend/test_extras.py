@@ -57,6 +57,24 @@ class ExtrasTests(unittest.TestCase):
         self.assertEqual(counts, {"tier1": 20, "tier2": 21})
         self.assertEqual(self.client.get("/api/v1/league/fixtures").json()["season"], 2)
 
+    def test_wages_are_paid_at_season_end(self):
+        from online_backend.wages import wage_for
+        self.assertGreater(wage_for(100), wage_for(80))
+        self.client.get("/api/v1/profile")
+        con = connect_database(self.app.state.database_path)
+        for i in range(3):
+            con.execute("INSERT INTO club_squad VALUES ('p1', ?, 'X', 'ST', 100, 1)", (f"w{i}",))
+            con.execute("INSERT INTO squad_contracts VALUES ('p1', ?, 3)", (f"w{i}",))
+        con.commit(); con.close()
+        schedule = self.client.get("/api/v1/league/fixtures").json()
+        for md in range(schedule["total_matchdays"]):
+            self.client.post("/api/v1/league/matchdays/next", json={"expected_matchday": md})
+        before = self.client.get("/api/v1/profile").json()["club_funds"]
+        result = self.client.post("/api/v1/league/next-season", json={"expected_season": 1}).json()
+        self.assertEqual(result["wages"]["p1"]["bill"], 3 * wage_for(100))
+        self.assertEqual(result["wages"]["p1"]["paid"], result["wages"]["p1"]["bill"])
+        self.assertGreater(before, 0)
+
 
 if __name__ == "__main__":
     unittest.main()

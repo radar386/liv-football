@@ -7,6 +7,7 @@ from MatchEventSimulator import MatchEventSimulator
 from SponsorRewardManager import SponsorRewardManager
 
 from .storage import refresh_club_rating, remove_player
+from .wages import wage_bill
 
 TIERS = ("tier1", "tier2")
 PRIZES = [200_000_000, 120_000_000, 80_000_000, 50_000_000, 30_000_000, 20_000_000]
@@ -208,6 +209,14 @@ def start_next_season(connection, tier, expected_season) -> dict:
         if owner:
             prize = PRIZES[row["position"] - 1] if row["position"] <= len(PRIZES) else DEFAULT_PRIZE
             connection.execute("UPDATE profiles SET club_funds = club_funds + ? WHERE player_id = ?", (prize, owner))
+    wages_paid: dict[str, dict] = {}
+    for owner in humans.values():           # wages come out after prizes; a club that cannot pay pays what it has
+        bill = wage_bill(connection, owner)
+        funds = connection.execute("SELECT club_funds FROM profiles WHERE player_id = ?", (owner,)).fetchone()["club_funds"]
+        paid = min(max(0, funds), bill)
+        connection.execute("UPDATE profiles SET club_funds = club_funds - ? WHERE player_id = ?", (paid, owner))
+        if bill:
+            wages_paid[owner] = {"bill": bill, "paid": paid}
 
     expired: dict[str, list[str]] = {}
     for owner in humans.values():
@@ -251,7 +260,7 @@ def start_next_season(connection, tier, expected_season) -> dict:
     connection.execute("UPDATE league_seasons SET season_number = season_number + 1, next_matchday = 0 WHERE tier = ?", (tier,))
     after = state(connection, tier)
     names = club_names(connection)
-    return {"season": after["season"], "next_matchday": 0, "total_matchdays": after["total_matchdays"], "expired_players": expired,
+    return {"season": after["season"], "next_matchday": 0, "total_matchdays": after["total_matchdays"], "expired_players": expired, "wages": wages_paid,
             "promoted": [names[c] for c in promoted], "relegated": [names[c] for c in relegated]}
 
 

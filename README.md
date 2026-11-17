@@ -14,11 +14,12 @@ The repo needs the rest of the Unity project (`ProjectSettings/`, `Packages/`, s
 | `backend/` | Python match simulator, peer verification, league tiers and sponsor payouts, with unit tests (`python3 -m unittest`). |
 | `web/index.html` | The single-file web version of the game. Open it in a browser, no build needed. |
 | `AllPlayers.csv`, `tools/make_catalog.py` | 1,034 invented players in 50 invented clubs. Edit the script and run it to regenerate the CSV and `Assets/Scripts/PlayerCatalog.cs`. |
+| `tools/csharp_check/` | `run.sh` compiles and tests the pure-C# logic (packs, catalogs, wages) with mono, no Unity needed. |
 | `installer/` | Inno Setup script and EULA for the Windows installer. |
 
 ## Rules in short
 - Ratings are the only thing that decides a match; formation does not.
-- Players are paid 12% of their market value every season, after sponsor income.
+- Players are paid a wage by rating every season (web game and Unity: about 6M at rating 80, 36M at 100 on the Unity scale), after sponsor income.
 - Scouting rolls a rating from 40 up to your team ovr and never above it.
 - Contracts: academy players leave when theirs ends; others can be renewed for a fee.
 
