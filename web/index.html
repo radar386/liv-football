@@ -106,7 +106,7 @@ const worldJson=()=>{const o={np:S.profiles.filter(p=>p.npc)};WKEYS.forEach(k=>{
 function inLeague(p){const L=S.league;return !!(L&&L.divs&&L.divs[p.div]&&L.divs[p.div].table[p.user])}
 function softRender(){const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))return;render()}
 function clearInj(p){if(p&&!p.injClr1){(p.squad||[]).forEach(x=>{x.out=0});p.injClr1=1}}
-function adoptClub(d){let p;try{p=JSON.parse(d.json)}catch(e){return false}if(!p||!p.user)return false;clearInj(p);if(!p.npc&&SK(p)&&(p.f1seed!==sheetHash(SK(p))||sheetLost(p))){seedSheet(p);p.formed=true}const i=S.profiles.findIndex(x=>x.user===p.user);if(i<0)S.profiles.push(p);else S.profiles[i]=p;ONL.last["c:"+p.user]=d.json;if(d.own)ONL.owners[p.user]=d.own;return true}
+function adoptClub(d){let p;try{p=JSON.parse(d.json)}catch(e){return false}if(!p||!p.user)return false;if(p.crestImg){S.crests=S.crests||{};S.crests[p.user]=p.crestImg;delete p.crestImg}clearInj(p);if(!p.npc&&SK(p)&&(p.f1seed!==sheetHash(SK(p))||sheetLost(p))){seedSheet(p);p.formed=true}const i=S.profiles.findIndex(x=>x.user===p.user);if(i<0)S.profiles.push(p);else S.profiles[i]=p;ONL.last["c:"+p.user]=d.json;if(d.own)ONL.owners[p.user]=d.own;return true}
 function adoptWorld(d){let w;try{w=JSON.parse(d.json)}catch(e){return false}WKEYS.forEach(k=>{if(w[k]!==undefined)S[k]=w[k]});if(w.np){const ids=new Set(w.np.map(x=>x.user));S.profiles=S.profiles.filter(p=>!p.npc||ids.has(p.user));for(const n of w.np){const i=S.profiles.findIndex(x=>x.user===n.user);if(i<0)S.profiles.push(n);else S.profiles[i]=n}}ONL.last.w=d.json;ONL.rev=d.rev||0;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}return true}
 function checkMembers(){if(!ONL.host)return;const L=S.league;if(!L||!L.divs||S.profiles.some(p=>!p.npc&&!inLeague(p))){S.league=newLeague(L?L.season:1);window._last="";syncSoon()}}
 async function initOnline(){
@@ -128,7 +128,7 @@ async function initOnline(){
   syncSoon();render()}catch(e){}}
 function syncSoon(){if(!ONL.on)return;clearTimeout(ONL.t);ONL.t=setTimeout(syncNow,1200)}
 async function syncNow(){if(!ONL.on)return;if(ONL.busy){ONL.dirty=true;return}ONL.busy=true;
- try{const db=ONL.db,p=me(),put=async p=>{const j=JSON.stringify(p);if(j===ONL.last["c:"+p.user])return;ONL.owners[p.user]=ONL.owners[p.user]||ONL.uid;await db.doc("clubs/"+p.user).set({json:j,t:Date.now(),by:ONL.uid,own:ONL.owners[p.user]});ONL.last["c:"+p.user]=j};
+ try{const db=ONL.db,p=me(),put=async p=>{const q=Object.assign({},p),cr=S.crests&&S.crests[p.user];if(cr)q.crestImg=cr;const j=JSON.stringify(q);if(j===ONL.last["c:"+p.user])return;ONL.owners[p.user]=ONL.owners[p.user]||ONL.uid;await db.doc("clubs/"+p.user).set({json:j,t:Date.now(),by:ONL.uid,own:ONL.owners[p.user]});ONL.last["c:"+p.user]=j};
   if(p&&!p.npc&&(!ONL.owners[p.user]||ONL.owners[p.user]===ONL.uid||ONL.host))await put(p);
   const sj=JSON.stringify(S.stock);if(sj!==ONL.last.s){await db.doc("shop/stock").set({stock:S.stock,t:Date.now(),by:ONL.uid});ONL.last.s=sj}
   if(ONL.host&&!ONL.wFirst){const w=worldJson();if(w!==ONL.last.w){ONL.rev++;await db.doc("world/main").set({json:w,rev:ONL.rev,t:Date.now(),by:ONL.uid});ONL.last.w=w}
