@@ -82,6 +82,31 @@ public static class SaveSystem
         SaveAll();
     }
 
+    private const string LeagueKey = "liv_football_league_v1";
+
+    // The league season (table, fixtures) is saved separately from the profiles.
+    public static void SaveLeague(LeagueState state)
+    {
+        try
+        {
+            PlayerPrefs.SetString(LeagueKey, JsonUtility.ToJson(state));
+            PlayerPrefs.Save();
+        }
+        catch (Exception e) { Debug.LogWarning("LIV: could not save league: " + e.Message); }
+    }
+
+    // Returns the saved league, or null if there is none yet.
+    public static LeagueState LoadLeague()
+    {
+        try
+        {
+            if (PlayerPrefs.HasKey(LeagueKey))
+                return JsonUtility.FromJson<LeagueState>(PlayerPrefs.GetString(LeagueKey));
+        }
+        catch (Exception e) { Debug.LogWarning("LIV: could not load league: " + e.Message); }
+        return null;
+    }
+
     // Wipes the save and goes back to the starting profiles. Handy while testing.
     public static void ResetAll()
     {
