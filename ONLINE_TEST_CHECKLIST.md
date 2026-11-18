@@ -30,6 +30,12 @@ Tick each box. Note the device (A or B) and what you saw if a step fails.
 - [ ] Host: start a season; both devices show the same fixtures
 - [ ] Play a match on A; the table updates on B
 
+## Coaches, kits and finals
+- [ ] A: create an own coach and hire them; team strength does not change
+- [ ] B: club A's own coach name shows in the league view
+- [ ] A: change the kit colours in Settings; B sees the new kit
+- [ ] After a season ends, both devices can watch the same final with the same score
+
 ## No sign-in
 - [ ] B opens the link in a private window and can play without signing in
 

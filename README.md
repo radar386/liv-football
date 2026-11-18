@@ -22,6 +22,10 @@ The repo needs the rest of the Unity project (`ProjectSettings/`, `Packages/`, s
 - Players are paid a wage by rating every season (web game and Unity: about 6M at rating 80, 36M at 100 on the Unity scale), after sponsor income.
 - Scouting rolls a rating from 40 up to your team ovr and never above it.
 - Contracts: academy players leave when theirs ends; others can be renewed for a fee.
+- Sponsors pay once, when the season ends, while the deal lasts. Signing costs money up front and pays nothing yet.
+- Own coaches: you can make your own (name, formation label, photo). They are free, have no contract and give no rating or scouting bonus.
+- Home kits: every club has a kit. Choose colours and a pattern in Settings. Kits are original colourways with no crests, sponsors or maker marks.
+- Finals: the FA Cup final, the European finals and the promotion play-offs can be watched live in the Finals tab (1 minute for 90 minutes, first half, half-time, second half, then penalties with named takers). The result is decided first, so skipping never changes it.
 
 ## Names and licences
 All player and club names in the catalog are invented. Coach names and sponsor brands in the game are real; see `RELEASE_CHECKLIST.md` before releasing publicly.
