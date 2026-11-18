@@ -3,7 +3,7 @@ namespace UnityEngine {
  public class Object { public string name; public static void Destroy(Object o){} public static void DontDestroyOnLoad(Object o){} public static T Instantiate<T>(T o) where T:Object=>o; public static T Instantiate<T>(T o, Transform p) where T:Object=>o; public static T Instantiate<T>(T o, Transform p, bool w) where T:Object=>o; public static implicit operator bool(Object o)=>o!=null; }
  public class Component : Object { public GameObject gameObject; public Transform transform; public T GetComponent<T>(){return default(T);} public T GetComponentInChildren<T>(){return default(T);} }
  public class Behaviour : Component { public bool enabled; }
- public class MonoBehaviour : Behaviour { public Coroutine StartCoroutine(System.Collections.IEnumerator e){return null;} public void StopCoroutine(Coroutine c){} public void Invoke(string n,float t){} }
+ public class MonoBehaviour : Behaviour { public void StopAllCoroutines(){} public Coroutine StartCoroutine(System.Collections.IEnumerator e){return null;} public void StopCoroutine(Coroutine c){} public void Invoke(string n,float t){} }
  public class Coroutine{}
  public class GameObject : Object { public void SetActive(bool b){} public bool activeSelf; public T AddComponent<T>() where T:Component,new(){return new T();} public T GetComponent<T>(){return default(T);} }
  public class Transform : Component { public int childCount; public Transform GetChild(int i){return null;} public Transform parent; public System.Collections.IEnumerator GetEnumerator(){return null;} }

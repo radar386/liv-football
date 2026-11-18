@@ -24,7 +24,7 @@ public static class TeamBuilder
     public static SimTeam FromProfile(UserProfile p)
     {
         SimTeam team = new SimTeam { name = p.clubName };
-        CoachOffer coach = string.IsNullOrEmpty(p.coachId) ? null : CoachCatalog.Find(p.coachId);
+        CoachOffer coach = string.IsNullOrEmpty(p.coachId) ? null : (CoachCatalog.Find(p.coachId) ?? OwnCoachService.AsOffer(p));
         ApplyCoach(team, coach, "4-4-2", 55);
         if (!string.IsNullOrEmpty(p.formationChoice)) team.formation = p.formationChoice;
         team.tactic = string.IsNullOrEmpty(p.tactic) ? "Balanced" : p.tactic;

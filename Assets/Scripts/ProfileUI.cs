@@ -113,7 +113,7 @@ public class ProfileUI : MonoBehaviour
             crestImage.enabled = crest != null;
         }
 
-        CoachOffer coach = CoachCatalog.Find(current.coachId);
+        CoachOffer coach = CoachCatalog.Find(current.coachId) ?? OwnCoachService.AsOffer(current);
         SponsorOffer sponsor = SponsorCatalog.Find(current.sponsorId);
         string formation = !string.IsNullOrEmpty(current.formationChoice) ? current.formationChoice
             : (coach != null ? coach.formation : "4-4-2");

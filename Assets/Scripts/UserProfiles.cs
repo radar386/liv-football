@@ -13,7 +13,10 @@ public class UserProfile
     public string sponsorId; // id from SponsorCatalog; empty = no sponsor
     public string formationChoice;                        // chosen formation, empty = use the coach's
     public List<string> lineupIds = new List<string>();   // chosen starting 11 (squad player ids), empty = automatic
-    public string coachId;   // id from CoachCatalog; empty = no coach hired
+    public string coachId;   // id from CoachCatalog, or "own_..." for one of your own coaches; empty = no coach hired
+    public List<OwnCoach> ownCoaches = new List<OwnCoach>();   // coaches you made up: free, no bonus
+    public ClubKit kit;                                          // home kit; null = the club's default colours
+    public List<string> finalsSeen = new List<string>();         // ids of finals already watched live
     public List<ClubSquadPlayer> squad = new List<ClubSquadPlayer>();
     public int season = 1;            // current season number
     public int scoutedThisSeason;     // academy scouts used this season (max 20)

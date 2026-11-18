@@ -20,7 +20,7 @@ public class SponsorShopUI : MonoBehaviour
         gameObject.SetActive(true);
         messageText.text = "";
         List<string> names = new List<string>();
-        foreach (SponsorOffer s in offers) names.Add(s.sponsorName + "  +" + s.income.ToString("N0") + " / season");
+        foreach (SponsorOffer s in offers) names.Add(s.sponsorName + "  +" + s.income.ToString("N0") + " / season, paid when the season ends");
         sponsorDropdown.ClearOptions();
         sponsorDropdown.AddOptions(names);
         signButton.onClick.RemoveAllListeners();
