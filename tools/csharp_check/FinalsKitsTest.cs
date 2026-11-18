@@ -45,6 +45,20 @@ public static class FinalsKitsTest
             int goals = 0; foreach (MatchEvent e in s.goals) goals++;
             Check(goals == r.goals[0] + r.goals[1], "goal events match the score");
         }
+        // Cup: five clubs, one winner, a bye, a final, prizes paid once.
+        List<UserProfile> ps = new List<UserProfile>();
+        List<string> clubs = TeamBuilder.CatalogClubs();
+        for (int i = 0; i < 5; i++) ps.Add(new UserProfile { username = "u" + i, clubName = clubs[i], money = 0 });
+        CupState cup = CupEngine.Create(ps, 1, new Random(3));
+        Check(cup.alive.Count == 5, "five clubs drawn");
+        CupEngine.PlayAll(cup, ps, new Random(4));
+        Check(CupEngine.IsFinished(cup) && cup.ties.Count == 4, "five-club cup has 4 ties");
+        Check(CupEngine.FinalTie(cup) != null && CupEngine.FinalTie(cup).winner == cup.winner, "final decides the winner");
+        CupEngine.PlaySuperCup(cup, "u0", "u1", ps, new Random(5));
+        Check(cup.superCup != null && cup.superCup.home != cup.superCup.away, "super cup played between two clubs");
+        List<string> paid = CupEngine.PayPrizes(cup, ps);
+        Check(paid.Count >= 2 && CupEngine.PayPrizes(cup, ps).Count == 0, "prizes paid once");
+        Check(CupEngine.Replay(CupEngine.FinalTie(cup), ps).goals[0] == CupEngine.FinalTie(cup).homeGoals, "replay matches stored score");
         Console.WriteLine("Finals/kits/own-coach tests: " + (fails == 0 ? "all passed" : fails + " failed") + " (" + shoot + " shootouts seen)");
         return fails;
     }

@@ -9,6 +9,9 @@ public class LeagueUI : MonoBehaviour
     [SerializeField] private Text newsText;
     [SerializeField] private Button playButton;
     [SerializeField] private Button nextSeasonButton;
+    [SerializeField] private Button finalsButton;        // optional: opens the Cup final and Super Cup
+    [SerializeField] private FinalsMenuUI finalsMenu;    // optional
+    private CupState cup;
 
     private LeagueState state;
     private List<UserProfile> profiles;
@@ -50,11 +53,38 @@ public class LeagueUI : MonoBehaviour
         {
             news += "\n" + string.Join("\n", LeagueEngine.PayPrizes(state, profiles).ToArray());
             state.prizesPaid = true;
+            news += "\n" + string.Join("\n", PlayFinals().ToArray());
         }
         newsText.text = news;
         foreach (UserProfile p in profiles) SaveSystem.Save(p);
         SaveSystem.SaveLeague(state);
         Refresh();
+    }
+
+    // The Cup and the Super Cup are played when the league ends; prizes are paid with the rest.
+    private System.Collections.Generic.List<string> PlayFinals()
+    {
+        cup = CupEngine.Create(profiles, state.season, rng);
+        CupEngine.PlayAll(cup, profiles, rng);
+        System.Collections.Generic.List<TableRow> table = LeagueEngine.Table(state, profiles);
+        string champ = table.Count > 0 ? FindUsername(table[0].club) : null;
+        string second = table.Count > 1 ? FindUsername(table[1].club) : null;
+        CupEngine.PlaySuperCup(cup, champ, second, profiles, rng);
+        System.Collections.Generic.List<string> lines = CupEngine.PayPrizes(cup, profiles);
+        SaveSystem.SaveCup(cup);
+        if (finalsButton != null)
+        {
+            finalsButton.gameObject.SetActive(true);
+            finalsButton.onClick.RemoveAllListeners();
+            finalsButton.onClick.AddListener(() => { if (finalsMenu != null) finalsMenu.Open(cup, profiles); });
+        }
+        return lines;
+    }
+
+    private string FindUsername(string club)
+    {
+        foreach (UserProfile p in profiles) if (p.clubName == club) return p.username;
+        return null;
     }
 
     private void NextSeason()

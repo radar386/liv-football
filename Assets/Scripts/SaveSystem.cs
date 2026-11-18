@@ -83,6 +83,20 @@ public static class SaveSystem
     }
 
     private const string LeagueKey = "liv_football_league_v1";
+    private const string CupKey = "liv_football_cup_v1";
+
+    public static void SaveCup(CupState state)
+    {
+        try { PlayerPrefs.SetString(CupKey, JsonUtility.ToJson(state)); PlayerPrefs.Save(); }
+        catch (Exception e) { Debug.LogWarning("LIV: could not save cup: " + e.Message); }
+    }
+
+    public static CupState LoadCup()
+    {
+        try { if (PlayerPrefs.HasKey(CupKey)) return JsonUtility.FromJson<CupState>(PlayerPrefs.GetString(CupKey)); }
+        catch (Exception e) { Debug.LogWarning("LIV: could not load cup: " + e.Message); }
+        return null;
+    }
 
     // The league season (table, fixtures) is saved separately from the profiles.
     public static void SaveLeague(LeagueState state)
