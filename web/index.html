@@ -377,7 +377,7 @@ function draftScreen(p){const d=draftInit(p),pk=new Set(d.pick),n=d.pick.length,
  <div class="row"><button data-act="dauto">Auto-pick best</button><button data-act="dreroll" ${d.rolls?"":"disabled"}>Re-roll players (${d.rolls})</button><button data-act="dclear">Clear</button></div>
  ${sorted.map(x=>pl(x,`<button data-dpick="${x.id}" class="${pk.has(x.id)?"pri":""}">${pk.has(x.id)?"Picked":"Pick"}</button>`)).join("")}
  <div class="row"><button class="pri" data-act="dconfirm" ${ok?"":"disabled"}>Confirm team</button></div></div>`}
-function game(){const p=me();if(ONL.on&&!ONL.host&&!inLeague(p))return`<div class="row">${logo(40)}<h2>Waiting for the host</h2></div><p class="mute">Your club is created. The host's page adds it to the league the next time it is open, and then you can play. Leave this page open or come back later.</p><button data-act="logout">Back to clubs</button>`;if(!p.formed)return draftScreen(p);const T=[["squad","Squad"],["players","Players"],["coaches","Coaches"],["sponsors","Sponsors"],["packs","Packs"],["academy","Academy"],["league","League"],["europe","Europe"],["world","World"],["cup","FA Cup"],["bank","Bank"],["awards","Awards"],["trophies","Trophies"],["contracts","Contracts"],["rewards","Rewards"],["buy","Buy money"]];if(p.admin)T.push(["admin","Admin"]);T.push(["settings","Settings"]);const NAV=[["squad","Squad"],["menu","Menu"],["league","League"],["packs","Packs"],["settings","Settings"]],inBar=NAV.some(n=>n[0]===tab);window._T=T;
+function game(){const p=me();if(ONL.on&&!ONL.host&&!inLeague(p))return`<div class="row">${logo(40)}<h2>Waiting for the host</h2></div><p class="mute">Your club is created. The host's page adds it to the league the next time it is open, and then you can play. Leave this page open or come back later.</p><button data-act="logout">Back to clubs</button>`;if(!p.formed)return draftScreen(p);const T=[["squad","Squad"],["players","Players"],["coaches","Coaches"],["sponsors","Sponsors"],["packs","Packs"],["academy","Academy"],["league","League"],["europe","Europe"],["world","World"],["cup","FA Cup"],["finals","Finals"],["bank","Bank"],["awards","Awards"],["trophies","Trophies"],["contracts","Contracts"],["rewards","Rewards"],["buy","Buy money"]];if(p.admin)T.push(["admin","Admin"]);T.push(["settings","Settings"]);const NAV=[["squad","Squad"],["menu","Menu"],["league","League"],["packs","Packs"],["settings","Settings"]],inBar=NAV.some(n=>n[0]===tab);window._T=T;
  return`<div class="bar"><div class="row" style="flex-wrap:nowrap">${crestOf(p.user)?crest(p.user,44):logo(44)}<div><h1>${p.club}</h1></div>${ovrBadge(p,1)}</div><div style="text-align:right"><div class="money">${fm(p.money)}</div><button data-act="logout">Switch club</button></div></div>
  <div class="tabs">${NAV.map(t=>`<button class="${tab===t[0]||(t[0]==="menu"&&!inBar)?"on":""}" data-tab="${t[0]}">${t[1]}</button>`).join("")}</div>
  <div class="panel">${msg?`<div class="${/not|fail|cannot|need|declin/i.test(msg)?"bad":"good"}">${msg}</div>`:""}${panel(p)}</div>${S.settings.tut?"":tutorial()}`}
@@ -448,6 +448,7 @@ function panel(p){switch(tab){
  case"europe":return euroView()
  case"world":return worldView()
  case"cup":return cupView()
+ case"finals":return finalsView()
  case"bank":return bankView(p)
  case"awards":return awardsView()
  case"menu":return`<h3>All sections</h3><div class="mgrid">${window._T.filter(t=>!["squad","menu"].includes(t[0])).map(t=>`<button class="mtile" data-tab="${t[0]}">${t[1]}</button>`).join("")}</div>`
@@ -566,7 +567,7 @@ const norm=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().re
  const q=document.getElementById("q");if(q)q.oninput=()=>{window._q=q.value;const pos=q.selectionStart;render();const n=document.getElementById("q");n.focus();n.setSelectionRange(pos,pos)};
  const mu=document.getElementById("mute");if(mu)mu.onchange=()=>{S.settings.mute=mu.checked;save()};
  const vo=document.getElementById("vol");if(vo)vo.onchange=()=>{S.settings.vol=+vo.value;save();snd("click")};
- document.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>act(b.dataset.act))}
+ document.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>act(b.dataset.act));document.querySelectorAll("[data-live]").forEach(b=>b.onclick=()=>watchFinal(b.dataset.live))}
 function act(a){const p=me();
  if(ONL.on&&!ONL.host&&(a==="play"||a==="newseason")){msg="Only the host plays the match weeks in the online league.";snd("err");return render()}
  if(a==="newclub"){const raw=(document.getElementById("ncn").value||"").replace(/[<>&"'`]/g,"").replace(/\s+/g," ").trim(),em=t=>{const m=document.getElementById("ncm");if(m)m.textContent=t};
@@ -680,6 +681,37 @@ function euroView(){const E=S.euro&&S.euro.v===2?S.euro:null,stg=n=>n===16?"Roun
 function worldView(){const W=S.world;if(!W)return`<h3>World leagues</h3><p class="mute">The Premier League, La Liga, Serie A, Bundesliga and Ligue 1 are simulated when a season finishes, and every club of ours plays in one of them. Their tables decide who plays in Europe, and finishing high pays prize money (champions 120M, 2nd 60M, 3rd 40M).</p>`;
  return`<h3>World leagues · Season ${W.season}</h3><p class="mute">Green: Champions League places (top 3). Amber: Europa League places. Our clubs play in one of these leagues as well as in our own divisions (marked in gold). Your club's world league: ${(()=>{const p=me();if(!p||p.npc)return"";humanLeague(p);return`<select id="wl">${WORLD_DATA.map((d,i)=>`<option value="${i}" ${p.wl===i?"selected":""}>${d[0]}</option>`).join("")}</select> (a change counts from next season)`})()}</p>${W.leagues.map(L=>`<details ${L===W.leagues[0]?"open":""} class="item" style="display:block"><summary><b>${L.name}</b> <span class="mute">Champion: ${L.rows[0].club}</span></summary><div class="scroll"><table><tr><th>#</th><th>Club</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr>${L.rows.map((r,i)=>`<tr style="box-shadow:inset 3px 0 ${i<3?"var(--good)":i<5?"var(--acc)":"transparent"}${r.u?";background:#ffb81c1f":""}"><td>${i+1}</td><td>${r.u?"<b>"+r.club+"</b>":r.club}</td><td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gf-r.ga}</td><td>${r.pts}</td></tr>`).join("")}</table></div></details>`).join("")}`}
 
+// ---------- live finals (3 minutes each, replayed from the stored result) ----------
+const LIVE_SECONDS=180;
+function seedRng(str){let h=1779033703;for(let i=0;i<str.length;i++){h=Math.imul(h^str.charCodeAt(i),3432918353);h=h<<13|h>>>19}let a=h>>>0;return()=>{a|=0;a=a+1831565813|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function finalsList(){const out=[],nm=u=>(S.profiles.find(p=>p.user===u)||{club:u}).club;
+ if(S.cup&&S.cup.rounds&&S.cup.rounds.length){const f=S.cup.rounds[S.cup.rounds.length-1].ties[0];if(f)out.push({key:"fa"+S.cup.season,season:S.cup.season,title:"FA Cup final",h:f.h,a:f.a,hn:nm(f.h),an:nm(f.a),gh:f.gh,ga:f.ga,pen:f.pen,w:f.w})}
+ const E=S.euro&&S.euro.v===2?S.euro:null;
+ if(E){const add=(t,g)=>{if(g)out.push({key:t+E.season,season:E.season,title:{ucl:"Champions League final",uel:"Europa League final",sc:"UEFA Super Cup",uecl:"Conference League final",cwc:"Club World Cup final"}[t],h:g.h,a:g.a,hn:g.hn,an:g.an,gh:g.gh,ga:g.ga,pen:g.pen,w:g.w})};
+  const last=c=>c&&c.rounds&&c.rounds.length?c.rounds[c.rounds.length-1][0]:null;
+  add("ucl",last(E.ucl));add("uel",last(E.uel));add("sc",E.sc);add("uecl",last(E.uecl));add("cwc",last(E.cwc))}
+ return out.map(f=>({...f,mine:[f.h,f.a].some(u=>{const q=S.profiles.find(p=>p.user===u);return q&&!q.npc})}))}
+function finalScript(f){const R=seedRng(f.key+f.h+f.a),side=(u,g)=>{const P=S.profiles.find(p=>p.user===u);let names=[];try{if(P)names=lineup(P).filter(x=>x.id!=="x"&&x.slot!=="GK").map(x=>x.name)}catch(e){}if(!names.length)names=["the striker","the winger","the midfielder"];return names};
+ const hn=side(f.h),an=side(f.a),ev=[];
+ const used=new Set(),minute=()=>{let m;do{m=1+Math.floor(R()*90)}while(used.has(m));used.add(m);return m};
+ for(let i=0;i<f.gh;i++)ev.push({m:minute(),side:"h",who:hn[Math.floor(R()*hn.length)]});
+ for(let i=0;i<f.ga;i++)ev.push({m:minute(),side:"a",who:an[Math.floor(R()*an.length)]});
+ ev.sort((x,y)=>x.m-y.m);
+ let kicks=null;if(f.pen){const hw=f.w===f.h,wk=R()<.5?4:5,lk=wk-1-(R()<.3?1:0);const mk=(n)=>{const a=Array(5).fill(false);let idx=[0,1,2,3,4].sort(()=>R()-.5).slice(0,n);idx.forEach(i=>a[i]=true);return a};kicks={h:mk(hw?wk:lk),a:mk(hw?lk:wk)}}
+ return{ev,kicks}}
+function finalsView(){const L=finalsList(),seen=S.finalsSeen||{};if(!L.length)return`<h3>Finals</h3><p class="mute">When a season ends, the FA Cup final and the European finals are played. Each one can be watched live here: 90 minutes shown over 3 real minutes, with goals as they happen and penalties if it is level. Nothing has been played yet.</p>`;
+ return`<h3>Finals</h3><p class="mute">Watch each final live. 90 minutes are played over 3 real minutes. The result is already decided, so skipping never changes it. Finals with your club come first.</p><div class="list">${L.slice().sort((a,b)=>b.mine-a.mine).map(f=>`<div class="item"><span class="nm">${f.title}<small>Season ${f.season} · ${esc(f.hn)} vs ${esc(f.an)}${seen[f.key]?" · "+f.gh+"-"+f.ga+(f.pen?" (pens)":""):""}${f.mine?" · your club":""}</small></span><button data-live="${f.key}">${seen[f.key]?"Watch again":"Watch live"}</button></div>`).join("")}</div>`}
+function watchFinal(key){const f=finalsList().find(x=>x.key===key);if(!f)return;const sc=finalScript(f),m=document.createElement("div");m.className="modal";document.body.appendChild(m);
+ let t=0,timer=null,done=false;const tick=100,perMin=LIVE_SECONDS/90*1000;const pensMs=f.pen?15000:0;
+ const mark=()=>{S.finalsSeen=S.finalsSeen||{};S.finalsSeen[key]=1};
+ const frame=()=>{const minute=Math.min(90,Math.floor(t/perMin)),inPens=t>=90*perMin;const sh=sc.ev.filter(e=>e.side==="h"&&e.m<=minute).length,sa=sc.ev.filter(e=>e.side==="a"&&e.m<=minute).length;
+  let pk="";if(f.pen&&inPens){const n=Math.min(10,Math.floor((t-90*perMin)/(pensMs/10))+1),sh2=[],sa2=[];let ph=0,pa=0,rows="";for(let i=0;i<n;i++){const hs=i%2===0,k=Math.floor(i/2),ok=(hs?sc.kicks.h:sc.kicks.a)[k];if(ok){hs?ph++:pa++}rows+=`<span style="margin-right:4px">${hs?esc(f.hn):esc(f.an)} ${ok?"scores":"misses"}</span>`}pk=`<p><b>Penalties: ${ph} - ${pa}</b></p><div class="mute" style="font-size:12px;max-height:80px;overflow:auto">${rows}</div>`}
+  const feed=sc.ev.filter(e=>e.m<=minute).map(e=>`<div>${e.m}' <b>GOAL</b> ${esc(e.who)} <span class="mute">(${esc(e.side==="h"?f.hn:f.an)})</span></div>`).join("")||'<span class="mute">No goals yet.</span>';
+  const fin=done?`<p class="good">Full time: ${esc(f.hn)} ${f.gh} - ${f.ga} ${esc(f.an)}${f.pen?" (penalties)":""}. Winner: ${esc(f.w===f.h?f.hn:f.an)}.</p>`:"";
+  m.innerHTML=`<div class="box"><h2>${f.title}</h2><div class="row" style="justify-content:space-between;align-items:center"><span>${f.h.startsWith("w_")?"":crest(f.h,36)} <b>${esc(f.hn)}</b></span><span style="font-size:28px;font-weight:800">${done?f.gh:sh} - ${done?f.ga:sa}</span><span><b>${esc(f.an)}</b> ${f.a.startsWith("w_")?"":crest(f.a,36)}</span></div><p class="mute">${done?"Full time":inPens?"Penalty shootout":(minute<1?"Kick-off":minute+"'")}</p><div style="height:6px;background:#1d3a2c;border-radius:3px"><div style="height:6px;width:${Math.min(100,t/(90*perMin+pensMs)*100)}%;background:var(--acc,#F2B632);border-radius:3px"></div></div><div style="margin:10px 0;max-height:140px;overflow:auto">${feed}</div>${pk}${fin}<div class="row">${done?"":'<button id="lsk">Skip to the end</button>'}<button class="pri" id="lx">Close</button></div></div>`;
+  const x=m.querySelector("#lx");if(x)x.onclick=close;const k=m.querySelector("#lsk");if(k)k.onclick=()=>{t=90*perMin+pensMs;finish()}};
+ const close=()=>{clearInterval(timer);m.remove();render()},finish=()=>{done=true;clearInterval(timer);mark();frame()};
+ frame();timer=setInterval(()=>{t+=tick;if(t>=90*perMin+pensMs){finish();return}frame()},tick)}
 // ---- FA Cup (knockout for every club in all three divisions) and the Ballon d'Or (best player of the season)
 function penWin(a,b){const x=strength(a),y=strength(b);return Math.random()<.5+(x-y)/200?a:b}
 function runCup(season){const all=S.profiles.filter(p=>p.div>=1&&p.div<=3&&p.formed!==false).sort((x,y)=>strength(y)-strength(x));const n=all.length;let size=1;while(size<n)size*=2;
