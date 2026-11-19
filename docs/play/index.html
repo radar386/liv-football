@@ -110,6 +110,30 @@ table{border-collapse:collapse;width:100%}th,td{padding:5px 8px;text-align:right
 .nw-score .sc{font-family:var(--disp);font-size:24px;letter-spacing:.04em;padding:0 6px}
 .nw-card p{margin:0;font-size:13px;line-height:1.5;color:#c6d3ca}
 .nw-season{font-family:var(--disp);font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin:18px 0 8px;display:flex;align-items:center;gap:10px}.nw-season:after{content:"";flex:1;height:1px;background:var(--line)}
+
+.tv-bar{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#b3121f,#7d0c16);border-radius:10px 10px 0 0;padding:8px 12px;margin:0}
+.tv-live{display:flex;align-items:center;gap:6px;font-weight:800;font-size:12px;letter-spacing:.12em}.tv-live i{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 #fff8;animation:tvp 1.6s infinite}
+@keyframes tvp{0%{box-shadow:0 0 0 0 #fff8}70%{box-shadow:0 0 0 8px #fff0}100%{box-shadow:0 0 0 0 #fff0}}
+.tv-name{font-family:var(--disp);font-size:20px;letter-spacing:.08em;text-transform:uppercase;line-height:1}.tv-sub{margin-left:auto;font-size:12px;opacity:.9}
+.tv-tick{display:flex;overflow:hidden;background:#0a1810;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;margin-bottom:12px}
+.tv-tick b{flex:0 0 auto;background:var(--acc);color:#1a1200;font-size:12px;letter-spacing:.1em;padding:8px 12px;text-transform:uppercase}
+.tv-track{display:flex;gap:36px;white-space:nowrap;padding:8px 0 8px 24px;animation:tvs 40s linear infinite}
+.tv-track span{font-size:13px}.tv-track span:before{content:"\25CF";color:#d8534a;margin-right:8px;font-size:9px;vertical-align:middle}
+@keyframes tvs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tv-track,.tv-live i{animation:none}.tv-tick{overflow-x:auto}}
+.tv-hero{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);margin:0 0 14px;background:radial-gradient(110% 130% at 85% 0%,#3a5a3f 0%,#10261a 50%,#07120c 100%);min-height:200px}
+.tv-art{display:flex;align-items:center;justify-content:center;gap:16px;padding:22px 16px 6px}
+.tv-art .big{filter:drop-shadow(0 6px 14px #000a)}
+.tv-lower{margin:0;background:linear-gradient(90deg,#0b1f16f2,#0b1f16cc);border-top:3px solid var(--acc);padding:12px 14px 14px}
+.tv-lower h2{font-family:var(--disp);font-size:26px;line-height:1.1;margin:6px 0 4px}.tv-lower p{margin:0;color:#c6d3ca;font-size:14px;line-height:1.45}
+.nw-card .hd{display:flex;gap:10px;align-items:flex-start}.nw-card .hd .lg{flex:0 0 auto;display:flex;gap:4px;align-items:center}
+.nw-card.tro{border-color:#f2b63266;background:linear-gradient(180deg,#2a2410,#14120a)}
+
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:10px}
+.bt{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;padding:14px 6px 8px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#14301f,#0f2418)}
+.bt .bo{position:absolute;top:6px;right:6px;font-family:var(--disp);font-size:15px;background:#0009;border-radius:6px;padding:1px 6px}
+.bt .bn{font-size:12px;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bt .bp{font-size:11px}
+.bt button{margin-top:4px;font-size:11px;padding:4px 6px}
 </style>
 <div class="wrap" id="app"></div>
 <script>
@@ -358,7 +382,7 @@ function trophySvg(n,sz){sz=sz||56;const d=/Division 1/.test(n),d2=/Division 2/.
  return`<svg viewBox="0 0 64 64" width="${sz}" height="${sz}" aria-hidden="true" style="flex:none;filter:drop-shadow(0 2px 3px #0008)">${g}${body}</svg>`}
 const wage=x=>Math.max(10000,Math.round(1e6*Math.exp((x.ovr-50)*.12)/10000)*10000),wageBill=p=>p.squad.reduce((t,x)=>t+wage(x),0);
 const renewFee=(x,n)=>Math.round(price(x.ovr)*0.03*n/10000)*10000;
-const addTrophy=(p,n)=>{if(!p||p.npc)return;p.trophies=p.trophies||[];const se=S.league?S.league.season:1;if(!p.trophies.some(t=>t.s===se&&t.n===n)){p.trophies.push({s:se,n});pushNews("trophy",`${p.club} win the ${n}`)}};
+const addTrophy=(p,n)=>{if(!p||p.npc)return;p.trophies=p.trophies||[];const se=S.league?S.league.season:1;if(!p.trophies.some(t=>t.s===se&&t.n===n)){p.trophies.push({s:se,n});pushNews("trophy",`${p.club} win the ${n}`,`Another piece of silverware for ${p.club}.`,{hu:p.user,tn:n})}};
 const real=()=>S.profiles.filter(p=>!p.npc);
 const clubLink=u=>{try{return location.href.split("#")[0]+"#club="+u}catch(e){return"#club="+u}};
 const canSeeAll=()=>!!(ONL.host||S.adm);
@@ -503,7 +527,7 @@ function panel(p){switch(tab){
   return`<div class="lineup"><section class="lmid"><div class="row"><label>Formation <select data-set="form">${Object.keys(FORMS).map(f=>`<option ${f===p.form?"selected":""}>${f}</option>`).join("")}</select></label><label>Tactic <select data-set="tactic">${TACTICS.map(f=>`<option ${f===p.tactic?"selected":""}>${f}</option>`).join("")}</select></label><button class="pri" data-act="ai">AI build best lineup</button></div>
   <p class="mute">Tap a shirt to change that position. Only ratings count: the formation and positions change nothing, except that a goalkeeper must play in goal.</p>
   <div class="pitch">${(()=>{let off=0;return FORMS[p.form].map(r=>{const a=r.map((_,k)=>off+k);off+=r.length;return a}).reverse().map(a=>`<div class="prow">${a.map(i=>card(xi[i],i)).join("")}</div>`).join("")})()}</div></section>${left}${right}
-  <section class="lbench"><h3>Bench</h3>${SK(p)?`<button data-act="sheet">Load my sheet squad${p.f1seed?" again":""} (replaces the current squad)</button>`:""}<div class="list">${p.squad.filter(x=>!ids.has(x.id)).sort((a,b)=>b.ovr-a.ovr).map(x=>pl(x,`<button data-sell="${x.id}">Release +${fm(price(x.ovr)*.3)}</button>`)).join("")||'<span class="mute">Empty</span>'}</div></section></div>`}
+  <section class="lbench"><h3>Bench</h3>${SK(p)?`<button data-act="sheet">Load my sheet squad${p.f1seed?" again":""} (replaces the current squad)</button>`:""}<div class="bgrid">${p.squad.filter(x=>!ids.has(x.id)).sort((a,b)=>b.ovr-a.ovr).map((x,i)=>`<div class="bt t-${TIERS[tierOf(x.ovr)]}" title="${esc(x.name)}"><span class="bo">${x.raw||x.ovr}</span>${shirtSvg(p.user,12+i,false,64)}<b class="bn">${esc(x.name)}</b><span class="mute bp">${x.pos}${x.out>0?` · <span class="bad">out ${x.out}</span>`:""}</span><button data-sell="${x.id}">Release +${fm(price(x.ovr)*.3)}</button></div>`).join("")||'<span class="mute">Empty</span>'}</div></section></div>`}
  case"players":{const q=(window._q||"").toLowerCase();const pf=window._pf||"All";const list=CAT.filter(x=>x.club!=="Free agent"&&(pf==="All"||x.pos===pf)&&(x.name+x.club).toLowerCase().includes(q)).sort((a,b)=>b.ovr-a.ovr).slice(0,60);
   return`<div class="chips">${["All",...POSLIST].map(k=>`<button class="${pf===k?"on":""}" data-pf="${k}">${k}</button>`).join("")}</div><div class="row"><input id="q" placeholder="Search player or club" value="${window._q||""}"><span class="mute">Ratings are approximate, on the FC scale.</span></div><div class="list">${list.map(x=>{const own=p.squad.some(s=>s.id===x.id);return pl(x,`<span class="mute">${fm(price(x.ovr))}</span><button data-deal="p:${x.id}" ${own?"disabled":""}>${own?"Owned":"Negotiate"}</button>`)}).join("")}</div>`}
  case"coaches":return`${ownCoachPanel(p)}<div class="list"><p class="mute">Best first. The formation does not matter; only the rating boost counts. Scouting bonus: +1 below 85, +2 from 85, +3 from 95.</p>${COACHES.filter(c=>!c.custom).sort((a,b)=>b.ovr-a.ovr||a.price-b.price).map(c=>`<div class="item"><span class="nm">${c.name}<small>Rating boost +${Math.round((c.ovr-60)/12)} · scouting +${c.ovr>=95?3:c.ovr>=85?2:1}</small></span><span class="ovr">${c.ovr}</span><span class="mute">${fm(c.price)}</span><button data-deal="c:${c.id}" ${p.coach===c.id?"disabled":""}>${p.coach===c.id?"Hired":"Negotiate"}</button></div>`).join("")}</div>`;
@@ -747,22 +771,26 @@ function finalScript(f){const R=seedRng(f.key+f.h+f.a),side=(u,g)=>{const P=S.pr
  ev.sort((x,y)=>x.m-y.m);
  let kicks=null;if(f.pen){const hw=f.w===f.h,wk=R()<.5?4:5,lk=wk-1-(R()<.3?1:0);const MISS=["is saved by the keeper","hits the post","shoots wide","blazes over the bar"];const mk=(n,nm)=>{const flags=Array(5).fill(false);[0,1,2,3,4].sort(()=>R()-.5).slice(0,n).forEach(i=>flags[i]=true);const pool=nm.slice().sort(()=>R()-.5);return flags.map((ok,i)=>({who:pool[i%pool.length],ok,miss:MISS[Math.floor(R()*MISS.length)]}))};kicks={h:mk(hw?wk:lk,hn),a:mk(hw?lk:wk,an)}}
  return{ev,kicks}}
+function trophySvg(sz,gold){const a=gold?"#F2B632":"#cfd6d2",b=gold?"#B8860B":"#8a938e";return`<svg viewBox="0 0 64 64" width="${sz}" height="${sz}" aria-hidden="true"><path d="M20 8h24v14c0 9-5 15-12 16-7-1-12-7-12-16z" fill="${a}" stroke="${b}" stroke-width="2"/><path d="M20 12h-8c0 9 3 14 9 15M44 12h8c0 9-3 14-9 15" fill="none" stroke="${b}" stroke-width="3" stroke-linecap="round"/><rect x="29" y="38" width="6" height="8" fill="${b}"/><path d="M20 56l3-10h18l3 10z" fill="${a}" stroke="${b}" stroke-width="2"/><rect x="16" y="54" width="32" height="5" rx="1.5" fill="${b}"/><path d="M26 14c0 6 1 11 5 14" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/></svg>`}
 function newsView(){const N=S.news||[],p=me(),f=window._nf||"all";
  const lab={result:"Match report",injury:"Injury",trophy:"Trophy",season:"Season review"};
  const mine=n=>n.hu===p.user||n.au===p.user||(n.t||"").includes(p.club);
  const list=N.filter(n=>f==="all"||(f==="mine"?mine(n):n.k===f));
  const chips=[["all","All"],["mine","My club"],["result","Results"],["trophy","Trophies"],["injury","Injuries"],["season","Season"]].map(([k,t])=>`<button data-nf="${k}" class="${f===k?"on":""}">${t}</button>`).join("");
- const head=`<div class="nw-top"><div class="nw-title">News</div><button data-act="clrnews" class="ph">Clear</button></div><div class="chips" style="margin-bottom:12px">${chips}</div>`;
+ const heads=N.slice(0,10).map(n=>esc(n.t)),tk=heads.length?heads.concat(heads).map(t=>`<span>${t}</span>`).join(""):"<span>Welcome to LIV Sports News</span><span>Play a match week to get the first reports</span>";
+ const head=`<div class="tv-bar"><div class="tv-live"><i></i>LIVE</div><div class="tv-name">LIV Sports News</div><div class="tv-sub">Season ${(S.league||{}).season||1}</div></div><div class="tv-tick"><b>Latest</b><div style="overflow:hidden;flex:1"><div class="tv-track">${tk}</div></div></div><div class="nw-top"><div class="nw-title" style="font-size:22px">Top stories</div><button data-act="clrnews" class="ph">Clear</button></div><div class="chips" style="margin-bottom:12px">${chips}</div>`;
  if(!list.length)return head+`<p class="mute">${N.length?"Nothing matches this filter.":"Nothing yet. Match reports, injuries, trophies and the season review show up here as you play."}</p>`;
  const crestU=u=>u&&S.profiles.find(q=>q.user===u)?`${crestOf(u)?crest(u,26):logo(26)}`:"";
  const ago=n=>`Season ${n.s} · Week ${n.w}`;
  const top=list.find(n=>n.k==="trophy")||list.find(n=>n.k==="season")||list.find(n=>n.k==="result"&&mine(n))||list[0];
- const hero=`<div class="nw-hero"><span class="nw-kick ${top.k}">${lab[top.k]||"News"}</span><h2>${esc(top.t)}</h2>${top.b?`<p>${esc(top.b)}</p>`:""}<div class="mute" style="margin-top:10px;font-size:12px;position:relative">${ago(top)}</div></div>`;
+ const bigCrest=u=>u&&S.profiles.find(q=>q.user===u)?`<span class="big">${crestOf(u)?crest(u,72):logo(72)}</span>`:"";
+ const art=top.k==="trophy"?`${bigCrest(top.hu)}<span class="big">${trophySvg(96,true)}</span>`:top.k==="result"&&top.hu?`${bigCrest(top.hu)}<span style="font-family:var(--disp);font-size:44px">${top.gh}&ndash;${top.ga}</span>${bigCrest(top.au)}`:top.k==="season"?`<span class="big">${trophySvg(92,true)}</span>`:top.k==="injury"?"":`<span class="big">${logo(60)}</span>`;
+ const hero=`<div class="tv-hero">${art?`<div class="tv-art">${art}</div>`:""}<div class="tv-lower"><span class="nw-kick ${top.k}">${top.k==="trophy"?"Breaking: trophy":lab[top.k]||"News"}</span><h2>${esc(top.t)}</h2>${top.b?`<p>${esc(top.b)}</p>`:""}<div class="mute" style="margin-top:8px;font-size:12px">${ago(top)}</div></div></div>`;
  let out="",cur=null,n=0;
  for(const it of list.slice(0,120)){if(it===top)continue;
   if(it.s!==cur){if(cur!==null)out+="</div>";cur=it.s;out+=`<div class="nw-season">Season ${it.s}</div><div class="nw-grid">`}
   const sc=it.k==="result"&&it.hu?`<div class="nw-score"><div class="tm">${crestU(it.hu)}<span>${esc(it.hn)}</span></div><div class="sc">${it.gh}&ndash;${it.ga}</div><div class="tm r"><span>${esc(it.an)}</span>${crestU(it.au)}</div></div>`:"";
-  out+=`<article class="nw-card"><div class="nw-meta"><span class="nw-kick ${it.k}">${lab[it.k]||"News"}</span><span>Week ${it.w}${it.dv?" · Div "+it.dv:""}</span></div><h4>${esc(it.t)}</h4>${sc}${it.b?`<p>${esc(sc?it.b.replace(/^Final score: .*? \d+-\d+ [^.]*\.\s*/,""):it.b)}</p>`:""}</article>`;n++}
+  const lg=it.k==="trophy"?`<span class="lg">${crestU(it.hu)}${trophySvg(30,true)}</span>`:it.k==="season"?`<span class="lg">${trophySvg(30,true)}</span>`:"";out+=`<article class="nw-card${it.k==="trophy"?" tro":""}"><div class="nw-meta"><span class="nw-kick ${it.k}">${lab[it.k]||"News"}</span><span>Week ${it.w}${it.dv?" · Div "+it.dv:""}</span></div><div class="hd">${lg}<h4>${esc(it.t)}</h4></div>${sc}${it.b?`<p>${esc(sc?it.b.replace(/^Final score: .*? \d+-\d+ [^.]*\.\s*/,""):it.b)}</p>`:""}</article>`;n++}
  if(cur!==null)out+="</div>";
  return head+hero+out}
 const ordn=n=>n+(["th","st","nd","rd"][(n%100>10&&n%100<14)?0:Math.min(n%10,4)>3?0:n%10]||"th");
