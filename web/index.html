@@ -640,7 +640,7 @@ function act(a){const p=me();
   for(const x of S.profiles)if(x.coach&&!x.npc&&!isOwnCoach(x.coach)){if(x.coachLeft==null)x.coachLeft=rseason(1,6);x.coachLeft--;if(x.coachLeft<=0){x.coach=null;x.coachLeft=0;if(x===me())notes.push("your coach contract ended")}}
   for(const x of S.profiles)if(!x.npc){const o=bankSeason(x);if(x===me()&&o.length)notes.push(o.join(", "))}
   {const cp=runCup(L.season);notes.push(...cp.notes);notes.push(...runBallon(L,r1[0],cp.winner).notes)}
-  notes.forEach(n=>pushNews("season",n.charAt(0).toUpperCase()+n.slice(1)));S.league=newLeague(L.season+1);window._last="";msg="Season over. Prizes and sponsor money paid. "+(notes.join(", ")||"No user club changed division.")+".";return render()}}
+  notes.forEach(n=>pushNews("season",n.charAt(0).toUpperCase()+n.slice(1)));S.league=newLeague(L.season+1);window._last="";if(!notes.length)pushNews("season","No user club changed division.");pushNews("season","Prizes and sponsor money paid.");msg="Season over. Prizes and sponsor money paid. Read the full review in the News tab.";return render()}}
 // ---- Real-world leagues (computer-only, simulated from club ratings at season end) and the European competitions built from them.
 // "*" = a club that exists in the game with a real squad, its rating comes from that squad.
 const WORLD_DATA=[["Premier League","Arsenal*,Aston Villa*,Bournemouth:71,Brentford:71,Brighton:72,Burnley:66,Chelsea*,Crystal Palace:72,Everton:70,Fulham:70,Leeds United:67,Liverpool*,Manchester City*,Manchester United*,Newcastle United*,Nottingham Forest:71,Sunderland:66,Tottenham*,West Ham United:70,Wolverhampton Wanderers:67"],
