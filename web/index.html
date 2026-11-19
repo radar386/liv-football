@@ -102,7 +102,7 @@ function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
 // ---------- online league (shared database; the page works offline without it) ----------
 const ONL={cfg:null,reqs:{},appr:{},db:null,uid:null,on:false,host:false,first:true,wFirst:true,rev:0,last:{},owners:{},status:"Offline: saves in this browser only",t:null,busy:false,dirty:false};
 const WKEYS=["league","world","cup","euro","ballon","scorers","playoffs","news"];
-function pushNews(kind,text){S.news=S.news||[];const L=S.league||{};S.news.unshift({s:L.season||1,w:(L.round||0)+1,k:kind,t:String(text).slice(0,200)});if(S.news.length>150)S.news.length=150}
+function pushNews(kind,text,body){S.news=S.news||[];const L=S.league||{};S.news.unshift({s:L.season||1,w:(L.round||0)+1,k:kind,t:String(text).slice(0,200),b:body?String(body).slice(0,400):undefined});if(S.news.length>150)S.news.length=150}
 const worldJson=()=>{const o={np:S.profiles.filter(p=>p.npc)};WKEYS.forEach(k=>{if(S[k]!==undefined)o[k]=S[k]});return JSON.stringify(o)};
 function inLeague(p){const L=S.league;return !!(L&&L.divs&&L.divs[p.div]&&L.divs[p.div].table[p.user])}
 function softRender(){const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))return;render()}
@@ -723,8 +723,33 @@ function finalScript(f){const R=seedRng(f.key+f.h+f.a),side=(u,g)=>{const P=S.pr
  return{ev,kicks}}
 function newsView(){const N=S.news||[];if(!N.length)return`<h3>News</h3><p class="mute">Nothing yet. Results involving your league's clubs, injuries, trophies and the season review show up here as you play.</p>`;
  const lab={result:"Result",injury:"Injury",trophy:"Trophy",season:"Season"};let cur=null,out="";
- for(const n of N.slice(0,100)){const head=n.s!==cur?(cur=n.s,`<h4 style="margin:14px 0 4px">Season ${n.s}</h4>`):"";out+=head+`<div class="item"><span class="nm"><b>${esc(lab[n.k]||"News")}</b> <small>week ${n.w}</small><br>${esc(n.t)}</span></div>`}
+ for(const n of N.slice(0,100)){const head=n.s!==cur?(cur=n.s,`<h4 style="margin:14px 0 4px">Season ${n.s}</h4>`):"";out+=head+`<div class="item"><span class="nm"><b>${esc(lab[n.k]||"News")}</b> <small>week ${n.w}</small><br>${esc(n.t)}${n.b?`<br><span class="mute">${esc(n.b)}</span>`:""}</span></div>`}
  return`<h3>News</h3><div class="list">${out}</div><div class="row"><button data-act="clrnews">Clear news</button></div>`}
+const ordn=n=>n+(["th","st","nd","rd"][(n%100>10&&n%100<14)?0:Math.min(n%10,4)>3?0:n%10]||"th");
+function matchNews(H,A,r,D,dv){const pick=(arr,k)=>arr[Math.abs(hsh(H.user+A.user+(S.league?S.league.round:0)+k))%arr.length];
+ const W=r.gh>r.ga?H:r.ga>r.gh?A:null,Lo=W?(W===H?A:H):null,wg=Math.max(r.gh,r.ga),lg=Math.min(r.gh,r.ga),diff=wg-lg;
+ const per={};for(const e of r.ev){const k=e[2]||"Goal";per[k]=per[k]||{n:0,mins:[],club:e[1].club};per[k].n++;per[k].mins.push(e[0])}
+ const hat=Object.entries(per).find(([k,v])=>v.n>=3&&k!=="Goal");
+ const lateE=W&&diff===1?r.ev.filter(e=>e[1]===W&&e[0]>=85).slice(-1)[0]:null;
+ const rows=Object.values(D.table).length?Object.entries(D.table).sort((x,y)=>y[1].pts-x[1].pts||(y[1].gf-y[1].ga)-(x[1].gf-x[1].ga)).map(e=>e[0]):[];
+ const pos=P=>rows.indexOf(P.user)+1,n=rows.length;
+ let head;
+ if(hat&&hat[1].n>=4)head=`${hat[0]} scores ${hat[1].n} for ${hat[1].club} (${H.club} ${r.gh}-${r.ga} ${A.club})`;
+ else if(hat)head=pick([`${hat[0]} hits a hat-trick for ${hat[1].club}`,`Treble for ${hat[0]} as ${hat[1].club} ${W&&W.club===hat[1].club?"cruise":"fall short"}`],1)+` (${H.club} ${r.gh}-${r.ga} ${A.club})`;
+ else if(lateE)head=pick([`${lateE[2]||"A late goal"} snatches it for ${W.club} in the ${ordn(lateE[0])} minute`,`Late drama: ${W.club} win ${wg}-${lg} against ${Lo.club}`],2);
+ else if(!W&&r.gh===0)head=pick([`${H.club} and ${A.club} cancel each other out in a goalless draw`,`No goals at ${H.club} as the points are shared`],3);
+ else if(!W)head=pick([`${H.club} and ${A.club} share the points, ${r.gh}-${r.ga}`,`Honours even: ${H.club} ${r.gh}-${r.ga} ${A.club}`],4);
+ else if(diff>=4)head=pick([`${W.club} demolish ${Lo.club} ${wg}-${lg}`,`Rout! ${W.club} run riot against ${Lo.club}`],5);
+ else if(diff>=3)head=pick([`${W.club} crush ${Lo.club} ${wg}-${lg}`,`Dominant ${W.club} thrash ${Lo.club}`],6);
+ else if(diff===2)head=pick([`${W.club} see off ${Lo.club} ${wg}-${lg}`,`Comfortable win for ${W.club} over ${Lo.club}`],7);
+ else head=pick([`${W.club} edge ${Lo.club} ${wg}-${lg}`,`Narrow win for ${W.club} against ${Lo.club}`,`${W.club} hold on to beat ${Lo.club}`],8);
+ const side=(P)=>{const g=Object.entries(per).filter(([k,v])=>v.club===P.club).map(([k,v])=>k+" "+v.mins.map(m=>m+"'").join(", "));return g.length?`${P.club}: ${g.join("; ")}.`:""};
+ const bits=[`Final score: ${H.club} ${r.gh}-${r.ga} ${A.club}.`,side(H),side(A)];
+ if(W&&W.wst>=3)bits.push(`${W.club} have now won ${W.wst} in a row.`);
+ if(Lo&&Lo.lst>=3)bits.push(`${Lo.club} have lost ${Lo.lst} in a row and the pressure is building.`);
+ const pw=W?pos(W):0;if(W&&D.table[W.user].p>=2){if(pw===1)bits.push(`${W.club} go top of Division ${dv}.`);else if(pw<=3)bits.push(`${W.club} move to ${ordn(pw)} in Division ${dv}.`)}
+ if(Lo&&D.table[Lo.user].p>=4&&pos(Lo)>n-3)bits.push(`${Lo.club} are in the relegation places, ${ordn(pos(Lo))} in Division ${dv}.`);
+ return{head,body:bits.filter(Boolean).join(" ")}}
 function finalsView(){const L=finalsList(),seen=S.finalsSeen||{};if(!L.length)return`<h3>Finals</h3><p class="mute">When a season ends, the FA Cup final, the European finals and the promotion/relegation play-offs are played. Each one can be watched live here: 90 minutes shown over 1 real minute (first half, half-time, second half), with goals as they happen and penalties if it is level. Nothing has been played yet.</p>`;
  return`<h3>Finals</h3><p class="mute">Watch each final live. 90 minutes are played over 1 real minute. The result is already decided, so skipping never changes it. Finals with your club come first.</p><div class="list">${L.slice().sort((a,b)=>b.mine-a.mine).map(f=>`<div class="item"><span class="nm">${f.title}<small>Season ${f.season} · ${esc(f.hn)} vs ${esc(f.an)}${seen[f.key]?" · "+f.gh+"-"+f.ga+(f.pen?" (pens)":""):""}${f.mine?" · your club":""}</small></span><button data-live="${f.key}">${seen[f.key]?"Watch again":"Watch live"}</button></div>`).join("")}</div>`}
 function watchFinal(key){const f=finalsList().find(x=>x.key===key);if(!f)return;const sc=finalScript(f),m=document.createElement("div");m.className="modal";document.body.appendChild(m);
@@ -807,7 +832,8 @@ function playDay(){const L=S.league,p=me();let mine="";snd("whistle");
   for(const [h,a] of games){const H=S.profiles.find(x=>x.user===h),A=S.profiles.find(x=>x.user===a),r=simMatch(H,A);
    const upd=(P,gf,ga)=>{const t=D.table[P.user];t.p++;t.gf+=gf;t.ga+=ga;if(gf>ga){t.w++;t.pts+=3;P.money+=10e6;if(!P.npc)P.wins++}else if(gf===ga){t.d++;t.pts++;P.money+=3e6}else t.l++;};
    upd(H,r.gh,r.ga);upd(A,r.ga,r.gh);
-   if(!H.npc||!A.npc){pushNews("result",`${H.club} ${r.gh}-${r.ga} ${A.club}`+(r.gh===r.ga?"":` (${r.gh>r.ga?H.club:A.club} win)`))}else if(Math.abs(r.gh-r.ga)>=5)pushNews("result",`Thrashing: ${H.club} ${r.gh}-${r.ga} ${A.club}`);
+   for(const [P,gf,ga] of [[H,r.gh,r.ga],[A,r.ga,r.gh]]){P.wst=gf>ga?(P.wst||0)+1:0;P.lst=gf<ga?(P.lst||0)+1:0}
+   if(!H.npc||!A.npc||Math.abs(r.gh-r.ga)>=5){const nw=matchNews(H,A,r,D,d);pushNews("result",nw.head,nw.body)}
    L.sc=L.sc||{};for(const e of r.ev){const k=e[2]+"|"+e[1].user;L.sc[k]=(L.sc[k]||0)+1}
    for(const P of [H,A])P.squad.forEach(x=>{if(x.out>0)x.out--});
    for(const j of r.inj){const x=j.P.squad.find(q=>q.id===j.id);if(x)x.out=j.n;if(!j.P.npc)pushNews("injury",`${j.name} (${j.P.club}) injured, out ${j.n} match${j.n>1?"es":""}`)}
