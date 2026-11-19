@@ -101,7 +101,8 @@ function load(){try{const t=localStorage.getItem(KEY);if(t)return JSON.parse(t)}
 function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}syncSoon()}
 // ---------- online league (shared database; the page works offline without it) ----------
 const ONL={cfg:null,reqs:{},appr:{},db:null,uid:null,on:false,host:false,first:true,wFirst:true,rev:0,last:{},owners:{},status:"Offline: saves in this browser only",t:null,busy:false,dirty:false};
-const WKEYS=["league","world","cup","euro","ballon","scorers","playoffs"];
+const WKEYS=["league","world","cup","euro","ballon","scorers","playoffs","news"];
+function pushNews(kind,text){S.news=S.news||[];const L=S.league||{};S.news.unshift({s:L.season||1,w:(L.round||0)+1,k:kind,t:String(text).slice(0,200)});if(S.news.length>150)S.news.length=150}
 const worldJson=()=>{const o={np:S.profiles.filter(p=>p.npc)};WKEYS.forEach(k=>{if(S[k]!==undefined)o[k]=S[k]});return JSON.stringify(o)};
 function inLeague(p){const L=S.league;return !!(L&&L.divs&&L.divs[p.div]&&L.divs[p.div].table[p.user])}
 function softRender(){const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))return;render()}
@@ -338,7 +339,7 @@ function trophySvg(n,sz){sz=sz||56;const d=/Division 1/.test(n),d2=/Division 2/.
  return`<svg viewBox="0 0 64 64" width="${sz}" height="${sz}" aria-hidden="true" style="flex:none;filter:drop-shadow(0 2px 3px #0008)">${g}${body}</svg>`}
 const wage=x=>Math.max(10000,Math.round(1e6*Math.exp((x.ovr-50)*.12)/10000)*10000),wageBill=p=>p.squad.reduce((t,x)=>t+wage(x),0);
 const renewFee=(x,n)=>Math.round(price(x.ovr)*0.03*n/10000)*10000;
-const addTrophy=(p,n)=>{if(!p||p.npc)return;p.trophies=p.trophies||[];const se=S.league?S.league.season:1;if(!p.trophies.some(t=>t.s===se&&t.n===n))p.trophies.push({s:se,n})};
+const addTrophy=(p,n)=>{if(!p||p.npc)return;p.trophies=p.trophies||[];const se=S.league?S.league.season:1;if(!p.trophies.some(t=>t.s===se&&t.n===n)){p.trophies.push({s:se,n});pushNews("trophy",`${p.club} win the ${n}`)}};
 const real=()=>S.profiles.filter(p=>!p.npc);
 const clubLink=u=>{try{return location.href.split("#")[0]+"#club="+u}catch(e){return"#club="+u}};
 const canSeeAll=()=>!!(ONL.host||S.adm);
@@ -377,7 +378,7 @@ function draftScreen(p){const d=draftInit(p),pk=new Set(d.pick),n=d.pick.length,
  <div class="row"><button data-act="dauto">Auto-pick best</button><button data-act="dreroll" ${d.rolls?"":"disabled"}>Re-roll players (${d.rolls})</button><button data-act="dclear">Clear</button></div>
  ${sorted.map(x=>pl(x,`<button data-dpick="${x.id}" class="${pk.has(x.id)?"pri":""}">${pk.has(x.id)?"Picked":"Pick"}</button>`)).join("")}
  <div class="row"><button class="pri" data-act="dconfirm" ${ok?"":"disabled"}>Confirm team</button></div></div>`}
-function game(){const p=me();if(ONL.on&&!ONL.host&&!inLeague(p))return`<div class="row">${logo(40)}<h2>Waiting for the host</h2></div><p class="mute">Your club is created. The host's page adds it to the league the next time it is open, and then you can play. Leave this page open or come back later.</p><button data-act="logout">Back to clubs</button>`;if(!p.formed)return draftScreen(p);const T=[["squad","Squad"],["players","Players"],["coaches","Coaches"],["sponsors","Sponsors"],["packs","Packs"],["academy","Academy"],["league","League"],["europe","Europe"],["world","World"],["cup","FA Cup"],["finals","Finals"],["bank","Bank"],["awards","Awards"],["trophies","Trophies"],["contracts","Contracts"],["rewards","Rewards"],["buy","Buy money"]];if(p.admin)T.push(["admin","Admin"]);T.push(["settings","Settings"]);const NAV=[["squad","Squad"],["menu","Menu"],["league","League"],["packs","Packs"],["settings","Settings"]],inBar=NAV.some(n=>n[0]===tab);window._T=T;
+function game(){const p=me();if(ONL.on&&!ONL.host&&!inLeague(p))return`<div class="row">${logo(40)}<h2>Waiting for the host</h2></div><p class="mute">Your club is created. The host's page adds it to the league the next time it is open, and then you can play. Leave this page open or come back later.</p><button data-act="logout">Back to clubs</button>`;if(!p.formed)return draftScreen(p);const T=[["squad","Squad"],["players","Players"],["coaches","Coaches"],["sponsors","Sponsors"],["packs","Packs"],["academy","Academy"],["league","League"],["europe","Europe"],["world","World"],["cup","FA Cup"],["news","News"],["finals","Finals"],["bank","Bank"],["awards","Awards"],["trophies","Trophies"],["contracts","Contracts"],["rewards","Rewards"],["buy","Buy money"]];if(p.admin)T.push(["admin","Admin"]);T.push(["settings","Settings"]);const NAV=[["squad","Squad"],["menu","Menu"],["league","League"],["packs","Packs"],["settings","Settings"]],inBar=NAV.some(n=>n[0]===tab);window._T=T;
  return`<div class="bar"><div class="row" style="flex-wrap:nowrap">${crestOf(p.user)?crest(p.user,44):logo(44)}<div><h1>${p.club}</h1></div>${ovrBadge(p,1)}</div><div style="text-align:right"><div class="money">${fm(p.money)}</div><button data-act="logout">Switch club</button></div></div>
  <div class="tabs">${NAV.map(t=>`<button class="${tab===t[0]||(t[0]==="menu"&&!inBar)?"on":""}" data-tab="${t[0]}">${t[1]}</button>`).join("")}</div>
  <div class="panel">${msg?`<div class="${/not|fail|cannot|need|declin/i.test(msg)?"bad":"good"}">${msg}</div>`:""}${panel(p)}</div>${S.settings.tut?"":tutorial()}`}
@@ -459,6 +460,7 @@ function panel(p){switch(tab){
  case"europe":return euroView()
  case"world":return worldView()
  case"cup":return cupView()
+ case"news":return newsView()
  case"finals":return finalsView()
  case"bank":return bankView(p)
  case"awards":return awardsView()
@@ -602,6 +604,7 @@ function act(a){const p=me();
  if(a==="start"){S.settings.terms=true;started=true;snd("click");return render()}
  if(a==="scout1"||a==="scout5"){const n=a==="scout1"?1:5,got=[];for(let i=0;i<n&&(p.scouted||0)<20;i++)got.push(scoutOne(p));window._scout=got.map(scCard);msg="Scouted "+got.length+" player"+(got.length===1?"":"s")+".";snd(got.some(x=>x.ovr>=75)?"Gold":"Silver");return render()}
  if(a==="logout"){S.cur=null;started=false;return render()}
+ if(a==="clrnews"){S.news=[];return render()}
  if(a==="savekit"){const g=i=>document.getElementById(i).value,hex=/^#[0-9a-f]{6}$/i;const k={body:g("kbody"),sleeve:g("ksleeve"),shorts:g("kshorts"),socks:g("ksocks"),trim:g("kacc"),accent:g("kacc"),pat:g("kpat")};if(![k.body,k.sleeve,k.shorts,k.socks,k.trim].every(x=>hex.test(x))||!["solid","stripes","hoops","halves","sash"].includes(k.pat))return render();p.kit=k;msg="Kit saved.";snd("buy");return render()}
  if(a==="resetkit"){delete p.kit;msg="Kit reset.";return render()}
  if(a==="addcoach"){const n=(document.getElementById("ocn").value||"").trim().slice(0,24),f=document.getElementById("ocf").value;p.ownCoaches=p.ownCoaches||[];if(!n){msg="Type a name for the coach.";snd("err");return render()}if(p.ownCoaches.length>=5){msg="You already have 5 own coaches.";return render()}p.ownCoaches.push({id:"oc_"+p.user+"_"+Date.now().toString(36),name:n,form:f});msg=n+" created. Hire them below.";snd("buy");return render()}
@@ -618,7 +621,7 @@ function act(a){const p=me();
  if(a==="give"){const w=S.profiles.find(x=>x.user===document.getElementById("gwho").value),n=+document.getElementById("gamt").value||0;w.money=Math.max(0,w.money+n);msg="Gave "+fm(n)+" to "+w.club+".";return render()}
  if(a==="play")return playDay();
  if(a==="newseason"){const L=S.league,rank=d=>Object.entries(L.divs[d].table).sort((x,y)=>y[1].pts-x[1].pts||(y[1].gf-y[1].ga)-(x[1].gf-x[1].ga)).map(e=>S.profiles.find(q=>q.user===e[0]));
-  const r1=rank(1),r2=rank(2),r3=rank(3),notes=[];const eu=runEurope(r1,r2);notes.push(...eu.notes);
+  const r1=rank(1),r2=rank(2),r3=rank(3),notes=[];pushNews("season",`Season ${L.season} is over. Division 1 champions: ${r1[0].club}. Division 2: ${r2[0].club}. Division 3: ${r3[0].club}.`);const eu=runEurope(r1,r2);notes.push(...eu.notes);
   [200e6,120e6,80e6].forEach((pz,i)=>{r1[i].money+=pz;if(i===0){r1[i].titles++;addTrophy(r1[i],"Division 1 champions")}});[50e6,30e6,20e6].forEach((pz,i)=>{r2[i].money+=pz;if(i===0)addTrophy(r2[i],"Division 2 champions")});[20e6,10e6,5e6].forEach((pz,i)=>{r3[i].money+=pz;if(i===0)addTrophy(r3[i],"Division 3 champions")});
   // bottom 2 go down and top 2 come up directly; the third-from-bottom plays the third-placed club of the division below over two legs
   const playoff=(U,Lw,tag)=>{const a=U[U.length-3],b=Lw[2],m1=simMatch(b,a),m2=simMatch(a,b),gb=m1.gh+m2.ga,ga=m1.ga+m2.gh;let w=gb>ga?b:ga>gb?a:penWin(a,b);const pen=gb===ga;return{tag,low:b.user,high:a.user,l1:[m1.gh,m1.ga],l2:[m2.gh,m2.ga],winner:w.user,pen,a,b,w}};
@@ -637,7 +640,7 @@ function act(a){const p=me();
   for(const x of S.profiles)if(x.coach&&!x.npc&&!isOwnCoach(x.coach)){if(x.coachLeft==null)x.coachLeft=rseason(1,6);x.coachLeft--;if(x.coachLeft<=0){x.coach=null;x.coachLeft=0;if(x===me())notes.push("your coach contract ended")}}
   for(const x of S.profiles)if(!x.npc){const o=bankSeason(x);if(x===me()&&o.length)notes.push(o.join(", "))}
   {const cp=runCup(L.season);notes.push(...cp.notes);notes.push(...runBallon(L,r1[0],cp.winner).notes)}
-  S.league=newLeague(L.season+1);window._last="";msg="Season over. Prizes and sponsor money paid. "+(notes.join(", ")||"No user club changed division.")+".";return render()}}
+  notes.forEach(n=>pushNews("season",n.charAt(0).toUpperCase()+n.slice(1)));S.league=newLeague(L.season+1);window._last="";msg="Season over. Prizes and sponsor money paid. "+(notes.join(", ")||"No user club changed division.")+".";return render()}}
 // ---- Real-world leagues (computer-only, simulated from club ratings at season end) and the European competitions built from them.
 // "*" = a club that exists in the game with a real squad, its rating comes from that squad.
 const WORLD_DATA=[["Premier League","Arsenal*,Aston Villa*,Bournemouth:71,Brentford:71,Brighton:72,Burnley:66,Chelsea*,Crystal Palace:72,Everton:70,Fulham:70,Leeds United:67,Liverpool*,Manchester City*,Manchester United*,Newcastle United*,Nottingham Forest:71,Sunderland:66,Tottenham*,West Ham United:70,Wolverhampton Wanderers:67"],
@@ -718,6 +721,10 @@ function finalScript(f){const R=seedRng(f.key+f.h+f.a),side=(u,g)=>{const P=S.pr
  ev.sort((x,y)=>x.m-y.m);
  let kicks=null;if(f.pen){const hw=f.w===f.h,wk=R()<.5?4:5,lk=wk-1-(R()<.3?1:0);const MISS=["is saved by the keeper","hits the post","shoots wide","blazes over the bar"];const mk=(n,nm)=>{const flags=Array(5).fill(false);[0,1,2,3,4].sort(()=>R()-.5).slice(0,n).forEach(i=>flags[i]=true);const pool=nm.slice().sort(()=>R()-.5);return flags.map((ok,i)=>({who:pool[i%pool.length],ok,miss:MISS[Math.floor(R()*MISS.length)]}))};kicks={h:mk(hw?wk:lk,hn),a:mk(hw?lk:wk,an)}}
  return{ev,kicks}}
+function newsView(){const N=S.news||[];if(!N.length)return`<h3>News</h3><p class="mute">Nothing yet. Results involving your league's clubs, injuries, trophies and the season review show up here as you play.</p>`;
+ const lab={result:"Result",injury:"Injury",trophy:"Trophy",season:"Season"};let cur=null,out="";
+ for(const n of N.slice(0,100)){const head=n.s!==cur?(cur=n.s,`<h4 style="margin:14px 0 4px">Season ${n.s}</h4>`):"";out+=head+`<div class="item"><span class="nm"><b>${esc(lab[n.k]||"News")}</b> <small>week ${n.w}</small><br>${esc(n.t)}</span></div>`}
+ return`<h3>News</h3><div class="list">${out}</div><div class="row"><button data-act="clrnews">Clear news</button></div>`}
 function finalsView(){const L=finalsList(),seen=S.finalsSeen||{};if(!L.length)return`<h3>Finals</h3><p class="mute">When a season ends, the FA Cup final, the European finals and the promotion/relegation play-offs are played. Each one can be watched live here: 90 minutes shown over 1 real minute (first half, half-time, second half), with goals as they happen and penalties if it is level. Nothing has been played yet.</p>`;
  return`<h3>Finals</h3><p class="mute">Watch each final live. 90 minutes are played over 1 real minute. The result is already decided, so skipping never changes it. Finals with your club come first.</p><div class="list">${L.slice().sort((a,b)=>b.mine-a.mine).map(f=>`<div class="item"><span class="nm">${f.title}<small>Season ${f.season} · ${esc(f.hn)} vs ${esc(f.an)}${seen[f.key]?" · "+f.gh+"-"+f.ga+(f.pen?" (pens)":""):""}${f.mine?" · your club":""}</small></span><button data-live="${f.key}">${seen[f.key]?"Watch again":"Watch live"}</button></div>`).join("")}</div>`}
 function watchFinal(key){const f=finalsList().find(x=>x.key===key);if(!f)return;const sc=finalScript(f),m=document.createElement("div");m.className="modal";document.body.appendChild(m);
@@ -800,9 +807,10 @@ function playDay(){const L=S.league,p=me();let mine="";snd("whistle");
   for(const [h,a] of games){const H=S.profiles.find(x=>x.user===h),A=S.profiles.find(x=>x.user===a),r=simMatch(H,A);
    const upd=(P,gf,ga)=>{const t=D.table[P.user];t.p++;t.gf+=gf;t.ga+=ga;if(gf>ga){t.w++;t.pts+=3;P.money+=10e6;if(!P.npc)P.wins++}else if(gf===ga){t.d++;t.pts++;P.money+=3e6}else t.l++;};
    upd(H,r.gh,r.ga);upd(A,r.ga,r.gh);
+   if(!H.npc||!A.npc){pushNews("result",`${H.club} ${r.gh}-${r.ga} ${A.club}`+(r.gh===r.ga?"":` (${r.gh>r.ga?H.club:A.club} win)`))}else if(Math.abs(r.gh-r.ga)>=5)pushNews("result",`Thrashing: ${H.club} ${r.gh}-${r.ga} ${A.club}`);
    L.sc=L.sc||{};for(const e of r.ev){const k=e[2]+"|"+e[1].user;L.sc[k]=(L.sc[k]||0)+1}
    for(const P of [H,A])P.squad.forEach(x=>{if(x.out>0)x.out--});
-   for(const j of r.inj){const x=j.P.squad.find(q=>q.id===j.id);if(x)x.out=j.n}
+   for(const j of r.inj){const x=j.P.squad.find(q=>q.id===j.id);if(x)x.out=j.n;if(!j.P.npc)pushNews("injury",`${j.name} (${j.P.club}) injured, out ${j.n} match${j.n>1?"es":""}`)}
    if(h===p.user||a===p.user){const evs=r.ev.map(e=>`<div>${e[0]}' ⚽ <b>${e[2]||"Goal"}</b> <span class="mute">(${e[1].club})</span></div>`).join("")||'<div class="mute">No goals.</div>';mine=`<div class="score">${H.club} ${r.gh} - ${r.ga} ${A.club}</div><div class="log">${evs}${r.inj.map(j=>`<div>🩹 <b>${j.name}</b> <span class="mute">(${j.P.club}) injured, out ${j.n} match${j.n>1?"es":""}</span></div>`).join("")}</div>`;if(r.gh+r.ga>0)setTimeout(()=>snd("goal"),300)}}}
  L.round++;window._last=mine;render()}
 try{const m=(location.hash||"").match(/club=([a-z0-9_]+)/i);if(m){const q=S.profiles.find(x=>!x.npc&&x.user===m[1]);if(q&&!(ONL.on&&ONL.owners[q.user]&&ONL.owners[q.user]!==ONL.uid&&!ONL.host)){S.cur=q.user;S.last=q.user;if(q.admin)S.adm=true}}}catch(e){}
