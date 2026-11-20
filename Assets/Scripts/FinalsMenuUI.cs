@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Lists the Cup final and the Super Cup of the season and opens each in LiveFinalUI (DRAFT).
-// Inspector: a Text for the list, two Buttons (Watch Cup final, Watch Super Cup), a Close button, and the LiveFinalUI.
+// Lists the Cup final and the Champions Shield of the season and opens each in LiveFinalUI (DRAFT).
+// Inspector: a Text for the list, two Buttons (Watch Cup final, Watch Champions Shield), a Close button, and the LiveFinalUI.
 public class FinalsMenuUI : MonoBehaviour
 {
     [SerializeField] private Text infoText;

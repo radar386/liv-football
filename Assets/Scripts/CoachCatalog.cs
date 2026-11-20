@@ -139,6 +139,14 @@ public static class CoachCatalog
         return null;
     }
 
+    // Coach prices run from 100 million (cheapest) up to 4 billion (dearest), same curve as the web game.
+    public static long ScalePrice(long basePrice)
+    {
+        double v = 100_000_000 + (basePrice - 25_000_000) * (3_900_000_000.0 / 475_000_000.0);
+        if (v < 100_000_000) v = 100_000_000;
+        return (long)(System.Math.Round(v / 5_000_000) * 5_000_000);
+    }
+
     private static CoachOffer CreateCoach(string id, string name, string club, string formation, int rating, long price)
     {
         return new CoachOffer
@@ -148,7 +156,7 @@ public static class CoachCatalog
             club = club,
             formation = formation,
             rating = rating,
-            price = price
+            price = ScalePrice(price)
         };
     }
 }

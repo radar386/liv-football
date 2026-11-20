@@ -15,6 +15,7 @@ public class SimPlayer
 public class SimTeam
 {
     public string name = "Team";
+    public int linkUp;        // link-up play chemistry, 0-100 % (see LinkUp.cs)
     public string formation = "4-4-2";
     public int coachRating = 70;
     public string tactic = "Balanced";   // Attacking, Balanced or Defensive

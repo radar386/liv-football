@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-// Cup and Super Cup for the user clubs (plain C#, DRAFT). Played when the league season ends.
+// Cup and Champions Shield for the user clubs (plain C#, DRAFT). Played when the league season ends.
 // - The Cup: every club is drawn into a knockout. Odd numbers get a bye. A drawn tie goes to penalties.
-// - The Super Cup: league champion against cup winner (the league runner-up if they are the same club).
+// - The Champions Shield: league champion against cup winner (the league runner-up if they are the same club).
 // Each tie stores its simulation seed, so the live view can replay the same match. Watch it before changing your squad.
 [Serializable]
 public class CupTie
 {
-    public string title;      // "Cup round 2", "Cup final", "Super Cup"
+    public string title;      // "Cup round 2", "Cup final", "Champions Shield"
     public string home;       // username
     public string away;
     public int seed;
@@ -109,7 +109,7 @@ public static class CupEngine
         if (s.superCup != null || string.IsNullOrEmpty(s.winner)) return;
         string other = s.winner != leagueChampion ? leagueChampion : leagueRunnerUp;
         if (string.IsNullOrEmpty(other) || other == s.winner) return;
-        s.superCup = Play("Super Cup", leagueChampion == s.winner ? s.winner : leagueChampion, s.winner == leagueChampion ? other : s.winner, profiles, rng.Next());
+        s.superCup = Play("Champions Shield", leagueChampion == s.winner ? s.winner : leagueChampion, s.winner == leagueChampion ? other : s.winner, profiles, rng.Next());
     }
 
     public static List<string> PayPrizes(CupState s, List<UserProfile> profiles)
@@ -119,7 +119,7 @@ public static class CupEngine
         s.prizesPaid = true;
         Pay(profiles, s.winner, CupWinnerPrize, "wins the Cup", lines);
         if (!string.IsNullOrEmpty(s.runnerUp)) Pay(profiles, s.runnerUp, CupFinalistPrize, "reaches the Cup final", lines);
-        if (s.superCup != null) Pay(profiles, s.superCup.winner, SuperCupPrize, "wins the Super Cup", lines);
+        if (s.superCup != null) Pay(profiles, s.superCup.winner, SuperCupPrize, "wins the Champions Shield", lines);
         return lines;
     }
 

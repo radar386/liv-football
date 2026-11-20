@@ -9,7 +9,7 @@ public class LeagueUI : MonoBehaviour
     [SerializeField] private Text newsText;
     [SerializeField] private Button playButton;
     [SerializeField] private Button nextSeasonButton;
-    [SerializeField] private Button finalsButton;        // optional: opens the Cup final and Super Cup
+    [SerializeField] private Button finalsButton;        // optional: opens the Cup final and Champions Shield
     [SerializeField] private FinalsMenuUI finalsMenu;    // optional
     private CupState cup;
 
@@ -61,7 +61,7 @@ public class LeagueUI : MonoBehaviour
         Refresh();
     }
 
-    // The Cup and the Super Cup are played when the league ends; prizes are paid with the rest.
+    // The Cup and the Champions Shield are played when the league ends; prizes are paid with the rest.
     private System.Collections.Generic.List<string> PlayFinals()
     {
         cup = CupEngine.Create(profiles, state.season, rng);

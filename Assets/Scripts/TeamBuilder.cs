@@ -41,6 +41,7 @@ public static class TeamBuilder
                     ClubSquadPlayer c = FindSquadPlayer(p, id);
                     team.players.Add(new SimPlayer { id = c.id, name = c.playerName, position = c.position, rating = (c.hasRating ? c.rating : 70) + boost });
                 }
+                LinkUp.Apply(team);
                 return team;
             }
         }
@@ -52,6 +53,7 @@ public static class TeamBuilder
             pool.Add(new SimPlayer { id = c.id, name = c.playerName, position = c.position, rating = c.hasRating ? c.rating : 70 });
         }
         PickEleven(team, pool);
+        LinkUp.Apply(team);
         return team;
     }
 
@@ -149,6 +151,7 @@ public static class TeamBuilder
                 pool.Add(new SimPlayer { name = f.playerName, position = f.position, rating = f.rating });
         }
         PickEleven(team, pool);
+        LinkUp.Apply(team);
         return team;
     }
 
