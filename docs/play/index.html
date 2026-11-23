@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
 <style>
 /* Layout: a night-match scoreboard. Top bar with club + purse, tab rail, one working panel. Dark by design. */
-:root{--bg:#0b1a14;--panel:#12261d;--panel2:#183226;--line:#25463a;--fg:#e8f1ea;--mute:#8fae9f;--acc:#ffb81c;--good:#4fd18b;--bad:#ff6b5b;--bronze:#cd7f32;--silver:#c4ccd4;--gold:#ffc83d;--elite:#c77dff;color-scheme:dark;
+:root{--bg:#060d22;--panel:#0b1637;--panel2:#10224d;--line:#1b3a6b;--fg:#e8eefc;--mute:#8da2c9;--acc:#22d3ee;--good:#4fd18b;--bad:#ff6b5b;--bronze:#cd7f32;--silver:#c4ccd4;--gold:#ffc83d;--elite:#c77dff;color-scheme:dark;
 --disp:'Barlow Condensed','Arial Narrow',sans-serif;--body:'Barlow',system-ui,sans-serif}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -16,7 +16,10 @@ button.pri{background:var(--acc);color:#1a1200;border-color:var(--acc);font-weig
 input,select{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;max-width:100%}
 .wrap{max-width:960px;margin:0 auto}
 .bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px}
-.money{font-family:var(--disp);font-size:24px;color:var(--acc)}
+.money{font-family:var(--disp);font-size:24px;color:#ffc83d}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:1px solid transparent;border-radius:10px;font-family:var(--disp);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--mute);padding:6px 2px}
+.tabs button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tabs button.on{color:#fff;border-color:var(--acc);box-shadow:0 0 12px #22d3ee66,inset 0 0 10px #22d3ee33;background:#0a2a4a}
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:6px;overflow-x:auto;background:var(--panel);border-top:1px solid var(--acc);padding:8px max(16px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .tabs button{flex:1 1 0;min-width:0}a.btn{display:inline-block;background:var(--panel2);color:var(--fg);border:1px solid var(--line);padding:8px 12px;border-radius:6px}
 /* lineup screen */
@@ -32,7 +35,7 @@ input,select{font:inherit;background:var(--bg);color:var(--fg);border:1px solid 
 .sh svg{margin-top:12px;filter:drop-shadow(0 2px 3px #0009)}.sh.empty svg{margin-top:14px}
 .mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.mtile{padding:22px 10px;font-size:1.05rem;font-weight:700}
 body{padding-bottom:84px}
-.tabs button{white-space:nowrap}.tabs button.on{background:var(--acc);color:#1a1200;border-color:var(--acc)}
+.tabs button{white-space:nowrap;font-size:11px;padding:6px 0;letter-spacing:.03em}.tabs{gap:2px}.tabs button.on{background:#0a2a4a;color:#fff;border-color:var(--acc)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:12px;min-width:0}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .list{display:grid;gap:6px}
@@ -483,9 +486,10 @@ function draftScreen(p){const d=draftInit(p),pk=new Set(d.pick),n=d.pick.length,
  <div class="row"><button data-act="dauto">Auto-pick best</button><button data-act="dreroll" ${d.rolls?"":"disabled"}>Re-roll players (${d.rolls})</button><button data-act="dclear">Clear</button></div>
  ${sorted.map(x=>pl(x,`<button data-dpick="${x.id}" class="${pk.has(x.id)?"pri":""}">${pk.has(x.id)?"Picked":"Pick"}</button>`)).join("")}
  <div class="row"><button class="pri" data-act="dconfirm" ${ok?"":"disabled"}>Confirm team</button></div></div>`}
-function game(){const p=me();if(ONL.on&&!ONL.host&&!inLeague(p))return`<div class="row">${logo(40)}<h2>Waiting for the host</h2></div><p class="mute">Your club is created. The host's page adds it to the league the next time it is open, and then you can play. Leave this page open or come back later.</p><button data-act="logout">Back to clubs</button>`;if(!p.formed)return draftScreen(p);const T=[["squad","Squad"],["players","Players"],["coaches","Coaches"],["sponsors","Sponsors"],["packs","Packs"],["academy","Academy"],["league","League"],["europe","Europe"],["world","World"],["cup","FA Cup"],["news","News"],["finals","Finals"],["bank","Bank"],["awards","Awards"],["trophies","Trophies"],["contracts","Contracts"],["rewards","Rewards"],["buy","Buy money"]];if(p.admin)T.push(["admin","Admin"]);T.push(["settings","Settings"]);const NAV=[["squad","Squad"],["menu","Menu"],["league","League"],["packs","Packs"],["settings","Settings"]],inBar=NAV.some(n=>n[0]===tab);window._T=T;
+const NAVIC={squad:'<svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></svg>',g_match:'<svg viewBox="0 0 24 24"><path d="M5 5l9 9M19 5l-9 9M4 20l3-3M20 20l-3-3"/></svg>',g_contract:'<svg viewBox="0 0 24 24"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM19 16l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg>',g_club:'<svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>',g_extra:'<svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M8 14v6"/></svg>'};
+function game(){const p=me();if(ONL.on&&!ONL.host&&!inLeague(p))return`<div class="row">${logo(40)}<h2>Waiting for the host</h2></div><p class="mute">Your club is created. The host's page adds it to the league the next time it is open, and then you can play. Leave this page open or come back later.</p><button data-act="logout">Back to clubs</button>`;if(!p.formed)return draftScreen(p);const T=[["squad","Squad"],["players","Players"],["coaches","Coaches"],["sponsors","Sponsors"],["packs","Packs"],["academy","Academy"],["league","League"],["europe","Europe"],["world","World"],["cup","FA Cup"],["news","News"],["finals","Finals"],["bank","Bank"],["awards","Awards"],["trophies","Trophies"],["contracts","Contracts"],["rewards","Rewards"],["buy","Buy money"]];if(p.admin)T.push(["admin","Admin"]);T.push(["settings","Settings"]);const GRP={g_match:["Match",["league","europe","world","cup","finals","news"]],g_contract:["Contract",["players","coaches","sponsors","contracts","packs","academy"]],g_club:["Club House",["bank","awards","trophies","rewards"]],g_extra:["Extras",["buy","admin","settings"]]},NAV=[["squad","Game Plan"],["g_match","Match"],["g_contract","Contract"],["g_club","Club House"],["g_extra","Extras"]],inBar=true;window._T=T;window._G=GRP;
  return`<div class="bar"><div class="row" style="flex-wrap:nowrap">${crestOf(p.user)?crest(p.user,44):logo(44)}<div><h1>${p.club}</h1></div>${ovrBadge(p,1)}</div><div style="text-align:right"><div class="money">${fm(p.money)}</div><button data-act="logout">Switch club</button></div></div>
- <div class="tabs">${NAV.map(t=>`<button class="${tab===t[0]||(t[0]==="menu"&&!inBar)?"on":""}" data-tab="${t[0]}">${t[1]}</button>`).join("")}</div>
+ <div class="tabs">${NAV.map(t=>`<button class="${tab===t[0]||(GRP[t[0]]&&(GRP[t[0]][1].includes(tab)||tab===t[0]))||(t[0]==="squad"&&tab==="menu")?"on":""}" data-tab="${t[0]}">${NAVIC[t[0]]}${t[1]}</button>`).join("")}</div>
  <div class="panel">${msg?`<div class="${/not|fail|cannot|need|declin/i.test(msg)?"bad":"good"}">${msg}</div>`:""}${panel(p)}</div>${S.settings.tut?"":tutorial()}`}
 function tutorial(){return`<div class="modal"><div class="box"><h2>Welcome to LIV Football Mobile</h2><p>Buy players, coaches and sponsors. Make an offer: the closer to the price, the better your chance. After a yes you can ask once for 10 million off.</p><p>Open packs for random players, set your lineup and tactic, then play the league. Claim your daily reward every day.</p><button class="pri" data-act="tut">Let's play</button></div></div>`}
 // Illustrated faces: drawn from the player's id, so each player always gets the same face (not real likenesses).
@@ -586,6 +590,7 @@ function panel(p){switch(tab){
  case"finals":return finalsView()
  case"bank":return bankView(p)
  case"awards":return awardsView()
+ case"g_match":case"g_contract":case"g_club":case"g_extra":{const g=window._G[tab],tl=window._T;return`<h3>${g[0]}</h3><div class="mgrid">${g[1].map(k=>tl.find(t=>t[0]===k)).filter(Boolean).map(t=>`<button class="mtile" data-tab="${t[0]}">${t[1]}</button>`).join("")}</div>`}
  case"menu":return`<h3>All sections</h3><div class="mgrid">${window._T.filter(t=>!["squad","menu"].includes(t[0])).map(t=>`<button class="mtile" data-tab="${t[0]}">${t[1]}</button>`).join("")}</div>`
  case"squad":{const xi=lineup(p),ids=new Set(xi.map(x=>x.id));
   window._no={};{const used={};let off=0;for(const r of FORMS[p.form]){for(let k=0;k<r.length;k++){const sl=xi[off+k]&&xi[off+k].slot,arr=SHNO[sl]||[off+k+1];used[sl]=used[sl]||0;window._no[off+k]=(xi[off+k]&&xi[off+k].no)||arr[Math.min(used[sl],arr.length-1)];used[sl]++}off+=r.length}}
