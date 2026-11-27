@@ -692,7 +692,13 @@ function packsView(p){const f=window._pkf||"all",own=p.packs||[];
  <div class="pkx2"><div><h3>${k.n} Box</h3><p class="mute" style="margin:2px 0 6px">${m.sub}</p><div class="pkcs">${odds}</div></div><div class="pksp">${spotOf(i).map(x=>`<div class="pkp"><b>${k.ef?EF(x.ovr):(x.raw||x.ovr)}</b>${face(x.id,40)}<span>${esc(x.name.split(" ").slice(-1)[0])}</span><small>${x.pos}</small></div>`).join("")}</div></div>
  <div class="row">${ow?`<button class="pri" data-pack="${i}:1:1">Free sign ×1</button>`:""}<button data-pack="${i}:1:0" ${st<1?"disabled":""}>Sign ×1 · ${fm(k.price)}</button><button class="${p.money>=k.price*10?"pri":""}" data-pack="${i}:10:0" ${st<10?"disabled":""}>Sign ×10 · ${fm(k.price*10)}</button></div></article>`}).join("")}</div>
  <div class="cards" id="cards">${reveal?reveal.map(c=>c).join(""):""}</div>`}
-function leagueView(p){const L=S.league,dv=window._vd||p.div,D=L.divs[dv],done=L.round>=WEEKS;const rows=Object.entries(D.table).map(([u,t])=>({u,...t,gd:t.gf-t.ga})).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf);
+function calView(p){const L=S.league,dv=p.div,D=L.divs[dv],nm=u=>(S.profiles.find(x=>x.user===u)||{club:u}).club,my=strength(p);
+ const rows=[];for(let w=0;w<WEEKS;w++){const g=(D.rounds[w]||[]).find(([h,a])=>h===p.user||a===p.user);if(!g){rows.push({w,bye:1});continue}const home=g[0]===p.user,o=home?g[1]:g[0],O=S.profiles.find(x=>x.user===o),res=D.res&&D.res[w]&&D.res[w][p.user];
+  let fdr=3,os=0;if(O){try{os=strength(O);const d=os-my-(home?-1:1);fdr=d<-6?1:d<-2?2:d<3?3:d<7?4:5}catch(e){}}rows.push({w,home,o,res,fdr,os:Math.round(os*10)/10,next:w===L.round})}
+ const lab=["","Easy","Fair","Balanced","Tough","Very tough"],col=["","#35e08c","#9be15d","#f2c94c","#f08a5d","#ff4d4d"];
+ return`<div class="pkk">✦ MATCH CALENDAR · ${divName(dv)} · Season ${L.season}</div><p class="mute">Your fixtures, week by week. Difficulty compares the opponent's team strength with yours (home advantage counted).</p><div class="list">${rows.map(r=>r.bye?`<div class="item"><span class="nm"><b>Week ${r.w+1}</b><small>Bye</small></span></div>`:`<div class="item" style="${r.next?"border-color:var(--acc);box-shadow:0 0 10px #22d3ee55":""}"><span class="nm"><b>Wk ${r.w+1} · ${r.home?"Home":"Away"} ${r.home?"vs":"at"} ${esc(nm(r.o))}</b><small>${r.res?`Played · ${r.res.f}-${r.res.a} ${r.res.f>r.res.a?"Won":r.res.f===r.res.a?"Drew":"Lost"}`:`Strength ${r.os||"-"}`}${r.next?" · NEXT":""}</small></span>${r.res?`<span class="ovr">${r.res.f}-${r.res.a}</span>`:`<span class="pkc" style="background:${col[r.fdr]};color:#04121a;font-weight:700">${lab[r.fdr]}</span>`}</div>`).join("")}</div>`}
+function leagueView(p){const cal=window._lv==="cal";return`<div class="row"><button data-act="lvtab" class="${cal?"":"pri"}">Table</button><button data-act="lvcal" class="${cal?"pri":""}">Calendar</button></div>`+(cal?calView(p):leagueViewT(p))}
+function leagueViewT(p){const L=S.league,dv=window._vd||p.div,D=L.divs[dv],done=L.round>=WEEKS;const rows=Object.entries(D.table).map(([u,t])=>({u,...t,gd:t.gf-t.ga})).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf);
  const name=u=>S.profiles.find(x=>x.user===u).club;const n=rows.length;
  const zone=i=>dv===1?(i>=n-3?"var(--bad)":i<3?"var(--good)":""):dv===2?(i>=n-3?"var(--bad)":i<3?"var(--good)":""):(i<3?"var(--good)":"");
  return`<div class="row"><b>Season ${L.season} · ${divName(dv)}</b><span class="mute">Match week ${Math.min(L.round+1,WEEKS)} of ${WEEKS}</span>${done?`<button class="pri" data-act="newseason">Finish season</button>`:`<button class="pri" data-act="play">Play match week</button>`}</div>
@@ -823,6 +829,7 @@ function act(a){const p=me();
   else if(k==="l"&&p.tacs[i]){const t=p.tacs[i];p.form=t.form;p.tactic=t.tactic;p.slots=t.ids.slice();p.slotsForm=t.form;window._sel=null;msg="Loaded slot "+(i+1)+". Players you no longer have are replaced automatically.";snd("buy")}
   else if(k==="d"){p.tacs[i]=null;msg="Slot "+(i+1)+" cleared."}
   return render()}
+ if(a==="lvtab"||a==="lvcal"){window._lv=a==="lvcal"?"cal":"table";return render()}
  if(a==="sqtac"||a==="sqlin"||a==="sqheat"){window._sq=a==="sqtac"?"tactics":a==="sqheat"?"heat":"lineup";return render()}
  if(a==="ai"){const v=aiBuild(p);msg="AI picked "+p.form+" with team rating "+v.toFixed(1)+".";snd("buy");return render()}
  if(a==="terms"){return showTerms()}
@@ -1091,6 +1098,7 @@ function playDay(){const L=S.league,p=me();let mine="";snd("whistle");
   for(const [h,a] of games){const H=S.profiles.find(x=>x.user===h),A=S.profiles.find(x=>x.user===a),r=simMatch(H,A);
    const upd=(P,gf,ga)=>{const t=D.table[P.user];t.p++;t.gf+=gf;t.ga+=ga;if(gf>ga){t.w++;t.pts+=3;P.money+=10e6;if(!P.npc)P.wins++}else if(gf===ga){t.d++;t.pts++;P.money+=3e6}else t.l++;};
    upd(H,r.gh,r.ga);upd(A,r.ga,r.gh);
+   {D.res=D.res||{};const R=D.res[L.round]=D.res[L.round]||{};R[h]={o:a,v:"H",f:r.gh,a:r.ga};R[a]={o:h,v:"A",f:r.ga,a:r.gh}}
    L.gk=L.gk||{};for(const [P,ga] of [[H,r.ga],[A,r.gh]])if(ga===0){D.table[P.user].cs=(D.table[P.user].cs||0)+1;try{const k=lineup(P).find(x=>x&&x.slot==="GK");if(k){const q=k.name+"|"+P.user;L.gk[q]=(L.gk[q]||0)+1}}catch(e){}}
    for(const [P,gf,ga] of [[H,r.gh,r.ga],[A,r.ga,r.gh]]){P.wst=gf>ga?(P.wst||0)+1:0;P.lst=gf<ga?(P.lst||0)+1:0}
    if(!H.npc||!A.npc||Math.abs(r.gh-r.ga)>=5){const nw=matchNews(H,A,r,D,d);pushNews("result",nw.head,nw.body,{hu:H.user,au:A.user,hn:H.club,an:A.club,gh:r.gh,ga:r.ga,dv:d})}
